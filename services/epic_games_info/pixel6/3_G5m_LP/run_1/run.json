@@ -1,0 +1,32 @@
+{
+  "service": "epic_games_info",
+  "device": "pixel6",
+  "design": "G5m_LP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Complete the entire login for  Default Browser and go to epicgames.com/id/login in one continuous flow. First open  Default Browser and go to epicgames.com/id/login. Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, press it; if no such button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is visible, leave  Default Browser and go to epicgames.com/id/login in the background and open the Gmail app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page of Gmail where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app shows a list of messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check  Default Browser and go to epicgames.com/id/login, then open the newest item at the top and read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to  Default Browser and go to epicgames.com/id/login and read its currently displayed code; if that code is about to expire, wait for it to rotate and read the new one. Then switch back to  Default Browser and go to epicgames.com/id/login (it is already open in the background). Read the UI and find where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button. After pressing Login, wait 1.5 seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows only the Android launcher; the continuous log shows navigation to Epic Games, credential entry, fresh OTP retrieval from Gmail and submission; final controller evidence shows the exact authenticated Epic Games /account/personal page with private account details."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 233898,
+    "input_tokens": 212043,
+    "output_tokens": 21855,
+    "cost_usd": 0.096721,
+    "wall_clock_seconds": 484
+  },
+  "source_run": "runs/baseline_20260817_224439/01_epic_games_info/run_2"
+}

@@ -1,0 +1,639 @@
+
+=== BASELINE CASE ms_info: Default Browser and go to login.live.com ===
+[step_1] Running single baseline agent (max_steps=35)...
+🚀 Running MobileAgent to achieve goal: Complete the entire login for Default Browser and go to login.live.com in one continuous flow. First open Default Browser and go to 
+login.live.com. Enter {user} as username. Enter not needed as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, press 
+it; if no such button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is visible,
+leave Default Browser and go to login.live.com in the background and open the Gmail app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page of Gmail 
+where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely 
+on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app shows a list of messages
+or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check Default Browser and go to login.live.com, then open the newest item at the top and read the 
+OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to login.live.com and read its currently displayed code; if that
+code is about to expire, wait for it to rotate and read the new one. Then switch back to Default Browser and go to login.live.com (it is already open in the background). Read the UI 
+and find where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button. After pressing Login, 
+wait 1.5 seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.
+🔄 Step 1/35
+FastAgent response:
+Plan: I need to open the Default Browser app and navigate to login.live.com so I can type the username and follow the OTP flow. First I'll open the Default Browser to confirm it's 
+available and ready. If the app can't be opened, I'll stop and report that the precondition (Default Browser present) is unmet.
+
+Opening Default Browser now.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+I'll navigate to login.live.com in the Default Browser address bar so we can start the Microsoft login/OTP flow. The browser is open and the address field is focused (keyboard 
+visible), so I'll type the URL, press Enter, and wait for the page to load.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+Reasoning: The DuckDuckGo autofill dialog is offering the exact username "{user}" (index 6). I'll tap it to autofill the Microsoft login page with that account (it may fill
+password too — that's fine per instructions). After autofill I'll wait briefly to let the page update and then inspect the screen for the next controls (Sign in / request OTP). 
+Preconditions met: Default Browser is open and on login.live.com with the credential shown.
+
+I'll tap the saved credential now and wait 1.5s.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">6</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: '{user}' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+Reasoning: Clicking the saved credential triggered the system password unlock UI — I can't autofill or continue the login flow until the device unlocks the password store. The System 
+UI shows a "Use PIN" button (index 8). Per your instructions, I should choose PIN and enter {device_pin}. After unlocking I'll continue the Default Browser / login.live.com flow.
+
+I'll tap "Use PIN", wait briefly for the PIN entry to appear, type 1234, press Enter to submit, and wait for the result.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">8</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">1234</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Use PIN' | Class: Button | Type: unknown | Coordinates: (178, 2253)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning: We're back in DuckDuckGo on login.live.com and the password store is unlocked. The page is rendered inside the WebView (index 16). Next I need to focus the page so the 
+Microsoft login controls become interactable (email field / Next / OTP flow). I'll tap the WebView and wait for the page to update, then inspect the screen (I'll decide the next exact 
+action after seeing the updated UI).
+
+Tapping the WebView now and waiting 1.5s.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.duckduckgo.mobile.android:id/browserWebView' | Class: WebView | Type: unknown | Coordinates: (540, 1316)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning: The browser is on login.live.com and already shows the "Enter your code" screen for {user} with six OTP input fields (indices 34,36,38,40,42,44). That means a 
+code has been sent or an input is expected — exactly the moment the instructions want me to leave the browser and fetch the OTP from Gmail. Next step: open the Gmail app (this will 
+background Default Browser/login.live.com). If Gmail asks for the device PIN I'll enter {device_pin}, then I'll navigate to the inbox, refresh it (swipe down), wait 3s, and open the newest 
+message to read the OTP.
+
+I'll open Gmail now.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.google.android.gm"}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+I see the Microsoft page in DuckDuckGo is already on the "Enter your code" screen (six code fields). Per your instructions I'll refresh Gmail to get a fresh OTP, briefly check that 
+DuckDuckGo is still open in the background, then open the newest email and read the code.
+
+Plan:
+- Pull-to-refresh the inbox (RecyclerView index 8), wait 3s for new mail.
+- Open Default Browser briefly to keep login.live.com in background, then return to Gmail.
+- Open the top (newest) message (index 12) to read the single-use code.
+
+Performing those steps now.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,400]</parameter>
+<parameter name="coordinate2">[540,1400]</parameter>
+<parameter name="duration">0.6</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">3.0</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+📱 AppOpener response:
+{"package":"com.google.android.gm"}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 400) to (540, 1400)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 3.0 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Unread, , , Microsoft account team, , Your single-use code, , Hi {user}, We received your request for a single-use code to use with your Microsoft
+account. Your single-use code is: 768025 Only enter this code on an official website or app. Don't, , ,  at 10:32 PM' | Class: FrameLayout | Type: unknown | Coordinates: (540, 
+558)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+Reasoning: I just opened the newest Gmail message and it contains the single-use code "768025" for the Microsoft login. Per the instructions I must switch back to the Default Browser 
+(login.live.com), find the OTP inputs, clear them, enter the exact code with no spaces, submit, then wait 1.5s and check the result. Before leaving the Gmail screen I’ll save the code 
+(so I don’t lose it while switching apps), then return to Default Browser, focus the webview, fill the six OTP fields with 7-6-8-0-2-5 (clearing each field as I focus it), submit with 
+Enter, and wait 1.5 seconds to let the page respond.
+
+Saving the OTP now, then switching to Default Browser and entering it.
+
+<add_memory>Microsoft single-use code for login.live.com: 768025</add_memory>
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">34</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">7</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">36</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">6</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">38</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">8</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">40</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">0</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">42</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">2</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">44</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">5</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.3</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Reply' | Class: ImageView | Type: unknown | Coordinates: (891, 559)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Privacy Statement: ' | Class: TextView | Type: unknown | Coordinates: (217, 1274)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'https://go.microsoft.com/fwlin' | Class: TextView | Type: unknown | Coordinates: (618, 1274)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Microsoft Corporation, One ' | Class: TextView | Type: unknown | Coordinates: (283, 1358)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Microsoft Way, Redmond, WA 98052' | Class: TextView | Type: unknown | Coordinates: (518, 1379)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'conversation-footer' | Class: TextView | Type: unknown | Coordinates: (540, 1484)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.google.android.gm:id/reply_button' | Class: LinearLayout | Type: unknown | Coordinates: (256, 2104)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.3 seconds</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning: The Default Browser is on the "Enter your code" page with six OTP fields visible (codeEntry-0..5). I previously retrieved the fresh single-use code from Gmail (768025). Next
+step is to focus each OTP field, clear it, enter the corresponding digit (7 6 8 0 2 5), then submit the form (Enter) and wait 1.5s for the page to respond. I'll perform those actions 
+now.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">34</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">7</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">36</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">6</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">38</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">8</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">40</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">0</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">42</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">2</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">44</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">5</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.3</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-0' | Class: EditText | Type: unknown | Coordinates: (213, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-1' | Class: EditText | Type: unknown | Coordinates: (339, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-2' | Class: EditText | Type: unknown | Coordinates: (465, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-3' | Class: EditText | Type: unknown | Coordinates: (612, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-4' | Class: EditText | Type: unknown | Coordinates: (738, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'codeEntry-5' | Class: EditText | Type: unknown | Coordinates: (864, 925)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.3 seconds</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+Reasoning: I entered the one-time code (768025) and submitted it. Now I need to confirm whether the login succeeded — the page may have redirected or shown a success message inside the
+WebView. I'll focus/tap the WebView (login.live.com) and wait 1.5s for any redirect or UI update, then inspect the result.
+
+Performing a tap on the WebView and waiting 1.5s.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.webkit.WebView' | Class: WebView | Type: unknown | Coordinates: (540, 1316)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+I see the Microsoft page replaced the OTP entry screen and the WebView now exposes page elements like "main-content-landing" and "o365header" and the omnibar shows 
+account.microsoft.com — that's the account/main landing, not an OTP prompt. That indicates the OTP was accepted and the Microsoft account main page is loaded.
+
+Reasoning:
+- The presence of "main-content-landing" and "o365header" in the WebView accessibility tree is a strong signal we're on the logged-in landing/dashboard.
+- The browser omnibar now shows account.microsoft.com instead of the "Enter your code" flow.
+- We waited after submitting the code and the page updated accordingly.
+
+Result: Login flow completed using code 768025. Marking the task complete as successful.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Login to login.live.com completed — browser shows account.microsoft.com main landing (main-content-landing, o365header present). OTP 768025 used.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 71898
+  Completion tokens      : 11387
+  Total tokens           : 83285
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 8448
+  Normal output tokens   : 2939
+  Total output tokens    : 11387
+=========================================
+Login to login.live.com completed — browser shows account.microsoft.com main landing (main-content-landing, o365header present). OTP 768025 used.
+
+Result written to runs/baseline_20260817_223055/generated/baseline_20260817_223055_ms_info_run_1/result.json

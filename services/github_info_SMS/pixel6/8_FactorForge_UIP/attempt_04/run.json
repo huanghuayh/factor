@@ -1,0 +1,39 @@
+{
+  "service": "github_info_SMS",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to github.com/login and verify its visible app or browser domain. If it is already authenticated, sign out and re-observe the signed-out target before continuing. Enter {user}, end the action batch, and inspect that the exact target and username remain visible. Enter {password}, end the action batch, and inspect again. Perform only one state-changing interaction between observations: never batch keyboard dismissal, Back, and submit. Dismiss the keyboard only when the current observation proves it is visible, then re-observe. Submit only from a fresh observation that shows the exact target, the expected populated fields, and its currently visible submit control. If the target is lost, explicitly return to Default Browser and go to github.com/login and re-verify it before continuing. Handle any required-field error once after re-entering and re-inspecting the value. If account-specific target content appears, leave it open and stop. Otherwise, on the verified target's two-step page, dismiss any security-key or passkey prompt, choose another method, and select the code option matching Google Voice. Stop only after a separate observation shows the exact target with authenticated content, a sent-code confirmation, or an OTP input, and leave that state open.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target shows either a sent-code confirmation, an OTP input field, or account-specific authenticated content reached after credentials were submitted in this step. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows Chrome on unrelated Marriott content, while final evidence shows github.com/login still signed out with an unsubmitted Chrome saved-password sheet; the log contains no password submission, OTP flow, or authenticated GitHub state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 17324,
+    "input_tokens": 14767,
+    "output_tokens": 2557,
+    "cost_usd": 0.008806,
+    "wall_clock_seconds": 57
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/14_github_info_SMS/attempt_004"
+}

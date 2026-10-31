@@ -1,0 +1,44 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "FactorFlow_m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to store.steampowered.com/login/, enter {user} as username. Enter {password} as password, if password is not needed, just ignore password. This task is successfully complete once a push notification has been sent or a message saying to check your phone is visible on screen. Stop here and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification has been sent OR any message asking user to open an app, check phone, or approve login is visible on screen. The previous worker reported: executor success=False reason=Failed: after navigating and submitting the identifier, Google reports \"Couldn't find this account\" and no on-screen \"check your phone\" prompt or push notification appeared. Authentication cannot proceed to a phone prompt with the provided account.. Treat this only as a hint; still verify against the actual screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app. If a number is visible on screen before minimizing, remember it. Open the Steam app. If a push notification approval screen is visible, approve it. If a number input field is visible, type in the number you saw on the previous screen.After approving or entering the number, switch back to the browser. If a prompt appears such as 'Is this your device?', click Yes or Trust this browser. Wait 2 seconds and confirm login succeeded",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification approved or number entered successfully, browser shows any post-login screen including 'Is this your device?' or main page. The previous worker reported: executor success=True reason=Login confirmed: Steam account \"{user}\" is signed in (profile visible in site menu).. Treat this only as a hint; still verify against the actual screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows only the Android home screen; the same-run log records Steam credential submission, a {user} Steam Mobile approval request and approval, and the final controller capture shows store.steampowered.com authenticated as profile {user}."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 195076,
+    "input_tokens": 164556,
+    "output_tokens": 30520,
+    "cost_usd": 0.102179,
+    "wall_clock_seconds": 707
+  },
+  "source_run": "runs/factorflow_20260820_233713/20_steam_info/run_1"
+}

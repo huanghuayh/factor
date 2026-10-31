@@ -1,0 +1,39 @@
+{
+  "service": "github_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 3,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded, including to hide the keyboard, close a prompt, return from another app, or navigate. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes. After dismissing a popup, launching or switching apps, navigating, submitting a form, or otherwise changing the screen, end the action batch and re-observe before taking another indexed action. Open Default Browser and go to github.com/login in Chrome. Dismiss each browser setup prompt one at a time and re-observe after every dismissal. Navigate directly to the requested target and verify the exact target domain before entering anything. Use only the target's native sign-in form. Enter {user}, then re-observe. Manually enter {password}, then re-observe. Do not dismiss the keyboard with Android Back; using only the latest observation, tap the target's visible login or continue button and re-observe the result. If a required-field warning appears or the credential form remains, re-enter only the indicated field and submit again using fresh UI indices. The ordinary login page is incomplete. Stop successfully only when the exact target visibly confirms that an OTP was sent or shows an OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target visibly confirms that a new OTP was requested or sent, or shows an OTP input field. An ordinary credential form, matching destination URL, browser chrome, new-tab page, unrelated page, or unresolved prompt is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The launcher start proves no stale GitHub session, but the final controller evidence shows an unauthenticated accounts.google.com identifier page for GitHub; the log never submits target credentials or an OTP, so the runner's failure is genuine."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 85594,
+    "input_tokens": 79987,
+    "output_tokens": 5607,
+    "cost_usd": 0.031211,
+    "wall_clock_seconds": 111
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_113637_Github/01_github_info/attempt_003"
+}

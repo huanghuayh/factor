@@ -1,0 +1,50 @@
+{
+  "service": "hyatt_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 5,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to hyatt.com/en-US/member/sign-in. If it opens to an authenticated account or dashboard, sign out and confirm the signed-out state before continuing. Enter {user} in the email or username field, and enter {password} only when the target requires a password and does not mark it unnecessary. If a CAPTCHA or anti-bot check is present, wait for or complete it before submitting; its success label confirms only the challenge, not that a magic link was sent. After the challenge succeeds, dismiss the keyboard or scroll as needed, tap the target control that explicitly sends, requests, emails, or continues to a magic link, and wait for the page to update. Stop successfully only when the target itself explicitly confirms that a new magic link was sent or instructs the user to check email. If no magic-link option exists or no target-owned confirmation appears, report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link has been requested/sent OR confirmation message is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Leave the target and open Gmail. Ensure the main inbox is visibly foregrounded; close or minimize any browser custom tab that remains on top. Return from any open message to the inbox, refresh, wait 3 seconds, and re-observe. Open the newest message received after the link request whose visible sender and subject belong to Default Browser and go to hyatt.com/en-US/member/sign-in, and verify its sender, subject, and timestamp before activating its magic link. Wait for the default browser and verify that the resulting page belongs to the target domain in Default Browser and go to hyatt.com/en-US/member/sign-in. Close any browser page-info sheet and dismiss any cookie or other overlay that hides the site, then re-observe the target in a separate action. Complete only when that unobscured observation visibly shows account-specific authenticated content, account controls, or an explicit login-success confirmation. A matching URL, redirect, generic landing page, promotion, or registration prompt alone is not authentication. Report failure if the inbox or fresh matching message is unavailable, the link opens another target, or authenticated target content cannot be made visible.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link clicked and login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows a public, non-authenticated Hyatt loyalty page; the log then opens Hyatt's sign-in flow, verifies and activates the World of Hyatt magic link, and final Chrome evidence shows Hyatt Account Overview with member-specific identity and account data."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 60788,
+    "input_tokens": 53368,
+    "output_tokens": 7420,
+    "cost_usd": 0.028182,
+    "wall_clock_seconds": 217
+  },
+  "factorforge_training": {
+    "attempts": 5,
+    "training_tokens": 435899,
+    "training_seconds": 1246
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/19_hyatt_info/attempt_005"
+}

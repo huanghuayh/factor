@@ -1,0 +1,32 @@
+{
+  "service": "hyatt_info",
+  "device": "pixel6",
+  "design": "MAv3_G5.5",
+  "framework": "Mobile-Agent-v3",
+  "model": "gpt-5.5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to hyatt.com/en-US/member/sign-in with username {user} and password {password} if required. You are authorized to perform 2FA; do not stop until you have successfully logged in.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The screenshot shows the Hyatt sign-in form (Membership Number/Username, Last Name, Password fields) with the username empty and the SIGN IN button disabled — this is a login page, not a post-MFA authenticated account/dashboard."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 415107,
+    "input_tokens": 392449,
+    "output_tokens": 22658,
+    "cost_usd": 2.641985,
+    "wall_clock_seconds": 539
+  },
+  "source_run": "runs/public_agent_mfa/public_agent_mfa_gpt55_nonauth_20261028/03_hyatt_info/run_2"
+}

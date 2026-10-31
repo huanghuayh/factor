@@ -1,0 +1,50 @@
+{
+  "service": "magiclink_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to https://magiclinklogin.com/?utm_source=chatgpt.com#demo. If it opens to an authenticated account or dashboard, sign out and confirm the signed-out state before continuing. Enter {user} in the email or username field, and enter No need only when the target requires a password and does not mark it unnecessary. If a CAPTCHA or anti-bot check is present, wait for or complete it before submitting; its success label confirms only the challenge, not that a magic link was sent. After the challenge succeeds, dismiss the keyboard or scroll as needed, tap the target control that explicitly sends, requests, emails, or continues to a magic link, and wait for the page to update. Stop successfully only when the target itself explicitly confirms that a new magic link was sent or instructs the user to check email. If no magic-link option exists or no target-owned confirmation appears, report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link has been requested/sent OR confirmation message is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app, then go to the Gmail app. Navigate to the main inbox of Gmail. If it is the detailed page of a message, go back to the main inbox. Refresh the inbox (swipe down from the top), wait 3 seconds for it to load. Open the newest email matched to the Default Browser and go to https://magiclinklogin.com/?utm_source=chatgpt.com#demo at the top of the list. Find the magic link or login button inside the email and click it directly. Wait 2 seconds and confirm that login succeeded or the main page is visible.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link clicked and login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows the exact target signed out on its magic-link form; the continuous log shows a new link requested, received in Gmail, and clicked; final controller evidence shows magiclinklogin.com authenticated as {user} with dashboard and Log out controls."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 47875,
+    "input_tokens": 42291,
+    "output_tokens": 5584,
+    "cost_usd": 0.021741,
+    "wall_clock_seconds": 143
+  },
+  "factorforge_training": {
+    "attempts": 2,
+    "training_tokens": 24199,
+    "training_seconds": 79
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/18_magiclink_info/attempt_002"
+}

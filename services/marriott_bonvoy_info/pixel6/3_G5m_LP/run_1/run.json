@@ -1,0 +1,32 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "G5m_LP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Complete the entire login for Default Browser and go to marriott.com in one continuous flow. First open Default Browser and go to marriott.com. Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, press it; if no such button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is visible, leave Default Browser and go to marriott.com in the background and open the Gmail app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page of Gmail where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app shows a list of messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check Default Browser and go to marriott.com, then open the newest item at the top and read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to marriott.com and read its currently displayed code; if that code is about to expire, wait for it to rotate and read the new one. Then switch back to Default Browser and go to marriott.com (it is already open in the background). Read the UI and find where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button. After pressing Login, wait 1.5 seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Evidence agrees with the reported failure: the run starts on the Android launcher and ends in a DuckDuckGo custom tab on store.epicgames.com, with no authenticated Marriott state or Marriott OTP input; the log shows unrelated Epic Games and Microsoft codes were retrieved after the Marriott context was lost."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 242374,
+    "input_tokens": 221037,
+    "output_tokens": 21337,
+    "cost_usd": 0.097933,
+    "wall_clock_seconds": 465
+  },
+  "source_run": "runs/baseline_20260817_224439/02_marriott_bonvoy_info/run_1"
+}

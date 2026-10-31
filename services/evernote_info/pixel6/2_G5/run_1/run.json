@@ -1,0 +1,32 @@
+{
+  "service": "evernote_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to accounts.evernote.com/login with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run starts on the Pixel Launcher and follows a continuous Chrome-to-Evernote credential sequence, but the final evidence remains at Evernote's accounts.evernote.com/two-factor-verification page requesting a 6-digit 2FA-app code; no authenticated Evernote content or completed target login is shown, so the runner's failure is accurate."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 35339,
+    "input_tokens": 33946,
+    "output_tokens": 1393,
+    "cost_usd": 0.056363,
+    "wall_clock_seconds": 72
+  },
+  "source_run": "runs/basic_20260902_174056/01_evernote_info/run_1"
+}

@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 6,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open marriott.com in the default browser and confirm the Marriott Bonvoy branding and domain. First inspect the current page: if Marriott says a one-time or six-digit code was sent, or shows an Enter Your Code or Verification Code field, the OTP request is already complete; stop successfully without selecting Back to Sign In. Only exit a notice that explicitly concerns password reset or account recovery. Otherwise enter the supplied email and password on the normal sign-in form, dismiss the keyboard, submit, and re-observe; if the populated form remains unchanged, dismiss the keyboard and submit once more. Continue until Marriott confirms that a one-time code was sent or displays an OTP input.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start and final controller evidence both show the same signed-out Marriott Bonvoy login form with empty credentials; the log records no credential or OTP actions, so no fresh authenticated transition occurred."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 7481,
+    "input_tokens": 5961,
+    "output_tokens": 1520,
+    "cost_usd": 0.00453,
+    "wall_clock_seconds": 42
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_006"
+}

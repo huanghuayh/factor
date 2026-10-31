@@ -1,0 +1,56 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 10,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open marriott.com in the default browser and verify the Marriott Bonvoy branding and domain. If an OTP entry field is already visible or Marriott explicitly says a code was sent, stop successfully. Otherwise enter {user} and {password} on the Marriott sign-in form, dismiss the keyboard, submit, and re-observe; if the populated form remains unchanged, dismiss the keyboard and submit once more. If Confirm Your Identity asks you to choose a contact method, select the email address matching {user} and tap Continue; wording that Marriott will send a code and a visible Continue button mean the request is not complete. Stop only when Marriott explicitly confirms the code was sent or displays the OTP entry field. Close only password-reset or account-recovery notices.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Open the designated email or authenticator app and obtain the current one-time code for the target service. For email, return to the inbox if necessary, refresh, wait briefly, then open the newest matching verification message and read its code. For an authenticator, read the current matching code and wait for a new code if it is about to expire. Report only the OTP code as the final answer.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Return to the Default Browser and the existing Marriott verification page, confirming that the visible address belongs to marriott.com before interacting. Clear the Verification Code field, enter the supplied OTP, submit it, and wait for the response. If Marriott says the code expired or rejects it, select Resend a new code, open the designated email app, refresh the inbox, retrieve the newest Marriott One Time Passcode, return to the same marriott.com challenge, and submit the fresh code. After every app switch or browser-history action, re-check the visible domain. Report success only after a separate observation shows authenticated Marriott account content or an explicit Marriott login-success confirmation on a Marriott-owned domain. Never accept account content from another domain as Marriott success; if the page returns to sign-in and no valid fresh code is available, report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows unrelated Epic Games content, while the continuous log records Marriott credential entry, email OTP retrieval, and submission; final controller evidence shows the personalized Marriott Bonvoy member page on marriott.com."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 105139,
+    "input_tokens": 96659,
+    "output_tokens": 8480,
+    "cost_usd": 0.041125,
+    "wall_clock_seconds": 224
+  },
+  "factorforge_training": {
+    "attempts": 10,
+    "training_tokens": 284501,
+    "training_seconds": 1022
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_010"
+}

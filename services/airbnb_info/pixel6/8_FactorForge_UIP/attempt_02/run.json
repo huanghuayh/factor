@@ -1,0 +1,51 @@
+{
+  "service": "airbnb_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to airbnb.com/login and verify that the visible app or browser domain belongs to that target before entering anything. If an unrelated page is open, navigate to the target specified by Default Browser and go to airbnb.com/login. If the target is already authenticated, sign out and begin a fresh login. Enter {user} and, when required, {password}; continue through the sign-in flow and choose the matching OTP delivery method when prompted. Stop successfully only after the same target visibly confirms that a new code was sent or shows its OTP input field. Leave that challenge open for the next step.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Open the designated email or authenticator app and obtain the current one-time code for the target service. For email, return to the inbox if necessary, refresh, wait briefly, then open the newest matching verification message and read its code. For an authenticator, read the current matching code and wait for a new code if it is about to expire. Report only the OTP code as the final answer.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Return to the existing Default Browser and go to airbnb.com/login task and verify that it still belongs to the exact target and shows the same OTP challenge. Clear the code field, enter {otp_code}, submit it, and wait for the response. Resolve any remaining target-owned confirmation prompt. If the code is rejected or expired, request a new code and obtain the newest matching code from Gmail before resubmitting it to the same target. Report success only after a separate observation shows account-specific authenticated content or an explicit login-success confirmation on the exact target; otherwise report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows an unrelated Marriott page, but final controller evidence shows Gmail with the Airbnb OTP email; the log confirms the code was never submitted back to Airbnb and no authenticated Airbnb state was reached."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 46378,
+    "input_tokens": 41510,
+    "output_tokens": 4868,
+    "cost_usd": 0.020113,
+    "wall_clock_seconds": 169
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/04_airbnb_info/attempt_002"
+}

@@ -1,0 +1,56 @@
+{
+  "service": "bitwarden_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes. After every launch, dismissal, navigation, field entry, or submission, end the action batch and re-observe before using another index. Open Default Browser and go to vault.bitwarden.com/#/login in Chrome, dismiss setup prompts one at a time, navigate directly to the requested target, and verify the exact target domain. Wait and re-observe if the page is blank or loading. Use only the target's native sign-in form; if an unrelated identity provider opens, enter the target URL directly in the current omnibox, submit, and re-observe. Enter {user} directly into its currently observed field, then re-observe. If the observation exposes the intended value, advance. If the accessibility output omits the field value without showing it empty and the target shows no missing-field error, treat that omission as inconclusive and use the newly observed target submit control once; re-observe the target's validation before any retry. Enter {password} only in its newly observed matching field when requested, then re-observe and submit once with the newly observed control. Do not hide the keyboard with Android Back. If a saved-password or touch-to-fill sheet blocks the form, dismiss it with its visible control or swipe it downward, then re-observe; if it clearly matches {user} and the exact target and cannot be dismissed, use its visible sign-in control and re-observe. Recover an entry only when the target reports that field missing or empty: refocus the newly observed field, enter it once, use a visible keyboard Next or Done control if available, and re-observe before submitting. If the target still reports it missing or empty, report failure. Stop successfully only when the exact target confirms a new OTP was sent or shows a target-owned OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Pass when the exact target in {name} visibly confirms that a new OTP was requested or sent, or shows a target-owned OTP input form. Judge the full current screen, not only enumerated clickable elements; a browser overlay does not invalidate success when the target-owned OTP form remains visibly identifiable behind it. An ordinary credential form, a matching destination URL alone, browser chrome without identifiable target-owned OTP content, a new-tab page, an unrelated page, or a prompt that fully obscures the target state is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes; end the action batch and re-observe before taking another indexed action. Leave Chrome by pressing Home, then open Gmail by app name. If there is a device PIN, enter {device_pin}. Navigate to Gmail's main OTP source: use the inbox or conversation list for mail or messaging, or the account-code list for an authenticator. Do not rely on memory or a previously seen code. If a message detail is open, use Gmail's own visible navigation control to return to its main list. For mail or messaging, refresh, wait three seconds, re-observe, and open only the newest item belonging to Default Browser and go to vault.bitwarden.com/#/login. For rotating codes, find the entry for Default Browser and go to vault.bitwarden.com/#/login; if it is about to expire, wait for it to rotate and re-observe. As soon as the current matching OTP is visible, read it and report that code as the final answer. Do not tap links, buttons, or other message content after the code is visible, and do not leave Gmail.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes; after every launch, navigation, field entry, or submission, end the action batch and re-observe before using another index. In Gmail, read the currently displayed fresh code for Default Browser and go to vault.bitwarden.com/#/login; if it differs from {otp_code}, use the displayed code. Press Home and launch Chrome again by app name, then re-observe and verify the exact target. If credentials are requested, enter {user} and {password} only in their matching fields, applying the same entry-verification rule below and re-observing before each visible submission. On the target-owned OTP form, clear the OTP field, enter the fresh code without spaces, use a visible keyboard Next or Done control if available, and re-observe without submitting. A type-tool success message proves only that an input command was sent. Confirm entry only when the new observation shows the code in the field or the correct number of populated or masked OTP positions; a resource ID, label, hint, focus, or visible keyboard does not prove entry. Do not submit while the OTP is empty or unconfirmed. If the first entry is unconfirmed, refocus the newly observed OTP field, tap the visible on-screen keyboard digits one at a time for the fresh code, and re-observe. Submit once with the newly observed target control only after field population is confirmed, then re-observe. If the field remains empty or unconfirmed after that recovery, report failure. Obtain and submit a newly displayed OTP only if the exact target explicitly reports the prior code invalid or expired. Report success only after an unobscured observation shows authenticated account-specific content or an explicit login-success confirmation for Default Browser and go to vault.bitwarden.com/#/login.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: After OTP submission, {name} visibly shows authenticated, account-specific content or an explicit login-success confirmation. A login form, OTP form, error, browser chrome, new-tab page, unrelated page, or authentication-app screen is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Controller evidence and the continuous saved UI/action sequence prove a fresh credential-plus-OTP transition from the launcher and Bitwarden signed-out forms to the authenticated Bitwarden Web Vault at vault.bitwarden.com/#/vault; no stale authenticated session is present at start."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 118478,
+    "input_tokens": 107697,
+    "output_tokens": 10781,
+    "cost_usd": 0.048486,
+    "wall_clock_seconds": 294
+  },
+  "factorforge_training": {
+    "attempts": 4,
+    "training_tokens": 481421,
+    "training_seconds": 907
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_142204_bitwarden/01_bitwarden_info/attempt_004"
+}

@@ -1,0 +1,45 @@
+{
+  "service": "marriott_bonvoy_info_SMS",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to marriott.com and verify its visible app or browser domain. If the target is already authenticated, sign out before starting a fresh login. Enter {user}, verify the target accepted it, and continue. Enter {password} when requested; after any keyboard or layout change, dismiss the keyboard if needed, inspect the current UI again, and use the current submit control. If validation says a populated field is required, refocus that field, re-enter its value, and resubmit once. If account-specific authenticated content appears, leave it open and stop. Otherwise, on the target's two-step page, dismiss any automatic security-key or passkey prompt, choose another method, and select the code option matching Google Voice. Stop only when the target shows a sent-code confirmation or OTP input, and leave it open.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target shows either a sent-code confirmation, an OTP input field, or account-specific authenticated content reached after credentials were submitted in this step. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Determine the OTP delivery method from the target's visible challenge and the messaging service identified by the case. For SMS, use the case-indicated service; when the case identifies Google Voice, open Google Voice even if the target only says SMS or shows a masked number, refresh it, and read the newest matching verification message. Do not substitute the carrier Messages app solely because the challenge omits the service name. For email, open the available email app and refresh the inbox. For an authenticator code, open the matching authenticator app and wait for the next code if expiration is near. Report only the OTP code.",
+        "auditor_prompt": null,
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start capture shows Messages, not an authenticated Marriott session; the final controller capture proves marriott.com but remains on an empty SMS verification-code challenge. The log shows credentials and SMS selection, then an empty OTP result and abort before code submission, so no fresh authenticated transition occurred."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 34787,
+    "input_tokens": 30393,
+    "output_tokens": 4394,
+    "cost_usd": 0.016386,
+    "wall_clock_seconds": 115
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/13_marriott_bonvoy_info_SMS/attempt_004"
+}

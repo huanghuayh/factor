@@ -1,0 +1,39 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to store.steampowered.com/login/, enter {user} as username. Enter {password} as password, if password is not needed, just ignore password. This task is successfully complete once a push notification has been sent or a message saying to check your phone is visible on screen. Stop here and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification has been sent OR any message asking user to open an app, check phone, or approve login is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start XML already exposes authenticated Steam account controls for {user}, while the final controller state is a public HELLDIVERS 2 age-check page; the log never resets the stale session, submits credentials, or reaches a push/check-phone approval state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 52903,
+    "input_tokens": 48359,
+    "output_tokens": 4544,
+    "cost_usd": 0.021178,
+    "wall_clock_seconds": 152
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/20_steam_info/attempt_002"
+}

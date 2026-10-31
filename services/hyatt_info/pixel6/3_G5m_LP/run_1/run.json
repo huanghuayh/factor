@@ -1,0 +1,32 @@
+{
+  "service": "hyatt_info",
+  "device": "pixel6",
+  "design": "G5m_LP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Complete the entire login for Default Browser and go to hyatt.com/en-US/member/sign-in in one continuous flow. First open Default Browser and go to hyatt.com/en-US/member/sign-in. If it opens to an authenticated account or dashboard, sign out first and continue to the fresh sign-in flow; never treat an existing session as completion. Enter {user} in the email or username field. Enter {password} only if a password is required and it is not marked as unnecessary. Choose the control that explicitly sends, requests, emails, or continues to a magic link. Once a new magic link has been requested or sent, leave Default Browser and go to hyatt.com/en-US/member/sign-in and open the Gmail app. Navigate to the main inbox of Gmail. If a message detail page is open, go back to the main inbox. Refresh the inbox (swipe down from the top) and wait 3 seconds for it to load. Open the newest email matched to Default Browser and go to hyatt.com/en-US/member/sign-in at the top of the list. Find the magic link or login button inside the email and click it directly. Wait 2 seconds and confirm that login succeeded or the main page is visible. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Evidence agrees with failure: the start is Android Settings with no authenticated Hyatt session, the log shows magic-link attempts but repeated returns to public sign-in content, and the final Hyatt-branded controller screen is a generic Page Not Found error rather than authenticated account-only content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 211718,
+    "input_tokens": 189443,
+    "output_tokens": 22275,
+    "cost_usd": 0.091911,
+    "wall_clock_seconds": 544
+  },
+  "source_run": "runs/baseline_20260817_224439/18_hyatt_info/run_1"
+}

@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to marriott.com and verify that the visible page belongs to the requested target before entering {user}. Enter {password} only if required. Request a one-time code readable in Gmail; a push approval or number-matching prompt is not a retrievable OTP. If alternate sign-in methods are needed, navigate to them, then re-observe the updated page before selecting a control. Never reuse an element index after navigation and never select a federated provider such as Steam, Google, or a console network unless the target explicitly requires it. If an unrelated domain opens, return directly to Default Browser and go to marriott.com and resume the target flow. Stop only when the target UI confirms that a code was sent to Gmail or shows its OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Evidence agrees with the runner failure: the attempt moved from an unrelated authenticated Epic page to Marriott, but ended on Marriott's unauthenticated Forgot Password Step 1 form with required identity fields blank, no OTP sent/input state, no code retrieval or submission, and no authenticated Marriott content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 71149,
+    "input_tokens": 64523,
+    "output_tokens": 6626,
+    "cost_usd": 0.029383,
+    "wall_clock_seconds": 208
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_001"
+}

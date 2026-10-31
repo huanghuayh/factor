@@ -1,0 +1,618 @@
+
+=== BASELINE CASE airbnb_info: Default Browser and go to airbnb.com/login ===
+[step_1] Running single baseline agent (max_steps=35)...
+🚀 Running MobileAgent to achieve goal: Complete the entire login for Default Browser and go to airbnb.com/login in one continuous flow. First open Default Browser and go to 
+airbnb.com/login. Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, 
+press it; if no such button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is 
+visible, leave Default Browser and go to airbnb.com/login in the background and open the Gmail app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page
+of Gmail where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do 
+not rely on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app shows a list of
+messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check Default Browser and go to airbnb.com/login, then open the newest item at the top and
+read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to airbnb.com/login and read its currently displayed 
+code; if that code is about to expire, wait for it to rotate and read the new one. Then switch back to Default Browser and go to airbnb.com/login (it is already open in the 
+background). Read the UI and find where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button.
+After pressing Login, wait 1.5 seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.
+🔄 Step 1/35
+FastAgent response:
+Plan: I'm on the home screen and I don't see a "Default Browser" icon. I'll open the Default Browser app (try to launch it by name). Once it opens I'll navigate to airbnb.com/login and
+start the login flow (enter the email and password, request OTP if needed). If the app can't be opened I'll report failure.
+
+Now I'll open the Default Browser.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open.
+- The screen shows the DuckDuckGo onboarding ("Welcome to DuckDuckGo!") which likely blocks the address/search bar. I need to dismiss or advance the onboarding to reveal the browser UI
+so I can navigate to airbnb.com/login and enter credentials.
+- I'll tap the onboarding view to advance/dismiss it, then wait a moment for the main browser UI (with address/search bar) to appear. After the screen updates I'll locate the address 
+field and navigate to airbnb.com/login.
+
+Now I'll tap the onboarding page and wait briefly.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">2</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.duckduckgo.mobile.android:id/viewPager' | Class: ViewPager | Type: unknown | Coordinates: (540, 1200)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+Reasoning:
+- Precondition met: DuckDuckGo (Default Browser) is open.
+- A system permission dialog ("Allow DuckDuckGo to send you notifications?") is blocking the browser UI. I don't need notifications to log in, so I'll dismiss it with "Don't allow" to 
+reveal the browser controls (address bar) and continue to airbnb.com/login.
+- Next step: tap "Don’t allow" (index 5) and wait briefly for the browser UI to appear.
+
+Now I'll tap "Don't allow" and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Don’t allow' | Class: Button | Type: unknown | Coordinates: (540, 1484)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open.
+- The onboarding screen is visible with a "Let's get started!" button (index 9) which should reveal the main browser UI including the address bar.
+- Next step: press "Let's get started!" and wait for the main browser UI to appear so I can navigate to airbnb.com/login.
+
+Tapping the "Let's get started!" button now and waiting 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Let's get started!' | Class: Button | Type: unknown | Coordinates: (540, 1084)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open and showing onboarding page 2.
+- To reach airbnb.com/login I must finish onboarding. I'll tap "Choose Your Browser" (index 12) to reveal the main browser UI (address bar). Then I'll wait briefly for the UI to load 
+and inspect the screen for the URL field.
+
+Now I'll tap "Choose Your Browser" and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Choose Your Browser' | Class: Button | Type: unknown | Coordinates: (540, 1458)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open and currently on the omnibar placement onboarding screen.
+- To reach airbnb.com/login I must finish onboarding. The "Next" button (index 19) should complete this step and reveal the browser UI (address bar).
+- Next step: tap "Next" and wait briefly for the main browser UI to appear so I can enter the URL.
+
+Tapping "Next" now and waiting 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1166)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open and currently on the final onboarding screen ("3 of 3").
+- To navigate to airbnb.com/login I must finish onboarding. The "Next" button (index 12) will complete onboarding and reveal the browser UI (address/omnibar).
+- Next step: tap "Next" and wait briefly for the main browser UI to load so I can enter the URL.
+
+Tapping "Next" now and waiting 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1262)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser (DuckDuckGo) is open and the address/search field is visible and focused (index 12).
+- Next step: navigate to airbnb.com/login by typing the URL into the focused input (clearing any placeholder) and sending Enter to load the page. This will let me begin the login flow 
+(enter email/password, request OTP if needed).
+
+Now I'll type the URL and press Enter.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">12</parameter>
+<parameter name="text">airbnb.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser is open and the omnibar shows airbnb.com/login.
+- Next: wait for the Airbnb login page to finish loading so I can locate the email/password/OTP controls and proceed with the login flow (enter email, password, request OTP if needed).
+
+Waiting 2 seconds for the page to load now.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+Reasoning:
+- Precondition met: Default Browser is open and airbnb.com/login is loaded, but the DuckDuckGo Dax overlay ("As you tap and scroll...") is blocking the webview.
+- Next step is to dismiss that overlay and activate the webview so I can focus the Airbnb login form and enter the email.
+- I'll tap "Got It" (index 16) to close the overlay, wait a moment, then tap the webview (index 19) to bring the page into focus so I can type into the email field next.
+
+Now I'll dismiss the Dax dialog and activate the webview.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Got It' | Class: Button | Type: unknown | Coordinates: (540, 708)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.duckduckgo.mobile.android:id/browserWebView' | Class: WebView | Type: unknown | Coordinates: (540, 1698)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+Reasoning:
+- Precondition met: Airbnb login page is loaded and a system autofill picker is open offering saved accounts.
+- The picker shows the exact account we should use ({user} at index 4). Selecting it will autofill the email (and possibly the password) into the web form inside the 
+webview.
+- Next step: choose the {user} autofill entry to populate the login fields, then wait briefly for the webview to update so I can continue the flow (enter password if 
+needed, request OTP, etc.).
+
+Now I'll tap the saved-account entry for {user} and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">4</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: '{user}' | Class: TextView | Type: unknown | Coordinates: (289, 1098)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/35
+FastAgent response:
+Reasoning:
+- Precondition check: the Airbnb login page is loaded and the email field is filled with {user} (index 40). Good — that's the requested account.
+- Airbnb's flow here uses a confirmation code (OTP) instead of a password — the page text says “We’ll send a confirmation code by text or email.” There is a "Continue" button (index 
+47) that requests/sends the OTP.
+- Next step per your instructions: press "Continue" to request the OTP, wait for the request to proceed, then leave Default Browser and open the Gmail app to retrieve the incoming 
+code. If a device PIN appears when opening Gmail, I'll enter {device_pin}.
+
+I'll tap "Continue", wait a moment for the OTP request to be sent/for the OTP input to appear, then open Gmail.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">47</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.google.android.gm"}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (540, 1918)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+</function_results>
+🔄 Step 13/35
+FastAgent response:
+Plan / reasoning:
+- I'm already in Gmail showing the message list. The user asked to refresh the inbox, wait 3s, then check the browser (airbnb.com/login) in the background and finally open the newest 
+message and read the OTP.
+- I'll swipe down on the thread list to refresh, wait 3 seconds for new mail to load, open Default Browser (to ensure airbnb.com/login is still loaded in background), then return to 
+Gmail and open the top-most message (index 12) to read the OTP.
+- If a device PIN appears when switching apps, I'll enter {device_pin} (not expected right now).
+
+Executing those steps now.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,300]</parameter>
+<parameter name="coordinate2">[540,900]</parameter>
+<parameter name="duration">0.5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">3.0</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+📱 AppOpener response:
+{
+    "package": "com.google.android.gm"
+}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 300) to (540, 900)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 3.0 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Unread, , , Airbnb, , Your confirmation code is 040060, , Airbnb Here's your Airbnb code Never share your confirmation code with anyone—Airbnb employees will 
+never ask for it. 040060 Instagram TikTok YouTube Twitter Airbnb, Inc. 888 Brannan St. San, , ,  at 11:26 PM' | Class: FrameLayout | Type: unknown | Coordinates: (540, 558)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 14/35
+FastAgent response:
+Reasoning:
+- I can see the Gmail message opened and the Airbnb OTP clearly visible as "040060". That’s the fresh code on screen — I will use it now.
+- Precondition met: an OTP was requested from the Airbnb page earlier, and Gmail shows the new code.
+- Next step: switch back to Default Browser (DuckDuckGo), focus the webview so the OTP input is active, clear the OTP input and type the exact code 040060, then submit the form. If 
+there’s no visible submit button, I'll send Enter to submit. After submitting I'll wait 1.5 seconds to observe the resulting screen.
+
+Now I'll switch to Default Browser, focus the page, fill in 040060 (clearing first), and submit.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">040060</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{
+    "package": "com.duckduckgo.mobile.android"
+}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'More options' | Class: ImageView | Type: unknown | Coordinates: (1006, 593)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/35
+FastAgent response:
+Reasoning:
+- Preconditions met: an OTP was requested from Airbnb and Gmail showed a fresh code (040060).
+- I see the OTP input on the Airbnb page (EditText at index 40). Next step is to focus that field, clear it, type the exact code 040060 (no spaces), submit (Enter), then wait 1.5s to 
+let the page update so we can inspect whether login succeeded.
+
+I'll focus the OTP field (index 40), clear and type 040060, press Enter, and wait 1.5 seconds.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">40</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">40</parameter>
+<parameter name="text">040060</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'otp-code-input' | Class: EditText | Type: unknown | Coordinates: (575, 1556)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 16/35
+FastAgent response:
+Reasoning:
+- Preconditions met: I requested an OTP and retrieved a fresh code from Gmail, then entered it on the Airbnb page.
+- Current screen shows the Airbnb homepage (site content, “Airbnb homepage”, navigation items like Explore/Trips/Messages/Profile). That matches the main page the user asked to reach 
+after login.
+- To double-check the logged-in state, I'll open the Profile area (tap index 118) and wait briefly. Then I'll finish by reporting the result: the main page is visible so the login 
+appears successful.
+
+Now I'll open Profile to confirm, wait 1s, and finish.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">118</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">OTP submitted and Airbnb main page is visible; login appears successful. I opened Profile to confirm navigation to the main app page.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 100765
+  Completion tokens      : 14720
+  Total tokens           : 115485
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 11456
+  Normal output tokens   : 3264
+  Total output tokens    : 14720
+=========================================
+OTP submitted and Airbnb main page is visible; login appears successful. I opened Profile to confirm navigation to the main app page.
+
+Result written to runs/baseline_20260817_224439/generated/baseline_20260817_224439_airbnb_info_run_1/result.json

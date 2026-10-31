@@ -1,0 +1,32 @@
+{
+  "service": "evernote_info",
+  "device": "pixel6",
+  "design": "MAv3_G5m",
+  "framework": "Mobile-Agent-v3",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to accounts.evernote.com/login with username {user} and password {password} if required. You are authorized to perform 2FA; do not stop until you have successfully logged in.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Final UI is the Android app drawer/home screen (launcher) showing app icons (Chrome, Authenticator, Duo, etc.). There is no Evernote web page, account dashboard, or any indication of a successfully authenticated Evernote account (expected username {user} and post‑MFA dashboard are not present)."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 423195,
+    "input_tokens": 349990,
+    "output_tokens": 73205,
+    "cost_usd": 0.233907,
+    "wall_clock_seconds": 1166
+  },
+  "source_run": "runs/public_agent_mfa/public_agent_mfa_gpt5mini_basic_20261028/03_evernote_info/run_1"
+}

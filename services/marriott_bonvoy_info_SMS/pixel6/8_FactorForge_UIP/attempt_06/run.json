@@ -1,0 +1,56 @@
+{
+  "service": "marriott_bonvoy_info_SMS",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 6,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to marriott.com and verify its visible app or browser domain. If the target is already authenticated, sign out before starting a fresh login. Enter {user}, verify the target accepted it, and continue. Enter {password} when requested; after any keyboard or layout change, dismiss the keyboard if needed, inspect the current UI again, and use the current submit control. If validation says a populated field is required, refocus that field, re-enter its value, and resubmit once. If account-specific authenticated content appears, leave it open and stop. Otherwise, on the target's two-step page, dismiss any automatic security-key or passkey prompt, choose another method, and select the code option matching Google Voice. Stop only when the target shows a sent-code confirmation or OTP input, and leave it open.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target shows either a sent-code confirmation, an OTP input field, or account-specific authenticated content reached after credentials were submitted in this step. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Read the target's visible OTP challenge, then open the case-specified OTP source Google Voice. For SMS, open and refresh Google Voice, find the newest verification message matching the target, and read its code; do not substitute another messaging app merely because the challenge shows only SMS or a masked number. For email, refresh the specified inbox and read the newest matching code. For an authenticator, open the specified app and wait for the next code if expiration is near. Report only the OTP code.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Leave the OTP source and return to the exact target Default Browser and go to marriott.com using Back or Recents. If it is not restored, explicitly reopen Default Browser and go to marriott.com and repeat sign-in until its OTP input appears. Never treat the OTP source's signed-in state or inbox as success for the target. Enter the retrieved OTP in the target, verify every digit, submit it, resolve target-owned prompts, and stop only when the exact target shows account-specific authenticated content or an explicit login-success confirmation.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows Marriott signed out at an empty SMS OTP challenge; the log retrieves and submits the matching Marriott code in Chrome, and final controller evidence shows marriott.com with the named member panel and SIGN OUT control."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 74944,
+    "input_tokens": 68204,
+    "output_tokens": 6740,
+    "cost_usd": 0.030531,
+    "wall_clock_seconds": 152
+  },
+  "factorforge_training": {
+    "attempts": 6,
+    "training_tokens": 263337,
+    "training_seconds": 664
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/13_marriott_bonvoy_info_SMS/attempt_006"
+}

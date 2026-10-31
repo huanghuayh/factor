@@ -1,0 +1,51 @@
+{
+  "service": "github_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded, including to hide the keyboard, close a prompt, return from another app, or navigate. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes. After dismissing a popup, launching or switching apps, navigating, submitting a form, or otherwise changing the screen, end the action batch and re-observe before taking another indexed action. Open Default Browser and go to github.com/login in Chrome. Dismiss each browser setup prompt one at a time and re-observe after every dismissal. Navigate directly to the requested target and verify the exact target domain before entering anything. Use only the target's native sign-in form. Enter {user}, then re-observe. Manually enter {password}, then re-observe. Do not dismiss the keyboard with Android Back; using only the latest observation, tap the target's visible login or continue button and re-observe the result. If a required-field warning appears or the credential form remains, re-enter only the indicated field and submit again using fresh UI indices. The ordinary login page is incomplete. Stop successfully only when the exact target visibly confirms that an OTP was sent or shows an OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target visibly confirms that a new OTP was requested or sent, or shows an OTP input field. An ordinary credential form, matching destination URL, browser chrome, new-tab page, unrelated page, or unresolved prompt is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes; end the action batch and re-observe before taking another indexed action. Leave Chrome by pressing Home, then open Google Authenticator by app name. If there is a device PIN, enter {device_pin}. Navigate to the main page of Google Authenticator where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely on memory or any previously seen OTP code; obtain a fresh one from the current screen. Within Google Authenticator, if a message detail is open, use that app's own navigation control to return to the inbox rather than Android Back. If the app shows messages or emails, refresh the inbox, wait 3 seconds, re-observe, and open the newest item belonging to Default Browser and go to github.com/login. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to github.com/login; if its code is about to expire, wait for it to rotate and read the new code. Report that OTP code as the final answer.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Never press Android Back. Do not use Android Recents. Never reuse a UI index after the screen changes; end the action batch and re-observe. From Google Authenticator, press Home and launch Chrome again by app name, then re-observe and verify the github.com domain. If the authenticator-code input is visible, do not open More options or change verification methods: clear the input, enter the fresh code without spaces, submit with the current control, and re-observe. If the code is rejected or expired, press Home, launch Google Authenticator by app name, obtain a newly rotated GitHub code, press Home, launch Chrome again by app name, re-observe, verify github.com and the authenticator-code input, then submit the new code. Report success only when GitHub visibly shows authenticated account-specific content or an explicit login-success confirmation.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target visibly shows authenticated, account-specific content or an explicit login-success confirmation after OTP submission. A login form, OTP form, error, browser chrome, new-tab page, unrelated page, or authentication-app screen is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The launcher start was not authenticated, but the final controller evidence is a System UI PIN prompt over Google Authenticator, not authenticated GitHub; the log stops before submitting the observed GitHub OTP."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 100566,
+    "input_tokens": 91152,
+    "output_tokens": 9414,
+    "cost_usd": 0.041616,
+    "wall_clock_seconds": 214
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_113637_Github/01_github_info/attempt_002"
+}

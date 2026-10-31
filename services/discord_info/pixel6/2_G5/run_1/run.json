@@ -1,0 +1,32 @@
+{
+  "service": "discord_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to discord.com with username {user} and password {password}. You are authorized to perform 2FA if required.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run starts from the Android launcher and follows a continuous Chrome-to-discord.com login sequence, but the final screenshot/XML show discord.com/login still at an unresolved Multi-Factor Authentication backup-code prompt with no authenticated Discord content; therefore neither a completed fresh login nor the target account identity is proven."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 107269,
+    "input_tokens": 104425,
+    "output_tokens": 2844,
+    "cost_usd": 0.158971,
+    "wall_clock_seconds": 103
+  },
+  "source_run": "runs/basic_20260902_160703/07_discord_info/run_1"
+}

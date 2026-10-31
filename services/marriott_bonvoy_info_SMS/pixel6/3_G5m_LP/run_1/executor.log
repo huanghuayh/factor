@@ -1,0 +1,586 @@
+
+=== BASELINE CASE marriott_bonvoy_info_SMS: Default Browser and go to marriott.com ===
+[step_1] Running single baseline agent (max_steps=35)...
+🚀 Running MobileAgent to achieve goal: Complete the entire login for Default Browser and go to marriott.com in one continuous flow. First open Default Browser and go to marriott.com. 
+Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, press it; if no such 
+button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is visible, leave Default 
+Browser and go to marriott.com in the background and open the Google Voice app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page of Google Voice 
+where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely 
+on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app shows a list of messages
+or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check Default Browser and go to marriott.com, then open the newest item at the top and read the OTP
+code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to marriott.com and read its currently displayed code; if that code 
+is about to expire, wait for it to rotate and read the new one. Then switch back to Default Browser and go to marriott.com (it is already open in the background). Read the UI and find 
+where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button. After pressing Login, wait 1.5 
+seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.
+🔄 Step 1/35
+FastAgent response:
+I will open the Default Browser app from the launcher so I can navigate to marriott.com and perform the login flow. Preconditions: the "Default Browser" app must be installed and 
+reachable. If it isn't, I can't continue and will report failure. If it opens successfully I'll proceed to load marriott.com and interact with the login fields and OTP flow as you 
+specified.
+
+Now I will open the Default Browser app.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+The browser opened to DuckDuckGo's onboarding ("Welcome to DuckDuckGo!") so I can't reach the address bar yet. Preconditions: Default Browser is open — met. Next step: dismiss the 
+onboarding screen so I can access the URL/search field and navigate to marriott.com. I'll tap the onboarding container and wait a moment for the UI to update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">3</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.duckduckgo.mobile.android:id/onboardingWelcomePageContainer' | Class: ViewGroup | Type: unknown | Coordinates: (540, 1200)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+The permission prompt is blocking the browser onboarding. To proceed to the address bar and load marriott.com, I'll dismiss notifications by tapping "Don't allow" (we don't need 
+notifications to log in). Then I'll wait a moment for the browser UI to update so I can locate the URL/search field.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Don’t allow' | Class: Button | Type: unknown | Coordinates: (540, 1484)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+I need the browser's address bar to load marriott.com, but the DuckDuckGo onboarding is still covering it. I'll tap "Let's get started!" to finish onboarding, then wait for the main 
+browser UI to appear so I can navigate to marriott.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Let's get started!' | Class: Button | Type: unknown | Coordinates: (540, 1084)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning: DuckDuckGo onboarding still covers the address bar, so I can't navigate yet. Preconditions: Default Browser is open — satisfied. Next I'll finish onboarding by tapping 
+"Choose Your Browser" so the main DuckDuckGo UI (with the URL/search field) appears; then I'll wait briefly to let the UI update before proceeding to load marriott.com.
+
+Now I'll tap "Choose Your Browser" and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Choose Your Browser' | Class: Button | Type: unknown | Coordinates: (540, 1458)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning: Onboarding is at the "Where should I put your address bar?" page, which blocks the browser UI. Preconditions: Default Browser is open — satisfied. To reach the URL/search 
+field and load marriott.com I must finish onboarding by tapping the "Next" button. After that I'll locate the address bar and navigate to marriott.com.
+
+I'll tap "Next" (index 19) and wait 1 second for the main browser UI to appear.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1166)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning: To reach the address bar and load marriott.com I must finish DuckDuckGo's onboarding. Preconditions: Default Browser is open (met). Next step is to complete onboarding by 
+tapping the final "Next" button so the main browser UI (with the URL/search field) appears — then I can enter marriott.com.
+
+I'll tap "Next" (index 12) and wait 1 second for the main browser UI to load.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1262)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+I can see the DuckDuckGo main screen and the address/search field is focused (index 12). Preconditions: Default Browser is open and address bar is available — met. Next I'll load 
+marriott.com by typing the URL into the search/address field and pressing Enter, then wait for the page to load.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">12</parameter>
+<parameter name="text">marriott.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning: The DuckDuckGo browser is open and marriott.com has loaded (omnibar shows https://www.marriott.com/default.mi). A DuckDuckGo in-context onboarding overlay ("As you tap and 
+scroll...") is blocking interaction with the webpage. Preconditions met: Default Browser is open and the page is loaded. Next step is to dismiss the overlay so I can access the 
+Marriott page and locate the sign-in fields/buttons.
+
+I'll tap the "Got It" button (index 16) to dismiss the overlay and wait 1 second for the page to become interactive.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Got It' | Class: Button | Type: unknown | Coordinates: (540, 708)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+I see the Marriott homepage loaded in DuckDuckGo and the "Sign In or Join" button (index 40) is available — that's where the login flow starts. Preconditions are met (Default Browser 
+open and marriott.com loaded). I'll tap "Sign In or Join" to open the login form, then wait 2 seconds for the page to load so I can locate the username/password/OTP controls.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">40</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In or Join' | Class: Button | Type: unknown | Coordinates: (986, 1183)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+I can see the Sign In form: the email input is present (EditText at index 42) and there's no password field visible yet. Preconditions met (Default Browser open, marriott.com sign-in 
+form visible). Next I'll enter the username {user} into the email field, submit it (Enter) and wait for the next screen to load so I can locate the password/OTP controls.
+
+Now I'll type the email and submit.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">42</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/35
+FastAgent response:
+The page is blocked by a DuckDuckGo password-import bottom sheet ("Bring your passwords from Google...") so I can't see the Marriott sign-in controls (password/OTP). Preconditions are 
+met: Default Browser is open and we're on marriott.com after submitting the email. Next step is to dismiss this bottom sheet by tapping "Don't Ask Again" so the sign-in form is 
+visible, then wait briefly for the UI to update.
+
+I'll tap "Don't Ask Again" (index 8) and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">8</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Don't Ask Again' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 13/35
+FastAgent response:
+I can see the sign-in form with an email field (already filled) and a visible Password field (index 40) plus the Sign In button (index 46). Preconditions met: Default Browser is open 
+and marriott.com sign-in form is visible.
+
+Plan: clear and enter the password {password} into the password field, press "Sign In", then wait 1.5 seconds to let the next screen load so I can inspect for an OTP request or 
+confirmation.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">40</parameter>
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">46</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2111)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 14/35
+FastAgent response:
+Reasoning: I filled the password and pressed Sign In, waited 1.5s, and the sign-in form is still visible with no OTP input or "request OTP" control. Preconditions are met (Default 
+Browser open on marriott.com). Next, I'll attempt the final submit again by tapping the visible "Sign In" button (index 49) and wait 1.5 seconds to see whether the site advances to an 
+OTP request or the logged-in main page. If an OTP field or a request/send-OTP control appears after this, I'll proceed to the OTP retrieval flow (switch to Google Voice). If nothing 
+changes, I'll report that the site did not advance to an OTP step.
+
+Now I'll tap "Sign In" and wait 1.5 seconds.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">49</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2196)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/35
+FastAgent response:
+Reasoning: The DuckDuckGo "Save your password?" bottom sheet is blocking the Marriott page and any OTP controls. Preconditions are met (Default Browser open on marriott.com after 
+submitting credentials). To continue the login flow I must dismiss this dialog so I can see whether Marriott prompts for an OTP or shows the logged-in main page. I'll dismiss it by 
+tapping "No Thanks", then wait for the UI to update and inspect for OTP controls.
+
+Now I'll tap "No Thanks" (index 15) and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">15</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No Thanks' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 16/35
+FastAgent response:
+Reasoning: The sign-in attempt did not advance to an OTP step — the page shows "Email is required." and the email EditText (index 39) appears empty. Preconditions are met (Default 
+Browser open on marriott.com). Next step is to fix the validation error: fill the email field with {user}, then press "Sign In" (index 51) and wait 1.5s to see whether the 
+site proceeds to an OTP request or the logged-in main page.
+
+I'll enter the email, submit, and wait for the page to update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">39</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">39</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">51</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1o:-email' | Class: EditText | Type: unknown | Coordinates: (540, 1697)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2264)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 17/35
+FastAgent response:
+Reasoning: The sign-in form now shows the correct email and a filled password, so the next step is to submit the form and observe whether Marriott moves to an OTP request or the 
+logged-in page. The keyboard is visible and the Sign In button is available (index 46). I'll tap "Sign In" and wait 1.5 seconds to let the site respond and reveal any OTP request or 
+the main page.
+
+Now I'll press Sign In and wait.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">46</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2111)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 18/35
+FastAgent response:
+Reasoning: The sign-in submission did not advance — I'm still on the Marriott sign-in page with email/password fields and no OTP input or confirmation visible. Preconditions are met: 
+Default Browser is open on marriott.com. Next step is to reveal more of the web page (the OTP prompt or any post-sign-in message may be below the fold), so I'll scroll the web content 
+up to search for an OTP request/control or a logged-in main page.
+
+I'll swipe up inside the webview to expose more page content, then wait briefly for the page to settle.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2000]</parameter>
+<parameter name="coordinate2">[540,1300]</parameter>
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2000) to (540, 1300)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 19/35
+FastAgent response:
+I tried to complete login and reach the OTP retrieval step, but I can't proceed to Google Voice because Marriott never requested/sent an OTP nor showed an OTP input field.
+
+What I did (brief):
+- Opened Default Browser (DuckDuckGo), dismissed onboarding and overlays.
+- Navigated to marriott.com, opened Sign In, entered {user} and {password}.
+- Dismissed password/save prompts and retried submitting several times.
+- Scrolled the page to reveal any OTP prompt or post-login confirmation.
+
+Observed state / precondition:
+- We're still on the Marriott sign-in page showing Email and Password fields (email is filled). No OTP input or any "Send OTP / Request code" control is visible.
+- Precondition for switching to Google Voice — that an OTP has been requested/sent or an OTP field is visible — is not met.
+
+Next step / recommendation:
+- I cannot switch to Google Voice to retrieve a code because none was requested. To continue, you can:
+  - Trigger the site to send an OTP (if there's a "Send code / Request OTP" button or a flow after a different submit), or
+  - Use "Forgot password" or "Activate online account" if those trigger a code, or
+  - Confirm that this account uses OTP-based MFA at Marriott (some accounts may not), or
+  - Let me try additional interactions on the page if you want (e.g., open "Forgot password" or tap other controls).
+
+I cannot complete the requested OTP retrieval/login due to the unmet precondition. Ending with failure and explanation.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">No OTP was requested and no OTP input field is visible on marriott.com after submitting the credentials. Precondition to open Google Voice and retrieve a code
+is unmet. I tried submitting credentials, dismissing overlays, and scrolling but the site stayed on the sign-in form. To proceed, instruct me to trigger an OTP (or try a different 
+control like "Forgot password") or confirm alternate instructions.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 117936
+  Completion tokens      : 11826
+  Total tokens           : 129762
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 8448
+  Normal output tokens   : 3378
+  Total output tokens    : 11826
+=========================================
+No OTP was requested and no OTP input field is visible on marriott.com after submitting the credentials. Precondition to open Google Voice and retrieve a code is unmet. I tried submitting credentials, dismissing overlays, and scrolling but the site stayed on the sign-in form. To proceed, instruct me to trigger an OTP (or try a different control like "Forgot password") or confirm alternate instructions.
+
+Result written to runs/baseline_20260817_224439/generated/baseline_20260817_224439_marriott_bonvoy_info_SMS_run_1/result.json

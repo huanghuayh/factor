@@ -1,0 +1,32 @@
+{
+  "service": "bitwarden_info",
+  "device": "pixel6",
+  "design": "G5m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to vault.bitwarden.com/#/login with username {user} and password {password} if required.\nGet the newest verification code from Gmail, enter it, and finish the login.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run starts with the Bitwarden target absent and the log reaches the matching Bitwarden email-OTP flow, but the final action batch has no tool results and the saved final screen remains on vault.bitwarden.com/#/2fa with an empty required verification-code field and Continue logging in still visible; no authenticated vault or target-account content is shown."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 228850,
+    "input_tokens": 209052,
+    "output_tokens": 19798,
+    "cost_usd": 0.091859,
+    "wall_clock_seconds": 323
+  },
+  "source_run": "runs/basic_20260831_231317/05_bitwarden_info/run_1"
+}

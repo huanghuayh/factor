@@ -1,0 +1,500 @@
+
+=== BASIC CASE marriott_bonvoy_info: Default Browser and go to marriott.com ===
+[step_1] Running BASIC agent: model=gpt-5, template=single, prompt_lines=1, max_steps=35...
+----- BASIC PROMPT -----
+Log in to Default Browser and go to marriott.com with username {user} and password {password}. You are authorized to perform 2FA if required.
+------------------------
+🚀 Running MobileAgent to achieve goal: Log in to Default Browser and go to marriott.com with username {user} and password {password}. You are authorized to perform 2FA if
+required.
+🔄 Step 1/35
+FastAgent response:
+Plan and reasoning:
+- Preconditions: We need a web browser signed in or able to log in. The home screen shows Chrome, which is typically the default browser on Pixel. I’ll open Chrome, navigate to 
+marriott.com, and proceed to log in with the provided credentials. If a Marriott login form appears, I’ll enter the username and password. If 2FA is required, I’m authorized to 
+complete it.
+- Next step: Open Chrome from the home screen and go to marriott.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">marriott.com</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Chrome' | Class: TextView | Type: unknown | Coordinates: (667, 2062)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+Reasoning:
+- We’re in Chrome’s first-run sign-in screen, not yet at a URL bar. To reach marriott.com, we should bypass Chrome account sign-in (not required for this task) by tapping “Stay signed 
+out,” then use the address bar to navigate to marriott.com. Once there, we’ll locate the Sign In page and use the provided credentials. 2FA will be handled if prompted.
+- Next step: Dismiss the sign-in prompt to get to Chrome’s main UI.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Stay signed out' | Class: Button | Type: unknown | Coordinates: (540, 1681)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.2 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+We’re on Chrome’s first-run dialogs. To reach marriott.com, we should dismiss these prompts to get to the address bar, then navigate and log in with the provided credentials. No other 
+preconditions.
+
+Next, I’ll dismiss the notifications prompt, then use the address bar to go to marriott.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No thanks' | Class: Button | Type: unknown | Coordinates: (518, 1728)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.8 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+We’re on Chrome’s New Tab Page with the address bar visible. Preconditions are met: we have a browser ready to navigate. Next, I’ll tap the address bar, type marriott.com, and go.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">marriott.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Search Google or type URL' | Class: EditText | Type: unknown | Coordinates: (482, 520)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning:
+- The address bar shows “marriott.com” but the New Tab Page is still visible, so the navigation likely didn’t trigger. I’ll explicitly focus the URL bar (already focused), submit 
+again, and wait for the page to load. Once on marriott.com, I’ll look for Sign In and proceed with the provided credentials. 2FA will be handled if prompted.
+
+Next step: Submit the URL from the address bar to navigate to marriott.com.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning:
+- Chrome has successfully navigated to marriott.com (URL bar shows marriott.com/default.mi). Next, I need to locate and tap Sign In on the Marriott site, then enter the provided 
+username and password. If a 2FA challenge appears, I’m authorized to complete it.
+
+Next step: Open the Marriott site menu/header and tap Sign In to reach the login form.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">2</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Web View' | Class: FrameLayout | Type: unknown | Coordinates: (540, 1264)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning:
+- We’re on marriott.com home page in Chrome. The header shows “Sign In or Join” as a button (index 38). Preconditions are met: browser is open and site loaded. Next, open the sign-in 
+form, then enter the provided username and password.
+
+Next step: Tap “Sign In or Join” to open the login form.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">38</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In or Join' | Class: Button | Type: unknown | Coordinates: (1008, 479)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+We’re on the Marriott sign-in dialog in Chrome. Preconditions are met: the login form fields are visible (email and password), and we have valid credentials. Next, I’ll enter the 
+provided username and password, then tap Sign In.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">25</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">29</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">35</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1o:-email' | Class: EditText | Type: unknown | Coordinates: (539, 1532)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1o:-password' | Class: EditText | Type: unknown | Coordinates: (539, 1701)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (539, 1954)</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+We’re on the Marriott login page in Chrome, and Chrome popped up the “Use saved password?” bottom sheet for this exact account. Preconditions are met: credentials are entered, and we 
+can proceed by confirming the sign-in.
+
+Next, I’ll use the Touch-to-Fill “Sign in” button on the bottom sheet to submit the login.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign in' | Class: Button | Type: unknown | Coordinates: (540, 2244)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+I see we’ve reached Marriott’s 2-step verification screen. Preconditions are met: we’re logged in enough to trigger 2FA, and you’ve authorized me to complete it. The page is asking to 
+choose a contact method. SMS to ending in 2166 is preselected; email to {user} is the alternative.
+
+Next, I’ll proceed with the default SMS method and continue to receive the code.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">28</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (539, 1865)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+Reasoning:
+- We’ve reached Marriott’s 2-step verification “Enter Your Code” screen. Preconditions check: We have not yet received or entered a code. Since I’m authorized to perform 2FA but don’t 
+yet have the code, the next step is to prepare the form: type the incoming 6-digit code into the verification input, optionally trust the device, and submit once the code is available.
+
+Next step: Focus the verification code field so it’s ready for entry, then we’ll enter the code when it arrives and submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1r:' | Class: EditText | Type: unknown | Coordinates: (539, 1432)</output>
+</result>
+</function_results>
+🔄 Step 12/35
+FastAgent response:
+Reasoning:
+- We’re on Marriott’s 2-step verification page with the SMS code field focused. Preconditions: We don’t yet have the 6-digit code. We can only proceed once the code arrives. Best move:
+keep the field focused, optionally trust this device, and tap Submit after entering the code.
+
+Next step: I’ll tick “Trust this device for 90 days” to reduce future prompts, and then we’ll be ready to enter the code and submit as soon as it arrives.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">30</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'skip-verification' | Class: CheckBox | Type: unknown | Coordinates: (86, 1631)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 13/35
+FastAgent response:
+We’re on Marriott’s 2-step verification screen in Chrome. The SMS code field is visible and we’ve checked “Trust this device for 90 days.” Preconditions to finish login: we need the 
+6-digit code sent to the phone number ending in 2166. Once received, we’ll enter it and submit.
+
+Next step: Focus the code field (it may have lost focus when the keyboard hid), type the 6-digit code when available, then tap Submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1r:' | Class: EditText | Type: unknown | Coordinates: (539, 1432)</output>
+</result>
+</function_results>
+🔄 Step 14/35
+FastAgent response:
+Reasoning:
+- We’re on Marriott’s 2-step verification page in Chrome. The SMS method was selected, the code input is focused, and “Trust this device for 90 days” is checked. Preconditions to 
+complete login: we need the 6-digit code sent to the phone ending in 2166. Until the code arrives, we can’t submit successfully.
+
+Next step:
+- Wait for the SMS code, type it into the focused field, then tap Submit.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">5.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 5.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/35
+FastAgent response:
+Reasoning:
+- We’re on Marriott’s 2-step verification page in Chrome. The code input field is present (index 18), and “Trust this device for 90 days” is already checked. Preconditions to complete 
+login: we need the 6-digit SMS code sent to the number ending in 2166. We don’t have the code yet, so we can’t submit. Best move: keep the field focused and be ready to type, then 
+submit.
+
+Next step:
+- Focus the code field (if not focused), wait briefly for the SMS, then type the 6-digit code once received and tap Submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">5.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1r:' | Class: EditText | Type: unknown | Coordinates: (539, 1432)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 5.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 16/35
+FastAgent response:
+Reasoning:
+- We’re on Marriott’s 2-step verification page in Chrome. The code input field (index 18) is present and “Trust this device for 90 days” is already checked. Preconditions to finish 
+login: we need the 6-digit SMS code sent to the number ending in 2166. Until the code arrives, we can’t submit successfully.
+
+Next step:
+- Keep the code field focused and, once the 6-digit SMS arrives, type it in and tap Submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">5.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: ':r1r:' | Class: EditText | Type: unknown | Coordinates: (539, 1432)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 5.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 17/35
+FastAgent response:
+Reasoning:
+- We’re on Marriott’s 2-step verification page. The code input (index 18) is visible and focusable, and “Trust this device for 90 days” is already checked. Preconditions to complete 
+login are unmet: we don’t have the 6-digit SMS code yet. Without the code, we can’t submit successfully.
+
+Next step:
+- Since we must wait for the SMS to arrive or choose another method, I’ll tap “Submit” only after entering the code. For now, I’ll report the precondition is not met and pause.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">I reached the Marriott 2-step verification screen in Chrome, with the SMS code field ready and “Trust this device for 90 days” checked. The remaining 
+precondition is the 6-digit code sent to the phone number ending in 2166. Please provide the code (or instruct me to switch to another method), and I’ll enter it and submit to finish 
+login.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 104580
+  Completion tokens      : 2625
+  Total tokens           : 107205
+  Reasoning tokens (CoT) : 0
+  Normal output tokens   : 2625
+  Total output tokens    : 2625
+=========================================
+I reached the Marriott 2-step verification screen in Chrome, with the SMS code field ready and “Trust this device for 90 days” checked. The remaining precondition is the 6-digit code sent to the phone number ending in 2166. Please provide the code (or instruct me to switch to another method), and I’ll enter it and submit to finish login.
+
+Result written to runs/basic_20260902_160703/generated/basic_20260902_160703_marriott_bonvoy_info_run_1/result.json

@@ -1,0 +1,32 @@
+{
+  "service": "marriott_bonvoy_info_SMS",
+  "device": "pixel6",
+  "design": "G5m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to marriott.com with username {user} and password {password} if required, requesting an SMS code when needed; use device PIN {device_pin} if prompted.\nGet the newest verification code from Google Voice, enter it, and finish the login.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The log reaches Marriott SMS identity confirmation and requests a code, but no OTP is retrieved or entered; the final UI is an unauthenticated Google Voice sign-in/marketing page, not authenticated Marriott content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 60595,
+    "input_tokens": 51238,
+    "output_tokens": 9357,
+    "cost_usd": 0.031524,
+    "wall_clock_seconds": 188
+  },
+  "source_run": "runs/basic_20260831/03_marriott_bonvoy_info_SMS/run_1"
+}

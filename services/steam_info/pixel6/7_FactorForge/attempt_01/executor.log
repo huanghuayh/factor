@@ -1,0 +1,282 @@
+
+=== CASE steam_info: Default Browser and go to store.steampowered.com/login/ ===
+[step_1] Running agent...
+🚀 Running MobileAgent to achieve goal: Open Default Browser and go to store.steampowered.com/login/, enter {user} as username. Enter {password} as password, if password is not 
+needed, just ignore password. This task is successfully complete once a push notification has been sent or a message saying to check your phone is visible on screen. Stop here and 
+report success.
+🔄 Step 1/15
+FastAgent response:
+I’m on the launcher and DuckDuckGo is visible, which appears to be the default browser. I’ll open it first, then navigate to Steam login and enter the provided credentials. The success
+condition is a visible “check your phone” message or push notification sent screen — classic Steam Guard doing its little bouncer routine.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+DuckDuckGo is open with the address field focused and keyboard up, so the next move is to go straight to the Steam login URL. No need to admire the duck.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">store.steampowered.com/login/</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+The browser has navigated to Steam’s domain, but the page content hasn’t surfaced in the UI tree yet. I’ll wait briefly for the login form to finish loading — Steam likes a dramatic 
+entrance.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+The Steam login form is visible. Preconditions are met: username and password fields are on screen, and the task asks only to proceed until Steam sends/check-phone confirmation. I’ll 
+fill the account name and password, then tap Sign in.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">50</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">52</parameter>
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">57</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign in' | Class: Button | Type: unknown | Coordinates: (539, 1479)</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+Steam now says the account is protected by a mobile authenticator and instructs to use the Steam Mobile App to confirm the sign-in. That satisfies the requested stop condition (“check 
+your phone” / push-style confirmation). Task complete — the tiny gatekeeper has been summoned.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Success: Steam shows “Use the Steam Mobile App to confirm your sign in,” indicating the phone confirmation/push step has been reached.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: Push notification has been sent OR any message asking user to open an app, check phone, or approve login is visible on screen. Do not rely on memory or on what 
+an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+I can confirm the current screen shows a Steam login approval prompt: “Use the Steam Mobile App to confirm your sign in...” That satisfies the audit condition because a visible message
+is asking the user to use/open an app to confirm login. No screen changes needed — audit only, mercifully.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current screen visibly shows a Steam prompt saying “Use the Steam Mobile App to confirm your sign in...”, which clearly asks the user to use the Steam Mobile App to 
+approve/confirm login.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current screen visibly shows a Steam prompt saying “Use the Steam Mobile App to confirm your sign in...”, which clearly asks the user to use the Steam Mobile 
+App to approve/confirm login.'
+[step_1] audit passed.
+[step_2] Running agent...
+🚀 Running MobileAgent to achieve goal: Minimize this app. If a number is visible on screen before minimizing, remember it. Open the Steam app. If a push notification approval screen 
+is visible, approve it. If a number input field is visible, type in the number you saw on the previous screen.After approving or entering the number, switch back to the browser. If a 
+prompt appears such as 'Is this your device?', click Yes or Trust this browser. Wait 2 seconds and confirm login succeeded
+🔄 Step 1/15
+FastAgent response:
+I’m on the Steam login page in DuckDuckGo. A number is visible in the account name: **20444** from `{user}` — I’ll remember that before minimizing, because apparently Steam likes 
+making humans do scavenger hunts.
+
+<add_memory>Number visible before minimizing: 20444</add_memory>
+
+Next I’ll minimize the browser and open the Steam app to approve the login or enter that number if prompted.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">home</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Steam</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.valvesoftware.android.steam.community"}
+Starting app com.valvesoftware.android.steam.community
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed HOME button</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.valvesoftware.android.steam.community with activity .MainActivity</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+Steam is showing a push approval screen for the browser sign-in request, and it matches the account. I’ll approve it, then return to DuckDuckGo to handle any “trust this browser” 
+prompt and verify login. Not pressing Deny; I’m adventurous, not chaotic.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">10</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Approve' | Class: ViewGroup | Type: unknown | Coordinates: (281, 1222)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+Approval succeeded in Steam. Now I need to switch back to the browser, check for a trust/device prompt, wait 2 seconds, and confirm the login landed. I’ll open DuckDuckGo directly 
+rather than wandering through app switcher like it’s a maze.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">DuckDuckGo</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+Back in the browser; Steam is loading. I don’t see a “Trust this browser” prompt yet, just the classic spinner of suspense. I’ll wait 2 seconds, then verify whether login completed or 
+a prompt needs handling.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+The browser is back on Steam, no “Is this your device?” or trust prompt is visible, and the page has loaded into the Steam store with account-style navigation like Wishlist instead of 
+a login/approval screen. That’s the login equivalent of “you’re in,” minus the dramatic music.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Login succeeded. Approved the Steam push request, returned to DuckDuckGo, waited 2 seconds, and confirmed the Steam store is loaded without further 
+prompts.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: Push notification approved or number entered successfully, browser shows any post-login screen including 'Is this your device?' or main page. Do not rely on 
+memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as 
+structured output.
+🔄 Step 1/15
+FastAgent response:
+I can confirm the browser is on Steam and visibly past login: the Steam store main page is displayed, and the side menu shows a signed-in profile name “{user}” with account-related 
+options. That satisfies the audit condition of showing a post-login screen. No screen changes needed — just reporting the verdict.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current DuckDuckGo browser screen shows store.steampowered.com with the Steam main page visible, including signed-in account details such as the profile name “{user},” 
+notifications, profile/account menu items, and store content. This clearly confirms a post-login Steam screen is visible.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current DuckDuckGo browser screen shows store.steampowered.com with the Steam main page visible, including signed-in account details such as the profile name 
+“{user},” notifications, profile/account menu items, and store content. This clearly confirms a post-login Steam screen is visible.'
+[step_2] audit passed.
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 57573
+  Completion tokens      : 2254
+  Total tokens           : 59827
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 620
+  Normal output tokens   : 1634
+  Total output tokens    : 2254
+=========================================
+Done.
+
+Result written to runs/overnight_20260817_132937/generated/overnight_20260817_132937_steam_info_attempt_001/result.json

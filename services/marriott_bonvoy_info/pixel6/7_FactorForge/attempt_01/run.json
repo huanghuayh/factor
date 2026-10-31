@@ -1,0 +1,56 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to marriott.com and verify the current controller-owned UI belongs to it before entering anything. For a browser target, use DuckDuckGo, navigate to the explicit destination domain in Default Browser and go to marriott.com, and clear any stale browser session first. Do not treat a launcher, browser chrome/new-tab UI, auth app, or another service as the target. If the target is already authenticated, sign out or reset that target session and re-observe the login screen before proceeding; a pre-existing session cannot pass. Enter {user} as username and {password} as password when those fields are required. Request the OTP using the target's request/send control; if login must be pressed first to reveal that control, do so, then request the OTP. The selected method must produce a transferable one-time code in Gmail; an Authenticator approval, number-matching prompt, push notification, passkey, or other code-less challenge is not an OTP and cannot satisfy this step. If the target initially offers one of those methods, use its Other ways to sign in, Use a verification code, or equivalent target-owned control to select code delivery through Gmail; if no compatible code-delivery method exists, report failure. An OTP field that was already visible is not proof that a fresh code was requested. Stop only after a new request made in this step is confirmed by target-owned UI such as an OTP-sent message, requesting/sent state, or a newly displayed code-entry challenge. Verify that the displayed delivery destination or auth-source identity matches Gmail and {user} when available. After the fresh challenge appears, inspect the current UI before completing. If an Android Autofill code picker, suggestion popup, or keyboard overlay owns the accessibility hierarchy or prevents the target confirmation from being inspectable, press Back exactly once to dismiss only that overlay, then re-observe. Do not press Back if it would leave the target page, and do not complete while an autofill/system overlay is the only controller-visible hierarchy. Complete only after a separate observation exposes the target-owned sent confirmation or code-entry challenge and matching destination. Do not submit an old or guessed code.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: After a fresh request in this attempt, a separate current observation exposes the exact target-owned sent confirmation or newly displayed code-entry challenge and the correct {auth_app}/{username} destination; an Android Autofill picker or other system overlay as the only inspectable hierarchy does not pass, and push approval or number matching does not pass. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Leave the target running in its current task and open Gmail without closing, backing out of, or relaunching the target; some targets keep request or motion state only in the existing activity. If Gmail requests its device PIN, enter {device_pin}. Determine the real target service or explicit domain from Default Browser and go to marriott.com, ignoring generic navigation words. Navigate to the auth app's main inbox, conversation list, or account-code list; if a message detail is already open, return to the main list first. For mail or messaging, refresh, wait 3 seconds, and select the newest item whose visible sender, subject, service name, recipient, and timestamp match the real target and the request just made. If messages are threaded, open the newest individual message and verify its timestamp rather than trusting an older expanded message. Read the code from the message body. For rotating-code apps, stay in that app, select the entry explicitly matching the target service/domain or {user}, and wait for the next code if the current one is about to expire. Reject stale, older, cross-service, mismatched-recipient, or placeholder values. Report exactly one verified fresh code as otp_code and nothing else. If no valid code is visible, still set otp_code to the exact sentinel NO_VALID_OTP_FOUND and report failure so downstream template rendering cannot fail on a missing key; never treat that sentinel as a code.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Before interacting, validate {otp_code}. If it is NO_VALID_OTP_FOUND, empty, a placeholder such as not found/none/N/A, an error sentence, or not the numeric/alphanumeric format expected by the visible challenge, stop without typing it and report failure. Otherwise return to the exact target Default Browser and go to marriott.com through Android Recents or the app switcher so the existing target activity and its OTP/request state are preserved. Do not press Back repeatedly in Gmail, return through the launcher, tap the target icon, or otherwise relaunch the target. For a browser target, switch to the existing DuckDuckGo task and the same explicit target domain. If the preserved target task cannot be restored, or the request/challenge state is missing, report failure and require a rerun from step_1; do not submit the old code after reopening the target. Re-observe and verify that the controller-owned UI belongs to Default Browser and go to marriott.com and still shows the same OTP challenge for this login. Never enter the code into Gmail, another app, or an unrelated page. Clear the OTP field completely, enter exactly {otp_code} with no spaces, fill multi-box inputs left to right, and press the target's login/verify button once. Wait at least 1.5 seconds, then perform a separate observation of the resulting screen. Resolve only a visible post-login confirmation that belongs to the target, then observe again. Report success immediately when target-owned UI explicitly confirms login success or shows an authenticated main/account page. An explicit target-owned login-success message is sufficient even if the unchanged input form remains visible, provided no error or unresolved confirmation is also visible; do not retry, relaunch, or resubmit after that success. Gmail, an OTP email, a launcher, browser chrome/new-tab UI, a login form without explicit success, invalid/expired-code feedback, any other error, or a background/obscured target is failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: A separate post-submission observation shows controller-owned UI for the exact target with either an explicit login-success confirmation or an authenticated main/account page, and no error or unresolved confirmation; an unchanged login form may remain alongside explicit success. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "The log proves a continuous fresh Marriott email-OTP login, and final controller-owned XML/focus evidence shows DuckDuckGo at marriott.com with authenticated controls Trips and account {account_name}."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 200645,
+    "input_tokens": 195821,
+    "output_tokens": 4824,
+    "cost_usd": 0.058603,
+    "wall_clock_seconds": 419
+  },
+  "factorforge_training": {
+    "attempts": 1,
+    "training_tokens": 0,
+    "training_seconds": 0
+  },
+  "source_run": "runs/overnight_20260807_011749/03_marriott_bonvoy_info/attempt_001"
+}

@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to marriott.com and verify that the visible page belongs to the requested target before entering {user}. Follow the target's normal sign-in flow. If a password field is shown or the target reports that a password is required, enter {password} and continue; do not divert to account recovery merely to avoid a required password. Use an alternate sign-in or recovery route only if normal sign-in rejects the supplied credentials or the target explicitly requires that route. Request a one-time code readable in Gmail; a push approval or number-matching prompt is not a retrievable OTP. Re-observe after every navigation and never reuse an element index. Do not select a federated provider unless the target explicitly requires it. If an unrelated app or domain opens, return to Default Browser and go to marriott.com, navigate back to the requested target, and resume. Stop only when the target confirms that a code was sent to Gmail or shows its OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows Marriott signed out on password recovery; final evidence shows only password-reset instructions and a sign-in form, while the log contains no Gmail OTP retrieval, code submission, or authenticated Marriott state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 19421,
+    "input_tokens": 16507,
+    "output_tokens": 2914,
+    "cost_usd": 0.009955,
+    "wall_clock_seconds": 82
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_002"
+}

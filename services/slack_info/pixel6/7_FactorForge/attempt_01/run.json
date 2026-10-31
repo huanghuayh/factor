@@ -1,0 +1,39 @@
+{
+  "service": "slack_info",
+  "device": "pixel6",
+  "design": "FactorForge",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Slack app, enter {user} as username. Enter No need as password, if password is not needed, just ignore password. If there is a button to request or send the magic link, press it; if no such button exists, skip this step. This task is successfully complete once a magic link has been requested/sent OR a confirmation message is visible on screen. Stop here and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link has been requested/sent OR confirmation message is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start capture is the launcher, while the final controller evidence is Slack's 'Signing Out' screen; the log shows only a pre-existing workspace and no email submission, magic-link request, link use, or fresh authenticated final state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 15376,
+    "input_tokens": 14726,
+    "output_tokens": 650,
+    "cost_usd": 0.004981,
+    "wall_clock_seconds": 35
+  },
+  "source_run": "runs/overnight_20260817_131348/01_slack_info/attempt_001"
+}

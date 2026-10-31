@@ -1,0 +1,32 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "G5m_LP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Complete the entire login for Default Browser and go to store.steampowered.com/login/ in one continuous flow. First open Default Browser and go to store.steampowered.com/login/. Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. Continue until a push notification has been sent or a message saying to check your phone / approve the login is visible. If a number is visible on screen before you leave, remember it. Then open the Steam app. If a push notification approval screen is visible, approve it. If a number input field is visible, type in the number you saw on the previous screen. After approving or entering the number, switch back to Default Browser and go to store.steampowered.com/login/. If a prompt appears such as 'Is this your device?', click Yes or Trust this browser. Wait 2 seconds and confirm login succeeded. Do not report success unless the screen shows a post-login state or the main page.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start capture does not show Steam authenticated and the log records a continuous {user} credential/push-approval flow, but the controller-owned final screenshot/XML show only a generic Steam storefront behind a DuckDuckGo Fireproof dialog, with no {user} identity or account-only content; the runner's final assertion is therefore uncorroborated."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 376200,
+    "input_tokens": 347497,
+    "output_tokens": 28703,
+    "cost_usd": 0.14428,
+    "wall_clock_seconds": 798
+  },
+  "source_run": "runs/baseline_20260817_224439/19_steam_info/run_1"
+}

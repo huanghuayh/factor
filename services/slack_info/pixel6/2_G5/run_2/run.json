@@ -1,0 +1,32 @@
+{
+  "service": "slack_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Slack app with username {user} and password No need. You are authorized to perform 2FA if required.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The log shows a continuous fresh Slack magic-link flow for {user} and selection of {account_name}, but the saved final screen is only Slack's generic notification-permission onboarding page and does not show authenticated workspace- or account-specific content; the runner success is therefore a false positive."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 42236,
+    "input_tokens": 41121,
+    "output_tokens": 1115,
+    "cost_usd": 0.062551,
+    "wall_clock_seconds": 48
+  },
+  "source_run": "runs/basic_20260902_150309_GPT5_noreason/04_slack_info/run_2"
+}

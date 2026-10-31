@@ -1,0 +1,45 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open marriott.com in the default browser and confirm Marriott Bonvoy branding and domain before entering the supplied account identifier. If a password-reset or recovery notice is present, activate the actual recovery-exit link such as ‘Sign in again,’ then re-observe and do not proceed until that notice is gone. Enter the supplied email and password on the normal sign-in form, dismiss the keyboard so the submit control is unobstructed, submit, and re-observe. If the populated form remains unchanged, dismiss the keyboard and submit once more. Continue until Marriott explicitly confirms that a one-time verification code was sent or displays an OTP input; do not treat password-reset email instructions as an OTP.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app, then go to the Gmail app. Navigate to the main page of Gmail where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely on memory or any previously seen OTP code — you must obtain a fresh one from the current screen. If it is the detailed page of a message, go back to the main inbox. If the app shows a list of messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check the Default Browser and go to marriott.com, then open the newest item at the top and read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to marriott.com and read its currently displayed code; if that code is about to expire, wait for it to rotate and read the new one. Report that OTP code as your final answer.",
+        "auditor_prompt": null,
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows Marriott signed out; final evidence shows Gmail with a readable Marriott OTP, but the log returned an empty code, aborted before submission, and never reached an authenticated Marriott state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 41933,
+    "input_tokens": 37361,
+    "output_tokens": 4572,
+    "cost_usd": 0.018484,
+    "wall_clock_seconds": 141
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_004"
+}

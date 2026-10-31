@@ -1,0 +1,51 @@
+{
+  "service": "vpn_unlimited_info",
+  "device": "pixel10proxl_emulator",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 3,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to id.keepsolid.com/login. If browser onboarding blocks browsing controls, dismiss it with a visible skip, stay-signed-out, or continue control, then navigate to and verify the exact target. Focus and clear the identifier field, enter {user}, and re-observe without continuing. Continue only after the complete identifier is visibly present and valid; otherwise clear and retry once. Activate the continuation control once and re-observe. If the verified target presents a required password gate, enter {password}, submit it once, wait, and re-observe; do not stop merely because the OTP choice is unavailable before that required gate is completed. Choose a visible one-time-code method readable in Gmail, using an alternative-sign-in control if needed. Request the code once, wait for the exact target to show an OTP input or sent-code confirmation, leave that challenge open, and report success only then.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize the target and open Gmail. Go to the main inbox, conversation list, or account-code list where the OTP for Default Browser and go to id.keepsolid.com/login can be found, and refresh before reading it. Never reuse a remembered or previously seen code. For mail or messaging, open the newest item for Default Browser and go to id.keepsolid.com/login and verify that its delivery time and visible preview correspond to the challenge just requested. If it opens a thread, locate and expand the newest message and confirm its code matches that newest message's preview; do not read an older expanded message merely because its body is visible. If no demonstrably current item has arrived, refresh once more, wait briefly, and report failure rather than returning an older code. For a rotating-code app, read the current code for Default Browser and go to id.keepsolid.com/login, waiting for the next rotation if it is about to expire. Report only the current OTP as the final answer.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Return to Default Browser and go to id.keepsolid.com/login and re-observe the exact target. If authenticated account content, account controls, a sign-out control, or an explicit login-success confirmation is already visible, stop immediately, preserve that page, and report success; never navigate back to a login URL after authentication. Otherwise verify the same pending challenge that produced {otp_code} and use the continuous context to associate it with {user}. If {password} is required to restore that challenge, enter it only there. Clear the OTP field, enter {otp_code} without spaces, and re-observe before submitting. Submit once only when the full code is visibly present, then wait for navigation to settle and re-observe. As soon as authenticated content appears, preserve it and report success without further navigation or form interaction. If the target explicitly rejects or expires the code while still signed out, request one replacement, open Gmail, confirm the app switch, refresh if applicable, and read a demonstrably new code for the exact target and intended account. Return to the same challenge, enter and submit the new code with the same separated observations, and preserve the resulting authenticated page; if authentication is not proven, preserve the settled target page and report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows the launcher, while final Chrome evidence shows the exact KeepSolid target still signed out on its OTP form with 'Invalid or expired verification code'; no authenticated content or login-success confirmation appears."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 100006,
+    "input_tokens": 89900,
+    "output_tokens": 10106,
+    "cost_usd": 0.042687,
+    "wall_clock_seconds": 247
+  },
+  "source_run": "runs/factorforge_emulator_20261029_resume/03_vpn_unlimited_info/attempt_003"
+}

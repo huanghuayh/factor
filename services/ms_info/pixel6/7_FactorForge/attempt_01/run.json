@@ -1,0 +1,45 @@
+{
+  "service": "ms_info",
+  "device": "pixel6",
+  "design": "FactorForge",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to login.live.com and verify the current controller-owned UI belongs to it before entering anything. For a browser target, use DuckDuckGo, navigate to the explicit destination domain in Default Browser and go to login.live.com, and clear any stale browser session first. Do not treat a launcher, browser chrome/new-tab UI, auth app, or another service as the target. If the target is already authenticated, sign out or reset that target session and re-observe the login screen before proceeding; a pre-existing session cannot pass. Enter {user} as username and not needed as password when those fields are required. Request the OTP using the target's request/send control; if login must be pressed first to reveal that control, do so, then request the OTP. An OTP field that was already visible is not proof that a fresh code was requested. Stop only after a new request made in this step is confirmed by target-owned UI such as an OTP-sent message, requesting/sent state, or a newly displayed OTP challenge. Record the recipient or auth-source identity shown by the target when available. Do not submit an old or guessed code.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target UI confirms that this attempt freshly requested/sent an OTP or newly advanced to its OTP challenge after credentials were entered. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Leave the target running in its current task and open Gmail without closing, backing out of, or relaunching the target; some targets keep request or motion state only in the existing activity. If Gmail requests its device PIN, enter {device_pin}. Determine the real target service or explicit domain from Default Browser and go to login.live.com, ignoring generic navigation words. Navigate to the auth app's main inbox, conversation list, or account-code list; if a message detail is already open, return to the main list first. For mail or messaging, refresh, wait 3 seconds, and select the newest item whose visible sender, subject, service name, recipient, and timestamp match the real target and the request just made. If messages are threaded, open the newest individual message and verify its timestamp rather than trusting an older expanded message. Read the code from the message body. For rotating-code apps, stay in that app, select the entry explicitly matching the target service/domain or {user}, and wait for the next code if the current one is about to expire. Reject stale, older, cross-service, mismatched-recipient, or placeholder values. Report exactly one verified fresh code as otp_code and nothing else; if no valid code is visible, report failure without setting otp_code.",
+        "auditor_prompt": null,
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Runner failed with KeyError after requesting Microsoft Authenticator number matching instead of a transferable OTP; no matching Microsoft code was read or submitted, and final controller evidence is Gmail rather than an authenticated login.live.com page."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 62214,
+    "input_tokens": 60320,
+    "output_tokens": 1894,
+    "cost_usd": 0.018868,
+    "wall_clock_seconds": 145
+  },
+  "source_run": "runs/overnight_20260807_011749/01_ms_info/attempt_001"
+}

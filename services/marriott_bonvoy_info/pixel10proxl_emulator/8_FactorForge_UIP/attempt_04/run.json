@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel10proxl_emulator",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to marriott.com and verify that the visible page belongs to the exact target. Use only controller-visible account, sign-in, or login controls; after each action, re-observe and confirm that the UI advanced. If a control produces no state change, try a different visible account or sign-in control instead of repeating the same tap, and never invent or guess a destination path. Enter {user}, and enter {password} only if required. Before requesting verification, choose a one-time-code method whose code can be read in Gmail; if the default challenge is approval-only, push, password, or another non-code method, use the visible alternative-sign-in control to select the matching code method. Request the code exactly once, wait for the exact target to show the corresponding OTP input, leave that challenge open, and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Evidence agrees with the runner failure: the attempt started in Google Play and ended on Marriott's pre-request contact-method chooser, with no code sent, OTP submitted, or authenticated account state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 104516,
+    "input_tokens": 97996,
+    "output_tokens": 6520,
+    "cost_usd": 0.037539,
+    "wall_clock_seconds": 168
+  },
+  "source_run": "runs/factorforge_emulator_20261029/03_marriott_bonvoy_info/attempt_004"
+}

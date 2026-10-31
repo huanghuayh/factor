@@ -1,0 +1,32 @@
+{
+  "service": "groupme_info_SMS",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to groupme.com with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run starts on the Pixel launcher and continuously reaches GroupMe through Chrome with the supplied credentials, but the final evidence remains at web.groupme.com/signin with six empty OTP fields and an unresolved six-digit SMS challenge for the phone number ending in 66; no authenticated GroupMe content or completed fresh login is shown, so the runner's failure is genuine."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 125684,
+    "input_tokens": 122750,
+    "output_tokens": 2934,
+    "cost_usd": 0.182778,
+    "wall_clock_seconds": 117
+  },
+  "source_run": "runs/basic_20260902_160703/12_groupme_info_SMS/run_2"
+}

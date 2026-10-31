@@ -1,0 +1,39 @@
+{
+  "service": "airbnb_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open marriott.com in the default browser and verify the Marriott Bonvoy branding and domain. If an OTP entry field is already visible or Marriott explicitly says a code was sent, stop successfully. Otherwise enter {user} and {password} on the Marriott sign-in form, dismiss the keyboard, submit, and re-observe; if the populated form remains unchanged, dismiss the keyboard and submit once more. If Confirm Your Identity asks you to choose a contact method, select the email address matching {user} and tap Continue; wording that Marriott will send a code and a visible Continue button mean the request is not complete. Stop only when Marriott explicitly confirms the code was sent or displays the OTP entry field. Close only password-reset or account-recovery notices.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start and final controller evidence both show a pre-existing signed-in Marriott page in Chrome, not airbnb.com/login; the log followed hard-coded Marriott instructions and contains no Airbnb navigation, OTP submission, or authenticated Airbnb final state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 8992,
+    "input_tokens": 7156,
+    "output_tokens": 1836,
+    "cost_usd": 0.005461,
+    "wall_clock_seconds": 41
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/04_airbnb_info/attempt_001"
+}

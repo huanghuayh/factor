@@ -1,0 +1,32 @@
+{
+  "service": "github_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to github.com/login with username {user} and password {password}. You are authorized to perform 2FA if required.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run starts with no GitHub session visible and continuously navigates through GitHub credential submission, but the final screenshot/XML remains at github.com/sessions/two-factor/app with an empty authenticator-code field and no authenticated target-specific content; the runner's failure is therefore genuine."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 71672,
+    "input_tokens": 69366,
+    "output_tokens": 2306,
+    "cost_usd": 0.109768,
+    "wall_clock_seconds": 82
+  },
+  "source_run": "runs/basic_20260902_150309_GPT5_noreason/03_github_info/run_2"
+}

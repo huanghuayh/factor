@@ -1,0 +1,39 @@
+{
+  "service": "bitwarden_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes. After each launch, prompt dismissal, navigation, field entry, or submission, end the action batch and re-observe before using another index. Open Default Browser and go to vault.bitwarden.com/#/login in Chrome, dismiss setup prompts one at a time, navigate directly to the requested target, and verify the exact target domain. Wait and re-observe if the page is blank or loading. Use only the target's native sign-in form; if an unrelated identity provider opens, enter the target URL directly in the current omnibox, submit, and re-observe. Enter {user} directly into its currently observed field without a separate focus-only batch, then re-observe. Treat a type-tool success message only as evidence that an input command was sent, never as evidence that the field accepted it. For a non-password field, advance only if the next observation shows the intended value inside that field; a resource ID, field label or hint such as email, focus, or a visible keyboard is not proof of entered text. Enter {password} directly into its currently observed matching field without a separate focus-only batch, then re-observe and use the newly observed submit control. Because password text may be masked or omitted, submit it at most once and immediately re-observe; if the target reports that the password is empty, treat the entry as failed. Do not hide the keyboard with Android Back. If a saved-password or touch-to-fill sheet blocks the form, dismiss it with its visible control or swipe it downward, then re-observe; if it clearly matches {user} and the exact target and cannot be dismissed, use its visible sign-in control and re-observe. If a required field re-observes empty or the target reports it empty, do not submit it again immediately. Refocus the newly observed field and make one recovery entry using visible on-screen keyboard keys instead of repeating the same type tool, use a visible keyboard Next or Done control if available, then re-observe. For a non-password field, the intended value must now be visible in the field; for a password field, submit once and require the empty-field error to disappear. If recovery cannot be verified, report failure. Stop successfully only when the exact target confirms a new OTP was sent or shows a target-owned OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Pass when the exact target in {name} visibly confirms that a new OTP was requested or sent, or shows a target-owned OTP input form. Judge the full current screen, not only enumerated clickable elements; a browser overlay does not invalidate success when the target-owned OTP form remains visibly identifiable behind it. An ordinary credential form, a matching destination URL alone, browser chrome without identifiable target-owned OTP content, a new-tab page, an unrelated page, or a prompt that fully obscures the target state is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence is the launcher, while final controller evidence is Chrome at the exact Bitwarden URL showing only the signed-out email login form; the log stops before password, OTP retrieval/submission, or authenticated content, so the runner failure is confirmed."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 45026,
+    "input_tokens": 40497,
+    "output_tokens": 4529,
+    "cost_usd": 0.019182,
+    "wall_clock_seconds": 120
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_142204_bitwarden/01_bitwarden_info/attempt_001"
+}

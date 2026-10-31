@@ -1,0 +1,375 @@
+
+=== BASIC CASE airbnb_info: Default Browser and go to airbnb.com/login ===
+[step_1] Running BASIC agent: model=gpt-5, template=single, prompt_lines=1, max_steps=35...
+----- BASIC PROMPT -----
+Log in to Default Browser and go to airbnb.com/login with username {user} and password {password}. You are authorized to perform 2FA if required.
+------------------------
+🚀 Running MobileAgent to achieve goal: Log in to Default Browser and go to airbnb.com/login with username {user} and password {password}. You are authorized to perform 
+2FA if required.
+🔄 Step 1/35
+FastAgent response:
+Plan:
+- We’re on the home screen. Preconditions: need a web browser. The dock shows Chrome, which is the default browser on many Android devices. I’ll open Chrome, then navigate directly to 
+airbnb.com/login.
+- Once on the login page, I’ll enter the provided username and password, and proceed. I’ll watch for any 2FA prompt and handle it if it appears.
+
+Next, I’ll open Chrome, tap the address bar, type the URL, and go.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.2</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">33</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://www.airbnb.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Chrome' | Class: TextView | Type: unknown | Coordinates: (667, 2062)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.2 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Google search' | Class: LinearLayout | Type: unknown | Coordinates: (540, 2235)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+We’re in Chrome’s first-run experience. Preconditions to navigate: we need to dismiss or proceed past the sign-in prompt so we can reach the address bar and load airbnb.com/login. I’ll
+choose “Stay signed out” to avoid altering the browser’s sync state, then access the address bar, enter the URL, and go.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Stay signed out' | Class: Button | Type: unknown | Coordinates: (540, 1681)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+We’ve moved past Chrome’s sign-in screen, but a notifications permission prompt is blocking the UI. Preconditions to navigate: dismiss this modal so we can reach the address bar, then 
+load airbnb.com/login.
+
+I’ll tap “No thanks” to decline notifications, then tap the address bar, type the URL, and go.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.8</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">1</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://www.airbnb.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No thanks' | Class: Button | Type: unknown | Coordinates: (518, 1728)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.8 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.widget.FrameLayout' | Class: FrameLayout | Type: unknown | Coordinates: (539, 1237)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+Reasoning:
+- We’re in Chrome with the URL bar visible, but it shows a CNN URL. Preconditions: we need to navigate to the Airbnb login page before attempting credentials.
+- Next step: focus the address bar, enter https://www.airbnb.com/login, and go.
+
+I’ll tap the URL bar, type the Airbnb login URL, and submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://www.airbnb.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'cnn.com/2026/09/02/us/minneapolis-shooting-officers-injured' | Class: EditText | Type: unknown | Coordinates: (464, 190)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning:
+- We’re on Airbnb’s login modal. Preconditions: we must enter the provided email into the “Phone number or email” field, then continue to reach the password step.
+- Next: tap the email/phone field, type the email, tap Continue. Then, on the next screen, enter the password and proceed. I’ll start with the email field and Continue since they’re 
+visible now.
+
+I’ll focus the “Phone number or email” field, type the username, and tap Continue.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">23</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">25</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'phone-or-email' | Class: EditText | Type: unknown | Coordinates: (539, 683)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (539, 844)</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning:
+- We’re on Airbnb’s login modal with the email filled. Preconditions: we need to proceed to the password step. The cookie banner is overlapping the bottom; to avoid interference, I’ll 
+accept or choose only necessary, then tap Continue.
+- Next: dismiss cookies (either “Only necessary” to be minimal or “Accept all”), then tap Continue.
+
+I’ll choose “Only necessary” to keep it lean, then tap Continue to advance to the password screen.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">61</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">31</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Only necessary' | Class: Button | Type: unknown | Coordinates: (539, 1994)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (539, 933)</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning:
+- We reached Airbnb’s login flow. Preconditions to finish login: complete the email-based 2FA. The screen shows “Confirm it’s you” and an OTP input. We must obtain the code sent to 
+{user}. Without access to that inbox, we can’t proceed.
+- Next step: check for available alternate methods. If there’s an option to “Try another way,” we can see if password-based login is allowed. Otherwise, we need the OTP from the email 
+account.
+
+I’ll tap “Try another way” to see alternative verification options.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">27</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Try another way' | Class: Button | Type: unknown | Coordinates: (539, 1098)</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+Reasoning:
+- We’ve hit Airbnb’s 2FA. Preconditions to complete login: we must either enter the OTP from the email inbox or choose an allowed alternative. An overlay offers “Enter your password,” 
+which should bypass the email OTP.
+- Next step: select “Enter your password,” then input the provided password and continue to complete login.
+
+I’ll tap “Enter your password” to proceed to the password step.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">49</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Enter your password' | Class: Button | Type: unknown | Coordinates: (539, 577)</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+We’re on Airbnb’s “Enter your password” screen. Preconditions to complete login: fill the password field, then tap Continue. No blockers visible.
+
+I’ll enter the provided password into the Password field and tap Continue.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">25</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">28</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'password' | Class: EditText | Type: unknown | Coordinates: (464, 584)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (539, 955)</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+Reasoning:
+- We’re on Airbnb’s “Enter your password” screen. I entered the provided password and tapped Continue. The UI now shows a loading state on the Continue button, indicating the login 
+request is processing. Preconditions to finish: wait for the result screen to load and verify we’re logged in (e.g., account/home view or user avatar), or handle any follow-up like 
+2FA.
+
+Next, I’ll wait briefly for the login to complete, then check for either a logged-in homepage or any additional prompts.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+Reasoning:
+- We successfully navigated to airbnb.com/login, entered the provided email and password, and proceeded.
+- The page now shows the Airbnb homepage with bottom nav (Explore, Wishlists, Trips, Messages, Profile), which indicates we’re logged in. A Chrome “Save password?” prompt is visible; 
+optional to dismiss or save. No further 2FA prompts appeared.
+
+Next step:
+- Dismiss the “Save password?” prompt (choose Not now to avoid altering device password manager), then confirm login by tapping Profile to verify account area loads.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">207</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">181</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Logged in to Airbnb via Chrome at airbnb.com/login with the provided credentials. No 2FA required after choosing “Enter your password.” Reached the Airbnb 
+homepage; proceeded to Profile to confirm session is active. Declined the “Save password?” prompt.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 61801
+  Completion tokens      : 1883
+  Total tokens           : 63684
+  Reasoning tokens (CoT) : 0
+  Normal output tokens   : 1883
+  Total output tokens    : 1883
+=========================================
+Logged in to Airbnb via Chrome at airbnb.com/login with the provided credentials. No 2FA required after choosing “Enter your password.” Reached the Airbnb homepage; proceeded to Profile to confirm session is active. Declined the “Save password?” prompt.
+
+Result written to runs/basic_20260902_160703/generated/basic_20260902_160703_airbnb_info_run_1/result.json

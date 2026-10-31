@@ -1,0 +1,32 @@
+{
+  "service": "evernote_info",
+  "device": "pixel6",
+  "design": "MAv3_G5.5",
+  "framework": "Mobile-Agent-v3",
+  "model": "gpt-5.5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to accounts.evernote.com/login with username {user} and password {password} if required. You are authorized to perform 2FA; do not stop until you have successfully logged in.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Final UI shows the Google Authenticator app lock screen with a 'Use fingerprint' prompt (package com.google.android.apps.authenticator2). There is no Evernote page, account dashboard, or the expected username visible — the UI is still in the MFA/OTP unlock step, so authentication is not confirmed."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 412095,
+    "input_tokens": 389880,
+    "output_tokens": 22215,
+    "cost_usd": 2.61585,
+    "wall_clock_seconds": 547
+  },
+  "source_run": "runs/public_agent_mfa/public_agent_mfa_gpt55_20261028/03_evernote_info/run_2"
+}

@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 3,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to marriott.com and verify that the visible page belongs to the requested target before entering {user}. If the target opens in account recovery or forgot-password flow, return to its normal sign-in form. Enter {user}, then enter {password} if requested and continue. Use recovery only when normal sign-in rejects the supplied credentials or the target explicitly requires recovery. Never invent profile or identity details. Request a one-time code readable in Gmail; a password-reset link or password-reset instructions are not an OTP and do not satisfy this step. Do not select a federated provider unless required. Re-observe after navigation and return to Default Browser and go to marriott.com if another app or domain opens. Stop only when the target explicitly confirms that a verification or one-time code was sent for the intended account, or displays its OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The controller evidence starts and ends on Marriott's signed-out password-reset/sign-in modal; the final fields remain populated with the keyboard open, and no authenticated account state or OTP sequence is shown, so the runner's step_1 failure is confirmed."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 18014,
+    "input_tokens": 15217,
+    "output_tokens": 2797,
+    "cost_usd": 0.009398,
+    "wall_clock_seconds": 77
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_003"
+}

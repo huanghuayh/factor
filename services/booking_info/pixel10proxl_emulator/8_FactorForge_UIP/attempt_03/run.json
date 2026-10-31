@@ -1,0 +1,39 @@
+{
+  "service": "booking_info",
+  "device": "pixel10proxl_emulator",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 3,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to account.booking.com/sign-in and verify that the visible page belongs to the exact target. Use only controller-visible account, sign-in, or login controls. Perform each layout-changing action separately: enter {user}, stop, re-observe, and only then activate the still-visible target continuation control. Never combine identifier entry and the continuation tap in one action batch. Enter {password} only if the exact target requires it. If navigation unexpectedly opens a federated provider or unrelated service that was not deliberately selected, do not enter credentials there; return to the exact target and resume its visible sign-in flow. Before requesting verification, choose a one-time-code method whose code can be read in Gmail; if the default challenge is approval-only, push, password, or another non-code method, use the visible alternative-sign-in control to select the matching code method. Request the code exactly once, wait for the exact target to show the corresponding OTP input, leave that challenge open, and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The launcher start rules out a stale session, but the final controller evidence shows a signed-out Apple federated form at appleid.apple.com, not an authenticated exact-target account; the log contains no completed OTP request, retrieval, submission, or fresh login transition."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 90952,
+    "input_tokens": 84632,
+    "output_tokens": 6320,
+    "cost_usd": 0.033798,
+    "wall_clock_seconds": 124
+  },
+  "source_run": "runs/factorforge_emulator_20261029/05_booking_info/attempt_003"
+}

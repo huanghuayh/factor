@@ -1,0 +1,39 @@
+{
+  "service": "evernote_info",
+  "device": "pixel6",
+  "design": "FactorForge",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 11,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to accounts.evernote.com/login, enter {user} as username. Enter {password} as password, if password is not needed, just ignore password. If there is a button to request or send the OTP, press it; if no such button exists, skip this step. Try to login, if the next page shows request OTP, then press it. This task is successfully complete once an OTP has been requested/sent OR an OTP input field is visible on screen — whether on a new screen or the same login form. Do not require navigation to a separate page. Stop here and report success. Do not treat the missing OTP code as a failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start evidence shows the launcher, but final controller evidence shows the exact Evernote password sign-in form with an empty password field, not an OTP challenge or authenticated account; the log never submits a password or OTP, so the runner failure is genuine."
+    },
+    "note": "Counted in the CSV attempt total (12) but not in its training tokens or time."
+  },
+  "metrics": {
+    "total_tokens": 75802,
+    "input_tokens": 73359,
+    "output_tokens": 2443,
+    "cost_usd": 0.023226,
+    "wall_clock_seconds": 116
+  },
+  "source_run": "runs/overnight_20260819_155830/01_evernote_info/attempt_001"
+}

@@ -1,0 +1,348 @@
+
+=== BASIC CASE github_info: Default Browser and go to github.com/login ===
+[step_1] Running BASIC agent: model=gpt-5, template=single, prompt_lines=1, max_steps=35...
+----- BASIC PROMPT -----
+Log in to Default Browser and go to github.com/login with username {user} and password {password}. You are authorized to perform 2FA if required.
+------------------------
+🚀 Running MobileAgent to achieve goal: Log in to Default Browser and go to github.com/login with username {user} and password {password}. You are authorized to 
+perform 2FA if required.
+🔄 Step 1/35
+FastAgent response:
+Plan and reasoning:
+- We’re on the home screen. Precondition: we need a web browser. The default browser icon shown is Chrome. I’ll open Chrome, then navigate directly to https://github.com/login.
+- Once the login page loads, I’ll fill in the username and password and submit. If 2FA is prompted, I’ll handle it accordingly on the subsequent step.
+
+Proceeding to open Chrome from the home screen and navigate to github.com/login.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Chrome' | Class: TextView | Type: unknown | Coordinates: (667, 2062)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+We’re in Chrome’s first-run sign-in screen. Precondition to navigate: we need to either continue or stay signed out to proceed to the browser UI. Since we only need to visit a URL, we 
+can stay signed out and proceed to the address bar, then go to https://github.com/login.
+
+I’ll dismiss the Chrome sign-in prompt, then wait for Chrome’s main UI to load.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Stay signed out' | Class: Button | Type: unknown | Coordinates: (540, 1681)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+We’re still in Chrome’s first-run flow with a notifications prompt. Precondition to navigate: we need to dismiss or accept this modal to reach the address bar. I’ll decline 
+notifications to proceed to the main UI, then we can enter github.com/login.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No thanks' | Class: Button | Type: unknown | Coordinates: (518, 1728)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+We’re on Chrome’s main screen. Precondition to log in to GitHub: navigate to the GitHub login page. The address bar is visible.
+
+I’ll tap the address bar, type https://github.com/login, and submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://github.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Search Google or type URL' | Class: EditText | Type: unknown | Coordinates: (482, 520)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+We’ve reached Chrome with the URL bar showing github.com/login, indicating the page is loaded or loading in the web view. Next step: focus the username field and enter the provided 
+credentials, then submit.
+
+I’ll tap into the GitHub username field, type the email, then the password field, type the password, and press Sign in. If the layout changes after focusing, I’ll proceed on the next 
+step.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">2</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Web View' | Class: FrameLayout | Type: unknown | Coordinates: (540, 1264)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning:
+- Precondition to log into GitHub: we must be on the GitHub login page with its username/password fields accessible. Instead, a Chrome bottom sheet appeared prompting to “Sign in to 
+Chrome,” blocking the page controls.
+- Next step: dismiss this Chrome sign-in sheet so we can interact with the GitHub login form. Then we’ll locate the username and password fields and submit. If 2FA is prompted, we’ll 
+handle it.
+
+I’ll dismiss the Chrome sign-in bottom sheet by tapping “Skip,” then wait for the web page to be fully interactable.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Skip' | Class: Button | Type: unknown | Coordinates: (540, 2257)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning:
+- Precondition to log into GitHub: we must be on GitHub’s own login form. Instead, we’ve been redirected to a Google Sign in page (accounts.google.com) for “Sign in with Google,” which
+is not the requested GitHub credential flow.
+- Next step: return to the GitHub login page URL (https://github.com/login) so we can enter the provided GitHub username and password there.
+
+I’ll refocus the Chrome address bar, replace the URL with https://github.com/login, and load it.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">61</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://github.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 
+'accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S-1960479112%3A1788386937715802&client_id=1078992815106-brpsupgvhheqg35tupphbh0qk9c32nq8.apps.googleusercontent.com&code_ch
+allenge=1zkWtdCl2wjcKRXfx5RDqdoD' | Class: EditText | Type: unknown | Coordinates: (464, 190)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+We’re now on the proper GitHub login page. Preconditions to log in are met: the username and password fields plus the Sign in button are visible.
+
+Next, I’ll enter the provided credentials into the correct fields and submit.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">15</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'login_field' | Class: EditText | Type: unknown | Coordinates: (539, 713)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'password' | Class: EditText | Type: unknown | Coordinates: (539, 893)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign in' | Class: Button | Type: unknown | Coordinates: (539, 1018)</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning:
+- We’re on the GitHub login page with both fields present. The username is filled. The password field shows a validation hint “Please fill out this field.” That means the password 
+input likely lost focus before submission or was cleared by the page’s required validation. Precondition to proceed: the password field must contain the provided password, then we can 
+press Sign in.
+
+Next step: re-enter the password into the password field and tap Sign in.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">22</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'password' | Class: EditText | Type: unknown | Coordinates: (539, 893)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign in' | Class: Button | Type: unknown | Coordinates: (539, 1018)</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+Reasoning:
+- We successfully navigated to https://github.com/login, entered the provided username and password, and submitted.
+- Precondition check: After submission, GitHub prompted for Two-factor authentication (2FA), indicating the login credentials were accepted and now require a TOTP code.
+- Next step: Enter the 6-digit TOTP from the user’s authenticator app/extension into the “Enter the verification code” field and tap Verify. Since I don’t have the code yet, I’ll pause
+here and await the 2FA code or, if instructed, explore “More options” for backup methods.
+
+I’ll focus the 2FA code field to be ready, then wait for your code.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">Reached GitHub 2FA screen (app_totp). Please provide the current 6-digit authenticator code, or tell me to use “More options” for alternate 
+verification.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 48117
+  Completion tokens      : 1723
+  Total tokens           : 49840
+  Reasoning tokens (CoT) : 0
+  Normal output tokens   : 1723
+  Total output tokens    : 1723
+=========================================
+Reached GitHub 2FA screen (app_totp). Please provide the current 6-digit authenticator code, or tell me to use “More options” for alternate verification.
+
+Result written to runs/basic_20260902_150309/generated/basic_20260902_150309_github_info_run_1/result.json

@@ -1,0 +1,39 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 5,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open marriott.com in the default browser and confirm Marriott Bonvoy branding and domain before entering the supplied account identifier. If a password-reset or recovery notice is present, activate the actual recovery-exit link such as ‘Sign in again,’ then re-observe and do not proceed until that notice is gone. Enter the supplied email and password on the normal sign-in form, dismiss the keyboard so the submit control is unobstructed, submit, and re-observe. If the populated form remains unchanged, dismiss the keyboard and submit once more. Continue until Marriott explicitly confirms that a one-time verification code was sent or displays an OTP input; do not treat password-reset email instructions as an OTP.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The attempt began on Marriott's unfinished OTP challenge, backed out to the public sign-in form, and ended without authenticated Marriott content or a completed credential/OTP sequence; the saved evidence therefore agrees with the runner's failure."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 12736,
+    "input_tokens": 10706,
+    "output_tokens": 2030,
+    "cost_usd": 0.006737,
+    "wall_clock_seconds": 54
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/03_marriott_bonvoy_info/attempt_005"
+}

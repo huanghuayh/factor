@@ -1,0 +1,39 @@
+{
+  "service": "github_info_SMS",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to github.com/login and verify its visible app or browser domain. If it is already authenticated, sign out before beginning a fresh login. Enter {user} and {password} when requested, re-inspecting the current UI after every state-changing action before using the current submit control. Use Android Back to dismiss the keyboard only when the current UI explicitly shows the keyboard; otherwise use the visible UI without Back. If the target reports a required populated field, re-enter that value and resubmit once. If the app or browser leaves the exact target, navigate back to it and resume only after verifying the target identity. Treat account-specific content as success only when it belongs to the exact target. Otherwise, on the target's two-step page, dismiss any automatic security-key or passkey prompt, choose another method, and select the code option matching Google Voice. Stop only when the exact target shows authenticated content, a sent-code confirmation, or an OTP input, and leave that state open.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target shows either a sent-code confirmation, an OTP input field, or account-specific authenticated content reached after credentials were submitted in this step. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Evidence agrees with the reported failure: the attempt began outside GitHub, but the final controller state is GitHub's signed-out login form, and the log shows no OTP step or authenticated GitHub content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 121525,
+    "input_tokens": 114294,
+    "output_tokens": 7231,
+    "cost_usd": 0.043035,
+    "wall_clock_seconds": 191
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/14_github_info_SMS/attempt_002"
+}

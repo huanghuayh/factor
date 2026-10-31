@@ -1,0 +1,32 @@
+{
+  "service": "github_info_SMS",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to github.com/login with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The saved start evidence shows no active GitHub session, and the log continuously reaches GitHub's SMS challenge after credential submission, but the final screen remains at github.com/sessions/two-factor/sms with an unresolved verification-code field and no authenticated GitHub content; the runner correctly reported failure."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 133553,
+    "input_tokens": 130607,
+    "output_tokens": 2946,
+    "cost_usd": 0.192719,
+    "wall_clock_seconds": 122
+  },
+  "source_run": "runs/basic_20260902_160703/11_github_info_SMS/run_2"
+}

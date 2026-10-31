@@ -1,0 +1,32 @@
+{
+  "service": "bitwarden_info",
+  "device": "pixel6",
+  "design": "G5m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to vault.bitwarden.com/#/login with username {user} and password {password} if required.\nGet the newest verification code from Gmail, enter it, and finish the login.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The action log reaches Bitwarden's email-OTP flow and retrieves code 275749, but the saved final screen remains on vault.bitwarden.com/#/2fa with an empty verification field and no authenticated vault or account identity, so the runner's success claim is a false positive."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 179213,
+    "input_tokens": 160757,
+    "output_tokens": 18456,
+    "cost_usd": 0.077101,
+    "wall_clock_seconds": 274
+  },
+  "source_run": "runs/basic_20260831_231317/05_bitwarden_info/run_2"
+}

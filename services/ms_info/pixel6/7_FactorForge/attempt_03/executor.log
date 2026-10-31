@@ -1,0 +1,755 @@
+
+=== CASE ms_info: Default Browser and go to login.live.com ===
+[step_1] Running agent...
+🚀 Running MobileAgent to achieve goal: Open the exact target Default Browser and go to login.live.com and verify the current controller-owned UI belongs to it before entering 
+anything. For a browser target, use DuckDuckGo, navigate to the explicit destination domain in Default Browser and go to login.live.com, and clear any stale browser session first. Do 
+not treat a launcher, browser chrome/new-tab UI, auth app, or another service as the target. If the target is already authenticated, sign out or reset that target session and 
+re-observe the login screen before proceeding; a pre-existing session cannot pass. Enter {user} as username and not needed as password when those fields are required. 
+Request the OTP using the target's request/send control; if login must be pressed first to reveal that control, do so, then request the OTP. The selected method must produce a 
+transferable one-time code in Gmail; an Authenticator approval, number-matching prompt, push notification, passkey, or other code-less challenge is not an OTP and cannot satisfy this 
+step. If the target initially offers one of those methods, use its Other ways to sign in, Use a verification code, or equivalent target-owned control to select code delivery through 
+Gmail; if no compatible code-delivery method exists, report failure. An OTP field that was already visible is not proof that a fresh code was requested. Stop only after a new request 
+made in this step is confirmed by target-owned UI such as an OTP-sent message, requesting/sent state, or a newly displayed code-entry challenge. Verify that the displayed delivery 
+destination or auth-source identity matches Gmail and {user} when available. After the fresh challenge appears, inspect the current UI before completing. If an Android 
+Autofill code picker, suggestion popup, or keyboard overlay owns the accessibility hierarchy or prevents the target confirmation from being inspectable, press Back exactly once to 
+dismiss only that overlay, then re-observe. Do not press Back if it would leave the target page, and do not complete while an autofill/system overlay is the only controller-visible 
+hierarchy. Complete only after a separate observation exposes the target-owned sent confirmation or code-entry challenge and matching destination. Do not submit an old or guessed code.
+🔄 Step 1/15
+FastAgent response:
+DuckDuckGo is already selected as the Default browser, so the precondition is met. Next I’ll open DuckDuckGo itself, clear any stale browser session there, then navigate explicitly to `login.live.com` before entering credentials. Tiny ritual cleansing before Microsoft gets involved.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">DuckDuckGo</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+We’re in the selected Default Browser: DuckDuckGo, with a visible “Clear data” fire control. Before touching Microsoft login, I’ll clear stale browser session data so a pre-existing auth state can’t sneak through wearing a fake mustache.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">6</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Clear data' | Class: FrameLayout | Type: unknown | Coordinates: (806, 206)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+DuckDuckGo is asking how thoroughly to burn the evidence. Since the request says clear any stale browser session first, I’ll choose “Delete All,” not the diet version.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">7</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Delete All' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+The purge finished and the UI is momentarily showing only system chrome — dramatic blankness, very DuckDuckGo. I’ll wait for the browser surface to return before entering the destination.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">1</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 1 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+DuckDuckGo is open, data cleared, and its address/search field is focused. I’ll navigate directly to the explicit destination domain `login.live.com` now — no launcher/chrome cosplay counted as target.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 6/15
+FastAgent response:
+The address bar shows `login.live.com` inside DuckDuckGo, but the target page content isn’t exposed yet — just the WebView box, which is about as informative as a locked filing cabinet. I’ll wait for the Microsoft login UI to load before entering anything.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/15
+FastAgent response:
+The target-owned Microsoft sign-in page is now visible inside DuckDuckGo at `login.live.com`, with the username field exposed. That satisfies the “don’t type into browser chrome / wrong app / mystery meat UI” precondition. Next I’ll enter the requested username and press Next to advance toward the OTP request path.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">31</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">34</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1084)</output>
+</result>
+</function_results>
+🔄 Step 8/15
+FastAgent response:
+The Microsoft-owned login page is still visible in DuckDuckGo, but it hasn’t advanced after the first Next tap — the page may still be focused/keyboard-latched, because of course it is. I’ll press Enter once to submit the username from the focused sign-in form and observe the next target-owned step.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 9/15
+FastAgent response:
+Microsoft is still the target-owned UI at `login.live.com`, but it rejected the username as invalid, which means the field didn’t receive the address correctly. I’ll re-enter the exact Gmail address into the Microsoft username field and tap Next again. Because apparently typing once was too optimistic.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">31</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">35</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1126)</output>
+</result>
+</function_results>
+🔄 Step 10/15
+FastAgent response:
+We’re on Microsoft’s target-owned `login.live.com` UI in DuckDuckGo, and the identity shown matches `{user}`. The current primary option is “Send notification,” which is a push/approval method — explicitly not acceptable as an OTP. I’ll use “Other ways to sign in” to look for a transferable code method, ideally Gmail delivery. Microsoft, naturally, starts with the thing we’re not allowed to use.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">34</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Other ways to sign in' | Class: Button | Type: unknown | Coordinates: (539, 1133)</output>
+</result>
+</function_results>
+🔄 Step 11/15
+FastAgent response:
+The target-owned Microsoft page now offers a compatible transferable OTP method: “Send a code to {user}.” The destination matches the requested Gmail identity, so I’ll select that — not the mobile app approval trapdoor.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">43</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Send a code to {user}' | Class: Button | Type: unknown | Coordinates: (519, 1219)</output>
+</result>
+</function_results>
+🔄 Step 12/15
+FastAgent response:
+The target-owned Microsoft UI is visible inside DuckDuckGo at `login.live.com`, not a launcher or browser chrome screen. A fresh OTP request was made via the target’s own “Send a code to {user}” control, and the current page confirms: “Enter the code we sent to {user},” with six code-entry fields visible. That’s the transferable Gmail OTP path requested; no old/guessed code submitted. The keyboard is present but the target confirmation remains inspectable, so no Back press is needed.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Fresh Microsoft login OTP challenge requested in DuckDuckGo for {user}; target-owned UI confirms code was sent to {user} and shows code-entry fields.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: After a fresh request in this attempt, a separate current observation exposes the exact target-owned sent confirmation or newly displayed code-entry challenge 
+and the correct {auth_app}/{username} destination; an Android Autofill picker or other system overlay as the only inspectable hierarchy does not pass, and push approval or number 
+matching does not pass. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not 
+passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+I only see an Android System Autofill picker overlay offering “Autofill code from messages.” The underlying app, destination, username, and any target-owned confirmation or code-entry challenge are not visible. Per the audit criteria, an Autofill picker as the only inspectable hierarchy does not pass. Tiny bureaucratic curtain, big audit failure.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">passed: False
+
+reason: The current screen only shows an Android Autofill picker overlay (“Autofill code” / “from messages”). There is no visible target-owned sent confirmation or newly displayed code-entry challenge, and no visible correct auth_app/username destination. Since the required success condition cannot be clearly confirmed from the current screen, this does not pass.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=False reason='The current screen only shows an Android Autofill picker overlay (“Autofill code” / “from messages”). There is no visible target-owned sent confirmation or newly 
+displayed code-entry challenge, and no visible correct auth_app/username destination. Since the required success condition cannot be clearly confirmed from the current screen, this 
+does not pass.'
+[step_1] audit not passed (retry 0): The current screen only shows an Android Autofill picker overlay (“Autofill code” / “from messages”). There is no visible target-owned sent confirmation or newly displayed code-entry challenge, and no visible correct auth_app/username destination. Since the required success condition cannot be clearly confirmed from the current screen, this does not pass.
+🚀 Running MobileAgent to achieve goal: Open the exact target Default Browser and go to login.live.com and verify the current controller-owned UI belongs to it before entering 
+anything. For a browser target, use DuckDuckGo, navigate to the explicit destination domain in Default Browser and go to login.live.com, and clear any stale browser session first. Do 
+not treat a launcher, browser chrome/new-tab UI, auth app, or another service as the target. If the target is already authenticated, sign out or reset that target session and 
+re-observe the login screen before proceeding; a pre-existing session cannot pass. Enter {user} as username and not needed as password when those fields are required. 
+Request the OTP using the target's request/send control; if login must be pressed first to reveal that control, do so, then request the OTP. The selected method must produce a 
+transferable one-time code in Gmail; an Authenticator approval, number-matching prompt, push notification, passkey, or other code-less challenge is not an OTP and cannot satisfy this 
+step. If the target initially offers one of those methods, use its Other ways to sign in, Use a verification code, or equivalent target-owned control to select code delivery through 
+Gmail; if no compatible code-delivery method exists, report failure. An OTP field that was already visible is not proof that a fresh code was requested. Stop only after a new request 
+made in this step is confirmed by target-owned UI such as an OTP-sent message, requesting/sent state, or a newly displayed code-entry challenge. Verify that the displayed delivery 
+destination or auth-source identity matches Gmail and {user} when available. After the fresh challenge appears, inspect the current UI before completing. If an Android 
+Autofill code picker, suggestion popup, or keyboard overlay owns the accessibility hierarchy or prevents the target confirmation from being inspectable, press Back exactly once to 
+dismiss only that overlay, then re-observe. Do not press Back if it would leave the target page, and do not complete while an autofill/system overlay is the only controller-visible 
+hierarchy. Complete only after a separate observation exposes the target-owned sent confirmation or code-entry challenge and matching destination. Do not submit an old or guessed code.
+🔄 Step 1/15
+FastAgent response:
+The current controller-visible UI is Android System’s Autofill code picker, not the browser target. Since this overlay prevents inspection of the target-owned login/OTP page, the next required step is to dismiss only this overlay with exactly one Back press, then re-observe the browser page before doing anything else. Tiny gatekeeper popup, very dramatic.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">back</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed BACK button</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+The overlay is gone. I’m now seeing DuckDuckGo controlling `login.live.com`, with Microsoft’s target-owned code challenge visible: “Enter the code we sent to {user}.” The destination matches the requested Gmail account, and this is the inspectable target page—not Android Autofill, launcher chrome, or some auth-app sideshow. No code will be entered.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Confirmed target-owned Microsoft login.live.com OTP challenge is visible in DuckDuckGo, showing code delivery to {user}. Stopped before entering any OTP.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: After a fresh request in this attempt, a separate current observation exposes the exact target-owned sent confirmation or newly displayed code-entry challenge 
+and the correct {auth_app}/{username} destination; an Android Autofill picker or other system overlay as the only inspectable hierarchy does not pass, and push approval or number 
+matching does not pass. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not 
+passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+I’m auditing only, so I won’t interact with the screen. The visible hierarchy is the actual DuckDuckGo web page on `login.live.com`, not an Android Autofill/system overlay. It shows a Microsoft code-entry challenge for `{user}` with the text “Enter your code” and “Enter the code we sent to {user},” plus six code input boxes. That clearly satisfies the requirement for a target-owned newly displayed code-entry challenge with the visible username destination.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current screen visibly shows a Microsoft login.live.com code-entry challenge in DuckDuckGo for {user}, including “Enter your code,” “Enter the code we sent to {user},” and six code input fields. This is target-owned page content, not an Android Autofill picker or system overlay, and it is not a push approval/number matching prompt.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current screen visibly shows a Microsoft login.live.com code-entry challenge in DuckDuckGo for {user}, including “Enter your code,” “Enter the code 
+we sent to {user},” and six code input fields. This is target-owned page content, not an Android Autofill picker or system overlay, and it is not a push approval/number 
+matching prompt.'
+[step_1] audit passed.
+[step_2] Running agent...
+🚀 Running MobileAgent to achieve goal: Leave the target running in its current task and open Gmail without closing, backing out of, or relaunching the target; some targets keep 
+request or motion state only in the existing activity. If Gmail requests its device PIN, enter {device_pin}. Determine the real target service or explicit domain from Default Browser and go to
+login.live.com, ignoring generic navigation words. Navigate to the auth app's main inbox, conversation list, or account-code list; if a message detail is already open, return to the 
+main list first. For mail or messaging, refresh, wait 3 seconds, and select the newest item whose visible sender, subject, service name, recipient, and timestamp match the real target 
+and the request just made. If messages are threaded, open the newest individual message and verify its timestamp rather than trusting an older expanded message. Read the code from the 
+message body. For rotating-code apps, stay in that app, select the entry explicitly matching the target service/domain or {user}, and wait for the next code if the current 
+one is about to expire. Reject stale, older, cross-service, mismatched-recipient, or placeholder values. Report exactly one verified fresh code as otp_code and nothing else. If no 
+valid code is visible, still set otp_code to the exact sentinel NO_VALID_OTP_FOUND and report failure so downstream template rendering cannot fail on a missing key; never treat that 
+sentinel as a code.
+🔄 Step 1/15
+FastAgent response:
+I’m on the Microsoft login.live.com verification page in DuckDuckGo, and it says the code was sent to {user}. I need to leave this browser task exactly where it is, open Gmail separately, then find the newest matching Microsoft/login.live.com verification email for that recipient.
+
+<add_memory>Target service/domain: Microsoft login.live.com. Verification recipient: {user}.</add_memory>
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.google.android.gm"}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+Gmail is open on the main inbox for {user}. I can already see a matching Microsoft account team email, but the instructions demand the ritual rain dance: refresh, wait 3 seconds, then pick the newest matching item. I’ll refresh the inbox first and wait.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540, 520]</parameter>
+<parameter name="coordinate2">[540, 900]</parameter>
+<parameter name="duration">0.8</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">3</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 520) to (540, 900)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 3 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+After refresh, the newest visible matching item is from “Microsoft account team,” subject “Your single-use code,” addressed to {user}, timestamp 1:32 AM. It’s a thread with 3 messages, so I need to open it and verify the newest individual message/body instead of just trusting the inbox preview. Tiny inconvenience, legally distinct from fun.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Unread, , , Microsoft account team, 3 messages, Your single-use code, , Hi {user}, We received your request for a single-use code to use with your
+Microsoft account. Your single-use code is: 481045 Only enter this code on an official website or app. Don't, , ,  at 1:32 AM' | Class: FrameLayout | Type: unknown | Coordinates: (540,
+558)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+The thread is open, but only the 1:24 and 1:28 messages are visible. The inbox said there are 3 messages and the newest is 1:32 AM, so I need to scroll further down and verify that newest message’s body. Trust but verify, because email threads enjoy hiding the important bit just off-screen.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540, 1840]</parameter>
+<parameter name="coordinate2">[540, 820]</parameter>
+<parameter name="duration">0.8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 1840) to (540, 820)</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+The newest individual message in the Microsoft thread is timestamped 1:32 AM, from Microsoft account team, addressed to {user}, and its body shows the single-use code {otp_code}. That matches login.live.com/Microsoft and the fresh request, so I’m reporting that code. No stale-code buffet today.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">otp_code: {otp_code}</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+otp_code='{otp_code}'
+[step_2] otp_code extracted: {otp_code}
+[step_3] Running agent...
+🚀 Running MobileAgent to achieve goal: Before interacting, validate {otp_code}. If it is NO_VALID_OTP_FOUND, empty, a placeholder such as not found/none/N/A, an error sentence, or not the
+numeric/alphanumeric format expected by the visible challenge, stop without typing it and report failure. Otherwise return to the exact target Default Browser and go to login.live.com 
+through Android Recents or the app switcher so the existing target activity and its OTP/request state are preserved. Do not press Back repeatedly in Gmail, return through the launcher,
+tap the target icon, or otherwise relaunch the target. For a browser target, switch to the existing DuckDuckGo task and the same explicit target domain. If the preserved target task 
+cannot be restored, or the request/challenge state is missing, report failure and require a rerun from step_1; do not submit the old code after reopening the target. Re-observe and 
+verify that the controller-owned UI belongs to Default Browser and go to login.live.com and still shows the same OTP challenge for this login. Never enter the code into Gmail, another 
+app, or an unrelated page. Clear the OTP field completely, enter exactly {otp_code} with no spaces, fill multi-box inputs left to right, and press the target's login/verify button once. 
+Wait at least 1.5 seconds, then perform a separate observation of the resulting screen. Resolve only a visible post-login confirmation that belongs to the target, then observe again. 
+Report success immediately when target-owned UI explicitly confirms login success or shows an authenticated main/account page. An explicit target-owned login-success message is 
+sufficient even if the unchanged input form remains visible, provided no error or unresolved confirmation is also visible; do not retry, relaunch, or resubmit after that success. 
+Gmail, an OTP email, a launcher, browser chrome/new-tab UI, a login form without explicit success, invalid/expired-code feedback, any other error, or a background/obscured target is 
+failure.
+🔄 Step 1/15
+FastAgent response:
+I validated the visible OTP: **{otp_code}** is present in the Microsoft email, is a 6-digit numeric code, and is not empty/placeholder/error text. I must not type it in Gmail. Next step is to preserve the browser state by using the Android app switcher/Recents gesture—not Back, not launcher, not relaunching. Then I’ll look for the existing Default Browser/DuckDuckGo task on `login.live.com`.
+
+<add_memory>Validated OTP from Microsoft email: {otp_code}. It is a 6-digit numeric code from the latest visible Microsoft single-use code email.</add_memory>
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2385]</parameter>
+<parameter name="coordinate2">[540,1200]</parameter>
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2385) to (540, 1200)</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+The OTP remains valid in memory: **{otp_code}** is a proper 6-digit Microsoft code. The prior gesture dumped us on the launcher — thanks, Android, very helpful. I won’t tap any launcher icon or relaunch anything. Next I’ll use the app switcher/Recents gesture from here to restore the existing browser task, preserving state if it still exists.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2390]</parameter>
+<parameter name="coordinate2">[540,1550]</parameter>
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2390) to (540, 1550)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+OTP precondition is still met: **{otp_code}** is a valid 6-digit code. I’m on the launcher, which is not the target and not acceptable for entry. I must restore the existing browser task via Recents; the previous gesture was too half-hearted, apparently. I’ll perform a longer swipe-up-and-hold style gesture to open the app switcher.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2388]</parameter>
+<parameter name="coordinate2">[540,900]</parameter>
+<parameter name="duration">3.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2388) to (540, 900)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+The OTP precondition is satisfied: **{otp_code}** is a valid 6-digit numeric OTP, not a placeholder or error. However, I’m still on Pixel Launcher, not the preserved Default Browser task, so entering anything now would be wrong. Since relaunching from the launcher is explicitly forbidden, the next step is another Recents/app-switcher gesture, using a hold-like swipe path to try to surface the existing DuckDuckGo/Default Browser task.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2385],[540,2100],[540,1700],[540,1350],[540,1350],[540,1350]]</parameter>
+<parameter name="duration">3.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 6 points</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+The OTP remains validated: **{otp_code}** is a proper 6-digit code. Current screen is Google/Lens, which is absolutely not the target. I still must restore the existing Default Browser/DuckDuckGo task via Recents, not launch anything fresh. I’ll try the app-switcher gesture again from the bottom edge; Android is being charmingly uncooperative.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2395],[540,2250],[540,2050],[540,1800],[540,1600],[540,1500],[540,1500],[540,1500],[540,1500]]</parameter>
+<parameter name="duration">4.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 9 points</output>
+</result>
+</function_results>
+🔄 Step 6/15
+FastAgent response:
+The OTP precondition is still met: **{otp_code}** is a valid 6-digit numeric code. I am **not** in Default Browser/DuckDuckGo or on `login.live.com`; I’m stuck in Google Lens/“Ask about screen,” likely triggered by the recents gesture doing Android’s party trick from hell. I will close this overlay first so it stops intercepting gestures, then I can attempt Recents again without relaunching the browser or typing the code anywhere unsafe.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">28</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Close' | Class: Button | Type: unknown | Coordinates: (110, 191)</output>
+</result>
+</function_results>
+🔄 Step 7/15
+FastAgent response:
+The OTP remains valid in memory: **{otp_code}** is a correct 6-digit code. I’m on Pixel Launcher, which is not allowed for entry and I still must not relaunch the browser via icon. Since Recents gestures have been getting hijacked by Google’s nonsense, I’ll use the Android gesture-nav task switcher: horizontal swipe along the bottom handle to move to the existing previous task, then I’ll verify whether it’s the preserved Default Browser/DuckDuckGo `login.live.com` challenge before entering anything.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[250,2385]</parameter>
+<parameter name="coordinate2">[850,2385]</parameter>
+<parameter name="duration">0.8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (250, 2385) to (850, 2385)</output>
+</result>
+</function_results>
+🔄 Step 8/15
+FastAgent response:
+OTP validation is satisfied: **{otp_code}** is visible in Gmail as “Your single-use code is: {otp_code},” and it matches the expected 6-digit numeric format. I will not enter it here — Gmail is just the code bunker, not the target.
+
+Next step: use gesture-nav task switching from Gmail to reach the preserved existing Default Browser/DuckDuckGo task, without Back, launcher, or relaunching. The last horizontal bottom swipe moved from Launcher back to Gmail, so I’ll continue task-switching via the bottom gesture handle and then verify the target before typing anything.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[250,2385]</parameter>
+<parameter name="coordinate2">[850,2385]</parameter>
+<parameter name="duration">0.8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (250, 2385) to (850, 2385)</output>
+</result>
+</function_results>
+🔄 Step 9/15
+FastAgent response:
+I’m now back in the preserved DuckDuckGo/Default Browser task on **login.live.com**. The page is Microsoft-owned, shows the same challenge for **{user}**, and the visible prompt is a 6-digit code entry. OTP **{otp_code}** matches that format, so it is safe to enter here — not in Gmail, not in browser chrome, not in some random swamp.
+
+I’ll fill the six OTP boxes left-to-right, clearing each box first. I won’t submit until I can verify the target’s button/state after entry.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">34</parameter>
+<parameter name="text">7</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">36</parameter>
+<parameter name="text">8</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">38</parameter>
+<parameter name="text">0</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">40</parameter>
+<parameter name="text">9</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">42</parameter>
+<parameter name="text">4</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">44</parameter>
+<parameter name="text">2</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+</function_results>
+🔄 Step 10/15
+FastAgent response:
+The code entry was accepted by the Microsoft `login.live.com` page and advanced to a target-owned post-login confirmation: **“Stay signed in?”** for `{user}`. That’s a visible confirmation I must resolve before judging success. I’ll choose **No** to avoid persisting sign-in on this device — because “remember me forever” is not a personality trait — then wait at least 1.5 seconds and re-observe the result.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">37</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.6</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No' | Class: Button | Type: unknown | Coordinates: (540, 1612)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.6 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/15
+FastAgent response:
+The OTP was already entered only into the preserved DuckDuckGo `login.live.com` task, and the target-owned **“Stay signed in?”** confirmation was resolved with **No**. After the required wait, the browser is still on `login.live.com`, but the web content is currently not exposing an authenticated page or explicit success message—just browser chrome and an empty/hidden content area. That’s not enough to declare victory; login forms and blank pages don’t get participation trophies.
+
+Next step: wait briefly for the post-login redirect/content to finish loading, then reassess. No retrying, no resubmitting.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/15
+FastAgent response:
+The target-owned UI is now DuckDuckGo on **account.microsoft.com**, showing the Microsoft **Account** page with an account manager for **{account_name}**. That is an authenticated Microsoft account page, so the login succeeded. No errors, no unresolved confirmation, no need to poke it again like a raccoon with a touchscreen.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Login succeeded. The preserved DuckDuckGo/Default Browser task reached account.microsoft.com and shows an authenticated Microsoft Account page for {account_name}.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: A separate post-submission observation shows controller-owned UI for the exact target with either an explicit login-success confirmation or an authenticated 
+main/account page, and no error or unresolved confirmation; an unchanged login form may remain alongside explicit success. Do not rely on memory or on what an earlier agent claimed -- 
+judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+The current screen visibly shows Microsoft Account at account.microsoft.com with authenticated account UI: “Account,” “Change password,” Microsoft 365/storage sections, and an “Account manager for {account_name}” button. There are no visible login errors or unresolved confirmation prompts. Since the request is audit-only, I won’t interact with the screen.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current screen shows an authenticated Microsoft Account page for the target site, including “Account,” “Change password,” Microsoft 365/account content, and “Account manager for {account_name}.” No error message or unresolved confirmation is visible, so the post-submission success condition is clearly confirmed.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current screen shows an authenticated Microsoft Account page for the target site, including “Account,” “Change password,” Microsoft 365/account content, and 
+“Account manager for {account_name}.” No error message or unresolved confirmation is visible, so the post-submission success condition is clearly confirmed.'
+[step_3] audit passed.
+
+========== Token Usage Summary ==========
+  Prompt tokens     : 176237
+  Completion tokens : 5105
+  Total tokens      : 181342
+=========================================
+Done.
+
+Result written to runs/overnight_20260807_011749/generated/overnight_20260807_011749_ms_info_attempt_003/result.json

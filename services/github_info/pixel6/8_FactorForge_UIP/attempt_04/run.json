@@ -1,0 +1,39 @@
+{
+  "service": "github_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 4,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Interaction safety: Never press Android Back while Chrome is foregrounded. Do not use Android Recents or browser history. Never reuse a UI index after the screen changes. After any launch, prompt dismissal, navigation, or submission, end the action batch and re-observe before using another index. Open Default Browser and go to github.com/login in Chrome, dismiss setup prompts one at a time, and navigate directly to the requested target. If only a generic or blank WebView is exposed while the page loads, do not tap it; wait and re-observe until the page controls appear. Verify the exact target domain and use only its native sign-in form. If an unrelated identity-provider domain opens before native credentials are submitted, focus the current omnibox, enter the target URL directly again, submit it, and re-observe; do not tap provider logos, service names, or developer-information controls as navigation. Enter {user}, re-observe, manually enter {password}, re-observe, then use the target's visible submit control. Do not hide the keyboard with Android Back. Re-enter only a field the target identifies as missing. Stop successfully only when the exact target confirms that a new OTP was sent or shows an OTP input field.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: The exact target visibly confirms that a new OTP was requested or sent, or shows an OTP input field. An ordinary credential form, matching destination URL, browser chrome, new-tab page, unrelated page, or unresolved prompt is incomplete and must not pass.. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "Start was the unauthenticated launcher; final evidence shows Chrome on GitHub's public login form with an unresolved saved-password sheet, while the log never submits a password or OTP and never reaches authenticated GitHub content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 40240,
+    "input_tokens": 35432,
+    "output_tokens": 4808,
+    "cost_usd": 0.018474,
+    "wall_clock_seconds": 104
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_113637_Github/01_github_info/attempt_004"
+}

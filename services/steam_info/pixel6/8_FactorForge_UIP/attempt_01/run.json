@@ -1,0 +1,45 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 1,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to store.steampowered.com/login/, enter {user} as username. Enter {password} as password, if password is not needed, just ignore password. This task is successfully complete once a push notification has been sent or a message saying to check your phone is visible on screen. Stop here and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification has been sent OR any message asking user to open an app, check phone, or approve login is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app. If a number is visible on screen before minimizing, remember it. Open the Steam app. If a push notification approval screen is visible, approve it. If a number input field is visible, type in the number you saw on the previous screen.After approving or entering the number, switch back to the browser. If a prompt appears such as 'Is this your device?', click Yes or Trust this browser. Wait 2 seconds and confirm login succeeded",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification approved or number entered successfully, browser shows any post-login screen including 'Is this your device?' or main page. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start showed unrelated Hyatt content, while the final controller capture showed only Steam's public WARDOGS product page with no account-specific or explicit login-success UI; the log records push approval but does not connect it to a controller-proven authenticated Steam final state."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 111283,
+    "input_tokens": 100506,
+    "output_tokens": 10777,
+    "cost_usd": 0.04668,
+    "wall_clock_seconds": 343
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/20_steam_info/attempt_001"
+}

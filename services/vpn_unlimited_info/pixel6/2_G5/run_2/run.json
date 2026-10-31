@@ -1,0 +1,32 @@
+{
+  "service": "vpn_unlimited_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to id.keepsolid.com/login with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The log reaches KeepSolid email OTP but never observes authenticated content; the saved final screen remains at id.keepsolid.com/login/2fa/otp with empty code boxes and 'Verification code required', so the runner's conditional success claim is a false positive."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 380721,
+    "input_tokens": 372185,
+    "output_tokens": 8536,
+    "cost_usd": 0.550591,
+    "wall_clock_seconds": 368
+  },
+  "source_run": "runs/basic_20260902_160703/06_vpn_unlimited_info/run_2"
+}

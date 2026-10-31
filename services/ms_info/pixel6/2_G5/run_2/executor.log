@@ -1,0 +1,364 @@
+
+=== BASIC CASE ms_info: Default Browser and go to login.live.com ===
+[step_1] Running BASIC agent: model=gpt-5, template=single, prompt_lines=1, max_steps=35...
+----- BASIC PROMPT -----
+Log in to Default Browser and go to login.live.com with username {user} and password not needed. You are authorized to perform 2FA if required.
+------------------------
+🚀 Running MobileAgent to achieve goal: Log in to Default Browser and go to login.live.com with username {user} and password not needed. You are authorized to perform 2FA 
+if required.
+🔄 Step 1/35
+FastAgent response:
+Plan and reasoning:
+- Precondition: We need a web browser. The home screen shows “Chrome,” which is the device’s default browser on many Pixels. I’ll open Chrome, then navigate directly to 
+https://login.live.com.
+- On reaching the Microsoft sign-in page, I’ll enter the provided username {user}. Password is “not needed,” so I’ll stop at the point after submitting the username 
+(Microsoft may prompt for password or 2FA next). If 2FA is required, I’m authorized to proceed.
+- Next step: Open Chrome from the home screen and load login.live.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.2</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Chrome' | Class: TextView | Type: unknown | Coordinates: (667, 2062)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.2 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+Reasoning:
+- Precondition: We need a browser. Chrome is open, but it’s showing the first-run sign-in screen. We don’t need to sign Chrome in; we just need to visit login.live.com and sign in 
+there.
+- Best next step: Dismiss Chrome’s sign-in prompt to reach the browser UI, then enter https://login.live.com in the address bar and load the page. Once on Microsoft’s sign-in page, 
+I’ll enter the provided username.
+
+I’ll first tap “Stay signed out,” then navigate to login.live.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">1</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Stay signed out' | Class: Button | Type: unknown | Coordinates: (540, 1681)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.widget.FrameLayout' | Class: FrameLayout | Type: unknown | Coordinates: (540, 1200)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+Reasoning:
+- Precondition check: We’re in Chrome, but a notifications permission dialog is blocking navigation. We need the browser UI unobstructed to load login.live.com.
+- Best next step: Dismiss the notification prompt (“No thanks”), then use the address bar to go to https://login.live.com. Once the Microsoft sign-in page loads, I’ll enter the 
+provided username {user}.
+
+I’ll dismiss the dialog, focus the address bar, type the URL, and load it.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">0.8</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">1</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No thanks' | Class: Button | Type: unknown | Coordinates: (518, 1728)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 0.8 seconds</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.widget.FrameLayout' | Class: FrameLayout | Type: unknown | Coordinates: (539, 1237)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+Reasoning:
+- Precondition check: We’re in Chrome with the address bar visible. To fulfill the request, we must navigate to login.live.com and sign in with the provided username. The URL bar is 
+present (index 9), so we can focus it, enter the URL, and go.
+- Next step: Focus the URL bar, type https://login.live.com, submit, then on the Microsoft sign-in page enter {user}.
+
+I’ll navigate to login.live.com now.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">https://login.live.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'thehill.com/policy/defense/6066683-army-secretary-dan-driscoll-response-resignation/amp/' | Class: EditText | Type: unknown | Coordinates: (464, 190)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+Reasoning:
+- Precondition: We’re in Chrome with login.live.com loaded (URL bar shows login.live.com). Next, we need to proceed with Microsoft sign-in.
+- Next step: Tap into the email/phone field on the Microsoft sign-in page and enter the provided username {user}, then continue.
+
+I’ll tap the webview to focus the sign-in field, type the username, and press Next.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">3</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.webkit.WebView' | Class: WebView | Type: unknown | Coordinates: (540, 1300)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+I can see the Microsoft sign-in page loaded in Chrome. The precondition (browser open at login.live.com) is met. Next, I should enter the provided username into the “Email or phone 
+number” field and proceed.
+
+I’ll tap the username field, type {user}, and press Next.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">17</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">20</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'usernameEntry' | Class: EditText | Type: unknown | Coordinates: (708, 724)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 957)</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+We’re on Microsoft’s sign-in page after submitting the username. The page is prompting for 2FA with “Get a sign-in request” and offers “Send request” or “Other ways to sign in.” 
+Precondition (browser at login.live.com with username entered) is met. Next, attempt the 2FA flow.
+
+I’ll tap “Send request.” If that doesn’t complete on-device, I’ll check “Other ways to sign in” next.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Send request' | Class: Button | Type: unknown | Coordinates: (540, 863)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+Reasoning:
+- We’re on login.live.com after entering the username. Microsoft is prompting for 2FA via Authenticator number match. It shows “Check your Authenticator app” and the number 28 to enter
+in the sign-in request.
+- Precondition to complete sign-in: Access to the matching Authenticator prompt. We don’t have the linked Microsoft Authenticator on this device, so we can’t approve the push here.
+- Next best step: Choose “Other ways to sign in” to use an alternative 2FA method that we can complete on-device (e.g., SMS, email code, or password prompt).
+
+I’ll tap “Other ways to sign in.”
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">23</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Other ways to sign in' | Class: Button | Type: unknown | Coordinates: (540, 1359)</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning:
+- We reached login.live.com and entered the username. Microsoft is now offering alternative sign-in methods. Since you said “password not needed,” the safest path is to use an email 
+code to the provided address rather than a password or Authenticator push.
+- Precondition: An alternative method is available. I can see “Send a code to {user},” which fits the request.
+
+Next step: Choose “Send a code to {user}” to proceed with email-based verification.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">29</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Send a code to {user}' | Class: Button | Type: unknown | Coordinates: (474, 1070)</output>
+</result>
+</function_results>
+🔄 Step 10/35
+FastAgent response:
+Reasoning:
+- Precondition check: We’re on login.live.com in Chrome. The username {user} is confirmed on the page. Microsoft is now asking to “Enter the code we sent to 
+{user}” with 6 input boxes. We don’t have the code yet, and the user didn’t provide it.
+- Next step: Since the code must come from the user’s email inbox, we should pause here and request the 6-digit code. Alternatively, if the user cannot access the code, we can try 
+“Didn’t get a code?” for resend or different method.
+
+I’ll wait for the email code. If you share it, I’ll enter it into the six fields.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">Reached login.live.com, entered username, and selected email verification. The site is prompting for the 6-digit code sent to {user}. Please 
+provide the code (or ask me to tap “Didn’t get a code?” to resend or choose another method), and I’ll complete the sign-in.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 49026
+  Completion tokens      : 1952
+  Total tokens           : 50978
+  Reasoning tokens (CoT) : 0
+  Normal output tokens   : 1952
+  Total output tokens    : 1952
+=========================================
+Reached login.live.com, entered username, and selected email verification. The site is prompting for the 6-digit code sent to {user}. Please provide the code (or ask me to tap “Didn’t get a code?” to resend or choose another method), and I’ll complete the sign-in.
+
+Result written to runs/basic_20260902_160703/generated/basic_20260902_160703_ms_info_run_2/result.json

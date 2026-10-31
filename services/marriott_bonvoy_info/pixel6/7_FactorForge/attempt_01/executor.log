@@ -1,0 +1,743 @@
+
+=== CASE marriott_bonvoy_info: Default Browser and go to marriott.com ===
+[step_1] Running agent...
+🚀 Running MobileAgent to achieve goal: Open the exact target Default Browser and go to marriott.com and verify the current controller-owned UI belongs to it before entering anything. 
+For a browser target, use DuckDuckGo, navigate to the explicit destination domain in Default Browser and go to marriott.com, and clear any stale browser session first. Do not treat a 
+launcher, browser chrome/new-tab UI, auth app, or another service as the target. If the target is already authenticated, sign out or reset that target session and re-observe the login 
+screen before proceeding; a pre-existing session cannot pass. Enter {user} as username and {password} as password when those fields are required. Request the OTP using the
+target's request/send control; if login must be pressed first to reveal that control, do so, then request the OTP. The selected method must produce a transferable one-time code in 
+Gmail; an Authenticator approval, number-matching prompt, push notification, passkey, or other code-less challenge is not an OTP and cannot satisfy this step. If the target initially 
+offers one of those methods, use its Other ways to sign in, Use a verification code, or equivalent target-owned control to select code delivery through Gmail; if no compatible 
+code-delivery method exists, report failure. An OTP field that was already visible is not proof that a fresh code was requested. Stop only after a new request made in this step is 
+confirmed by target-owned UI such as an OTP-sent message, requesting/sent state, or a newly displayed code-entry challenge. Verify that the displayed delivery destination or 
+auth-source identity matches Gmail and {user} when available. After the fresh challenge appears, inspect the current UI before completing. If an Android Autofill code 
+picker, suggestion popup, or keyboard overlay owns the accessibility hierarchy or prevents the target confirmation from being inspectable, press Back exactly once to dismiss only that 
+overlay, then re-observe. Do not press Back if it would leave the target page, and do not complete while an autofill/system overlay is the only controller-visible hierarchy. Complete 
+only after a separate observation exposes the target-owned sent confirmation or code-entry challenge and matching destination. Do not submit an old or guessed code.
+🔄 Step 1/15
+FastAgent response:
+I’m on the Pixel Launcher, so the target browser is not open yet. First I need to open the exact Default Browser target before typing anything. Once it’s open, I’ll verify the UI belongs to the browser, clear any stale session, then use DuckDuckGo to navigate to marriott.com. Tiny ceremony, big compliance.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.android.settings"}
+Starting app com.android.settings
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.android.settings with activity .Settings</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+Attempt 1 failed with error: ReadError('')
+That “Default Browser” launch took us to Settings search instead of a browser — Android being literal in the least useful way. I need to identify the actual default browser app first, then open that app directly. The visible “Default browser app” result is the right place to check the precondition.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">10</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'android.widget.LinearLayout' | Class: LinearLayout | Type: unknown | Coordinates: (540, 538)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+The precondition check is met: the default browser is DuckDuckGo, and it’s selected in Android’s “Default browser app” screen. I need to open DuckDuckGo itself next, then clear any stale browser session before navigating to marriott.com.
+
+<add_memory>Default browser app is DuckDuckGo.</add_memory>
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">DuckDuckGo</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+DuckDuckGo is open and controller-visible, so the browser target is verified. Before entering marriott.com, I need to clear any stale browser session using DuckDuckGo’s “Clear data” fire button. If it asks for confirmation, I’ll handle that next; no typing yet, because stale sessions are how ghosts get authenticated.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">6</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Clear data' | Class: FrameLayout | Type: unknown | Coordinates: (806, 206)</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+The DuckDuckGo-owned clear-data confirmation is visible. To clear stale browser/session data properly, I’ll choose “Delete All,” not just this tab. Then I’ll re-observe before navigating.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">7</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Delete All' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+</function_results>
+🔄 Step 6/15
+FastAgent response:
+The clear-data action completed, but the current accessibility tree is only showing the Android status bar — not enough target-owned UI to safely continue. I need to wait/re-observe DuckDuckGo so I can confirm the browser UI is back before entering marriott.com.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">1</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 1 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/15
+FastAgent response:
+DuckDuckGo is now clearly the controller-owned UI, the address field is focused, and stale data was cleared. Next I’ll navigate directly to the explicit destination domain, marriott.com.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">marriott.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 8/15
+FastAgent response:
+DuckDuckGo’s chrome is still visible with marriott.com in the omnibar, but the page content hasn’t exposed Marriott-owned UI yet — just an empty WebView, the classic “loading, probably.” I need to wait for the target page to render before interacting.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2 seconds</output>
+</result>
+</function_results>
+🔄 Step 9/15
+FastAgent response:
+Marriott-owned UI is now visible inside DuckDuckGo, so the browser-target precondition is satisfied: default browser is DuckDuckGo, session was cleared, and marriott.com loaded. I’m not authenticated — the page shows “Sign In or Join,” which is exactly the login path, not a stale logged-in session. Next I’ll open Marriott’s sign-in flow.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">37</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In or Join' | Class: Button | Type: unknown | Coordinates: (995, 363)</output>
+</result>
+</function_results>
+🔄 Step 10/15
+FastAgent response:
+Marriott’s own sign-in dialog is visible inside DuckDuckGo, with email/member number and password fields. That means I can enter the provided credentials now. Since no OTP request control is visible yet, I’ll sign in after entering credentials to reveal whatever fresh challenge/request step Marriott owns. I’ll avoid touching non-target/system suggestions unless Android decides to photobomb.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">39</parameter>
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">43</parameter>
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">49</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2145)</output>
+</result>
+</function_results>
+🔄 Step 11/15
+FastAgent response:
+The credentials are filled in Marriott’s own form, and I did tap the target-owned “Sign In” button. The screen still shows the same form with the keyboard up, so I need to give the page a moment to either process the login or reveal the next Marriott-owned verification/request step before I poke it again. Websites: occasionally just decorative machinery.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 2 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/15
+FastAgent response:
+The Marriott sign-in form is still target-owned and unchanged after the wait, so the first tap didn’t advance the flow. Since the required next step is to reveal/request a fresh OTP challenge, I’ll tap Marriott’s “Sign In” button again while it’s still visible. If the site wanted dramatic suspense, noted.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">49</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign In' | Class: Button | Type: unknown | Coordinates: (540, 2085)</output>
+</result>
+</function_results>
+🔄 Step 13/15
+FastAgent response:
+A DuckDuckGo password-save bottom sheet is currently owning the visible hierarchy, not Marriott’s target-owned login/OTP UI. I need to dismiss only this overlay, then re-observe the page. Back should close the sheet without leaving Marriott; naturally the browser chose now to be helpful.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">back</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed BACK button</output>
+</result>
+</function_results>
+🔄 Step 14/15
+FastAgent response:
+Marriott’s target-owned verification screen is visible now. It currently has SMS selected, which is not the required Gmail-transferable OTP path. There is a Marriott-owned “Email code to {user}” option, matching the provided Gmail account pattern, so I’ll select that and press Continue to request a fresh email OTP.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">40</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">42</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Email code to {user} link' | Class: RadioButton | Type: unknown | Coordinates: (422, 1707)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (540, 1869)</output>
+</result>
+</function_results>
+🔄 Step 15/15
+FastAgent response:
+Marriott’s target-owned Step 2 verification screen is visible inside DuckDuckGo, not a launcher/system/autofill overlay. It confirms a fresh six-digit code was sent via email to `{user}`, matching the provided Gmail account pattern, and shows the verification-code entry field. I won’t submit or guess any code. Mission reached without feeding the OTP gremlin.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Fresh Marriott email OTP challenge requested and confirmed. Target-owned UI shows “We sent a six-digit code via email to {user}” with a verification code field visible in DuckDuckGo, the verified default browser.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: After a fresh request in this attempt, a separate current observation exposes the exact target-owned sent confirmation or newly displayed code-entry challenge 
+and the correct {auth_app}/{username} destination; an Android Autofill picker or other system overlay as the only inspectable hierarchy does not pass, and push approval or number 
+matching does not pass. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not 
+passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+I’m auditing only. The current screen is a Marriott-owned sign-in verification dialog on marriott.com showing “Confirm Your Identity,” “STEP 2 OF 2,” “Enter Your Code,” and “We sent a six-digit code via email to {user}.” This is not an Autofill/system overlay, and it is a code-entry challenge rather than push approval/number matching. The visible destination is the masked email shown on the target page.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current screen clearly shows a Marriott.com target-owned identity confirmation flow with a newly displayed code-entry challenge: “Enter Your Code” and “We sent a six-digit code via email to {user}.” It is not merely an Android Autofill picker or system overlay, and it is not a push approval or number-matching prompt.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current screen clearly shows a Marriott.com target-owned identity confirmation flow with a newly displayed code-entry challenge: “Enter Your Code” and “We sent 
+a six-digit code via email to {user}.” It is not merely an Android Autofill picker or system overlay, and it is not a push approval or number-matching prompt.'
+[step_1] audit passed.
+[step_2] Running agent...
+🚀 Running MobileAgent to achieve goal: Leave the target running in its current task and open Gmail without closing, backing out of, or relaunching the target; some targets keep 
+request or motion state only in the existing activity. If Gmail requests its device PIN, enter {device_pin}. Determine the real target service or explicit domain from Default Browser and go to
+marriott.com, ignoring generic navigation words. Navigate to the auth app's main inbox, conversation list, or account-code list; if a message detail is already open, return to the main
+list first. For mail or messaging, refresh, wait 3 seconds, and select the newest item whose visible sender, subject, service name, recipient, and timestamp match the real target and 
+the request just made. If messages are threaded, open the newest individual message and verify its timestamp rather than trusting an older expanded message. Read the code from the 
+message body. For rotating-code apps, stay in that app, select the entry explicitly matching the target service/domain or {user}, and wait for the next code if the current 
+one is about to expire. Reject stale, older, cross-service, mismatched-recipient, or placeholder values. Report exactly one verified fresh code as otp_code and nothing else. If no 
+valid code is visible, still set otp_code to the exact sentinel NO_VALID_OTP_FOUND and report failure so downstream template rendering cannot fail on a missing key; never treat that 
+sentinel as a code.
+🔄 Step 1/15
+FastAgent response:
+I’m on DuckDuckGo with the Marriott verification screen open. The real target service/domain is Marriott / marriott.com, and the code was sent to {user}, likely {user}. I’ll leave this browser activity alone and open Gmail to find the fresh OTP. Tiny miracle: the page already did the hard part by admitting who it is.
+
+<add_memory>Target service/domain: Marriott / marriott.com. OTP recipient shown: {user}, likely {user}. Current request is a fresh six-digit email code from Marriott.</add_memory>
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Gmail</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.google.android.gm"}
+Starting app com.google.android.gm
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.gm with activity .ConversationListActivityGmail</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+Gmail is open on the inbox for {user}. I can already see a fresh unread Marriott “One Time Passcode” email at the top, but the request explicitly says refresh, wait 3 seconds, then select the newest matching item. So I’ll refresh the inbox first — because apparently email needs a ceremonial rain dance.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540, 520]</parameter>
+<parameter name="coordinate2">[540, 1050]</parameter>
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">3.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 520) to (540, 1050)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 3.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+The refreshed inbox still shows the newest matching item at the top: unread from `online.account`, subject `Marriott One Time Passcode`, timestamp 1:52 AM, matching Marriott and the current request. I need to open it and verify the message body, not just worship the inbox snippet like it’s scripture.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Unread, , , online.account, , Marriott One Time Passcode, , You recently requested a temporary code in order to complete an Account transaction. To authorize 
+and proceed with your transaction, please enter the following code on your screen: {otp_code}. If you have, , ,  at 1:52 AM' | Class: FrameLayout | Type: unknown | Coordinates: (540, 
+558)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+Verified in Gmail: sender `online.account@marriott.com`, subject `Marriott One Time Passcode`, timestamp `1:52 AM`, recipient `to me`, matching Marriott/marriott.com and the fresh request. The body contains code `{otp_code}`. I’ll report that and spare everyone a victory parade.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">otp_code: {otp_code}</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+otp_code='{otp_code}'
+[step_2] otp_code extracted: {otp_code}
+[step_3] Running agent...
+🚀 Running MobileAgent to achieve goal: Before interacting, validate {otp_code}. If it is NO_VALID_OTP_FOUND, empty, a placeholder such as not found/none/N/A, an error sentence, or not the
+numeric/alphanumeric format expected by the visible challenge, stop without typing it and report failure. Otherwise return to the exact target Default Browser and go to marriott.com 
+through Android Recents or the app switcher so the existing target activity and its OTP/request state are preserved. Do not press Back repeatedly in Gmail, return through the launcher,
+tap the target icon, or otherwise relaunch the target. For a browser target, switch to the existing DuckDuckGo task and the same explicit target domain. If the preserved target task 
+cannot be restored, or the request/challenge state is missing, report failure and require a rerun from step_1; do not submit the old code after reopening the target. Re-observe and 
+verify that the controller-owned UI belongs to Default Browser and go to marriott.com and still shows the same OTP challenge for this login. Never enter the code into Gmail, another 
+app, or an unrelated page. Clear the OTP field completely, enter exactly {otp_code} with no spaces, fill multi-box inputs left to right, and press the target's login/verify button once. 
+Wait at least 1.5 seconds, then perform a separate observation of the resulting screen. Resolve only a visible post-login confirmation that belongs to the target, then observe again. 
+Report success immediately when target-owned UI explicitly confirms login success or shows an authenticated main/account page. An explicit target-owned login-success message is 
+sufficient even if the unchanged input form remains visible, provided no error or unresolved confirmation is also visible; do not retry, relaunch, or resubmit after that success. 
+Gmail, an OTP email, a launcher, browser chrome/new-tab UI, a login form without explicit success, invalid/expired-code feedback, any other error, or a background/obscured target is 
+failure.
+🔄 Step 1/15
+FastAgent response:
+The code `{otp_code}` is a valid 6-digit numeric OTP, not empty, not a placeholder, and not an error string. I’m currently in Gmail, so I must not type it here. Next I’ll preserve the target state by using the Android app switcher/Recents gesture, not Back/Home/launcher, then look for the existing Default Browser/DuckDuckGo task.
+
+<add_memory>Validated OTP for Marriott login: {otp_code}. Must enter only in preserved Default Browser/DuckDuckGo Marriott challenge, not Gmail.</add_memory>
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2380]</parameter>
+<parameter name="coordinate2">[540,1200]</parameter>
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2380) to (540, 1200)</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+The OTP remains valid, but we’re now on the launcher — not ideal, thanks Android gestures, very helpful. I still must not tap a launcher icon or relaunch the browser. Next step is to open Android Recents/app switcher from here and restore the existing Default Browser/DuckDuckGo task only if it’s present.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2390]</parameter>
+<parameter name="coordinate2">[540,1650]</parameter>
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2390) to (540, 1650)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+The OTP is still valid and saved. We’re still stuck on the launcher, which means the previous gesture didn’t open Recents. I won’t tap any launcher icons. I’ll try the proper “swipe up and hold” style gesture via a slower path to bring up the app switcher and restore the existing browser task if it appears.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2385],[540,2050],[540,1700],[540,1500],[540,1500]]</parameter>
+<parameter name="duration">2.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 5 points</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+The OTP `{otp_code}` remains valid, but I’m now in the Google app/Lens overlay — not the target. Still no typing, no launcher icon tapping, no relaunching. I need to recover by opening Recents from the current app and selecting the preserved Default Browser/DuckDuckGo Marriott task if available. Android gestures: famously precise, like throwing darts in a fog machine.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2395],[540,2250],[540,2050],[540,1850],[540,1650],[540,1650]]</parameter>
+<parameter name="duration">3.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 6 points</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+This looks like Android Recents/Overview now: the visible card is Google, with the little “X” garnish Android adds because apparently clarity was too generous. I need to move through the existing task cards and find the preserved Default Browser/DuckDuckGo Marriott task, not relaunch anything.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[250,1200]</parameter>
+<parameter name="coordinate2">[900,1200]</parameter>
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (250, 1200) to (900, 1200)</output>
+</result>
+</function_results>
+🔄 Step 6/15
+FastAgent response:
+The OTP is still valid, but the visible UI is Google Lens/Search, not Default Browser and not Marriott. I must not enter anything here. Since the target must be restored via Recents/app switcher, I’ll try a quicker app-switcher gesture from the current app; the earlier slow one seems to have summoned Google Lens instead, because Android enjoys practical jokes.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,2385]</parameter>
+<parameter name="coordinate2">[540,1300]</parameter>
+<parameter name="duration">0.8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 2385) to (540, 1300)</output>
+</result>
+</function_results>
+🔄 Step 7/15
+FastAgent response:
+The code is valid and must still only go into the preserved Marriott browser challenge. We’re on the launcher now, but I won’t tap any app icons or relaunch. I’ll attempt the actual overview gesture from the bottom edge with a short upward hold — less “open random Google nonsense,” more “show me the existing tasks,” ideally.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2398],[540,2320],[540,2210],[540,2100],[540,2100]]</parameter>
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 5 points</output>
+</result>
+</function_results>
+🔄 Step 8/15
+FastAgent response:
+`{otp_code}` is still a valid 6-digit OTP, and this is still absolutely not the place to type it. The current controller-owned UI is Google Lens, not Default Browser/DuckDuckGo and not Marriott. Since Recents gestures keep summoning Google’s camera goblin, I’ll use the gesture-nav quick app switch along the bottom bar to move through existing tasks without relaunching anything, then re-observe for the preserved browser task.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[520,2385]</parameter>
+<parameter name="coordinate2">[930,2385]</parameter>
+<parameter name="duration">0.7</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (520, 2385) to (930, 2385)</output>
+</result>
+</function_results>
+🔄 Step 9/15
+FastAgent response:
+`{otp_code}` is valid for the visible expected OTP style: six numeric digits, not empty, not a placeholder, and not an error. Current UI is Google Lens, not Default Browser/DuckDuckGo and not Marriott, so entering it here would be credential slapstick.
+
+Next I need to get out of this Google Lens overlay without relaunching the target, then use Recents/app switcher to restore the existing browser task. I’ll close the Lens overlay first; no OTP entry, no launcher icon tapping.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">27</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Close' | Class: Button | Type: unknown | Coordinates: (110, 191)</output>
+</result>
+</function_results>
+🔄 Step 10/15
+FastAgent response:
+The OTP is already validated and saved: `{otp_code}` is a proper 6-digit numeric code, so it may be used only if I restore the preserved Marriott challenge in the existing Default Browser/DuckDuckGo task. Current UI is Pixel Launcher, so I must not tap browser icons or relaunch anything. Next I’ll invoke Recents with a swipe-up-and-hold gesture from the gesture bar, then look for the preserved browser task.
+
+<function_calls>
+<invoke name="swipe_path">
+<parameter name="points">[[540,2395],[540,2200],[540,1900],[540,1600],[540,1400],[540,1400]]</parameter>
+<parameter name="duration">2.2</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe_path</name>
+<output>Swiped path through 6 points</output>
+</result>
+</function_results>
+🔄 Step 11/15
+FastAgent response:
+Recents is finally open — behold, the preserved `DuckDuckGo` task is visible as the left card, which matches the required browser target path. I’ll restore that existing task, not relaunch it. Then I’ll verify it’s Marriott and still showing the same OTP challenge before entering anything.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">4</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'DuckDuckGo' | Class: FrameLayout | Type: unknown | Coordinates: (65, 1106)</output>
+</result>
+</function_results>
+🔄 Step 12/15
+FastAgent response:
+We’re back in the preserved DuckDuckGo task, the omnibar says `marriott.com`, and the page is the Marriott “Confirm Your Identity / Enter Your Code” six-digit email OTP challenge. Good — the target survived the detour through Android’s scenic route.
+
+Next I’ll clear the visible verification code field and enter exactly `{otp_code}`, with no spaces. I won’t submit until I can verify the field state/button after the keyboard appears.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">32</parameter>
+<parameter name="text">{otp_code}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+</function_results>
+🔄 Step 13/15
+FastAgent response:
+The field now contains exactly `{otp_code}`, and I’m still in DuckDuckGo on `marriott.com` with the Marriott “Confirm Your Identity” OTP challenge visible. The Submit button is currently pushed off by the keyboard, because keyboards love standing in doorways.
+
+Next I’ll dismiss only the keyboard so the target-owned Submit button is visible, then I’ll press it once.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">back</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed BACK button</output>
+</result>
+</function_results>
+🔄 Step 14/15
+FastAgent response:
+The OTP field still contains exactly `{otp_code}`, the UI is DuckDuckGo on `marriott.com`, and the Marriott “Confirm Your Identity” challenge is still present. The target-owned `Submit` button is visible at index 51, so I’ll press it once and then wait over 1.5 seconds before checking the result. No retries, no double-tapping, no ritual sacrifice to the form gods.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">51</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Submit' | Class: Button | Type: unknown | Coordinates: (540, 2319)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/15
+FastAgent response:
+The OTP was valid, restored into the preserved DuckDuckGo task on `marriott.com`, entered exactly once, and submitted once. After the required wait and observation, the Marriott OTP/login form is still visible with no explicit target-owned login success, authenticated account page, or success message. Per the rules, a login form without explicit success is failure — no retrying the old code, no resubmitting, no poking the bear.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">false</parameter>
+<parameter name="message">Failure: after submitting OTP {otp_code} once in the preserved DuckDuckGo Marriott challenge and waiting, the page still shows the Marriott OTP/login form with no explicit login success or authenticated account page. A rerun from step_1 is required; I will not resubmit the old code.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually 
+completed successfully: A separate post-submission observation shows controller-owned UI for the exact target with either an explicit login-success confirmation or an authenticated 
+main/account page, and no error or unresolved confirmation; an unchanged login form may remain alongside explicit success. Do not rely on memory or on what an earlier agent claimed -- 
+judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.
+🔄 Step 1/15
+FastAgent response:
+The current screen is Marriott’s site in DuckDuckGo. I can see an authenticated-looking main page: the top navigation shows “Trips” and a user/account button labeled “{account_name},” which indicates the user is signed in. There are no visible login errors, unresolved prompts, or confirmation blockers. Since the task is audit-only, I won’t touch the screen; I’ll report the verdict.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+
+reason: The current screen shows Marriott Bonvoy’s main authenticated page with account/user indicator “{account_name}” and “Trips” visible in the navigation. No login error or unresolved confirmation is visible, so the post-submission state clearly confirms success.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='The current screen shows Marriott Bonvoy’s main authenticated page with account/user indicator “{account_name}” and “Trips” visible in the navigation. No login error or 
+unresolved confirmation is visible, so the post-submission state clearly confirms success.'
+[step_3] audit passed.
+
+========== Token Usage Summary ==========
+  Prompt tokens     : 195821
+  Completion tokens : 4824
+  Total tokens      : 200645
+=========================================
+Done.
+
+Result written to runs/overnight_20260807_011749/generated/overnight_20260807_011749_marriott_bonvoy_info_attempt_001/result.json

@@ -1,0 +1,32 @@
+{
+  "service": "marriott_bonvoy_info_SMS",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to marriott.com with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows the launcher with Marriott absent; the log continuously opens Chrome, reaches Marriott's signed-out form, submits the supplied credentials, completes an OTP flow for the matching masked email, and ends on marriott.com, where the final UI dump exposes the authenticated account control as '{account_name}'."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 188843,
+    "input_tokens": 184540,
+    "output_tokens": 4303,
+    "cost_usd": 0.273705,
+    "wall_clock_seconds": 185
+  },
+  "source_run": "runs/basic_20260902_160703/10_marriott_bonvoy_info_SMS/run_2"
+}

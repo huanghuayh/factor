@@ -1,0 +1,50 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 3,
+  "phase": "testing",
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to store.steampowered.com/login/, enter {user} as username. Enter {password} as password, if password is not needed, just ignore password. This task is successfully complete once a push notification has been sent or a message saying to check your phone is visible on screen. Stop here and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification has been sent OR any message asking user to open an app, check phone, or approve login is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Before leaving the target, remember only a separately displayed approval number, not digits embedded in the username. Open Steam and approve the sign-in request that visibly matches the target and account, or enter the displayed approval number if requested. Return to the same target tab in the default browser, wait for it to update, and resolve any target-owned device-trust prompt. If redirected to a public page, use the target site's navigation or account control to verify the signed-in account, or revisit the target login page. Stop only when the browser visibly shows account-specific authenticated content or an explicit login-success confirmation; a generic public page is not success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Push notification approved or number entered successfully, browser shows any post-login screen including 'Is this your device?' or main page. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows only the launcher; the log shows Steam credentials, a matching mobile-app approval, and return to Chrome; final controller XML at store.steampowered.com contains authenticated-only View your profile and Account details controls, proving a fresh Steam login despite the public-looking viewport."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 55068,
+    "input_tokens": 48036,
+    "output_tokens": 7032,
+    "cost_usd": 0.026073,
+    "wall_clock_seconds": 196
+  },
+  "factorforge_training": {
+    "attempts": 3,
+    "training_tokens": 164186,
+    "training_seconds": 495
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260826_172215_steam/01_steam_info/attempt_001"
+}

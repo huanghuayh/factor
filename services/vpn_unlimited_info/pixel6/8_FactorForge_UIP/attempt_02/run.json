@@ -1,0 +1,51 @@
+{
+  "service": "vpn_unlimited_info",
+  "device": "pixel6",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 2,
+  "phase": "training",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open the exact target Default Browser and go to id.keepsolid.com/login and verify its visible app or browser domain. If it is already authenticated, sign out and begin a fresh login. Enter {user}, observe that it remains populated, and continue. Enter {password} when required and submit. On the target's two-step login page, choose a code-based method that matches Gmail. If a security-key or passkey flow opens automatically, dismiss any system prompt, return to the target, select another method, and choose the matching code option. Stop only when the target visibly confirms that a new code was sent or displays its OTP input field, and leave that challenge open.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Determine the OTP source from the target's visible challenge. If it says the code was sent by email, open the available email app, refresh the inbox, and read the newest matching verification message. If it requests an authenticator code, open the available authenticator app and read the matching current code, waiting for the next code if expiration is near. Discover the appropriate installed app when its name is not specified; do not ask the user to identify it. Report only the OTP code.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Return from the OTP source to the exact target using Back or Recents, then confirm the target app or browser domain and its open OTP challenge. The target is the one named in the task; do not stop or ask the user to identify it merely because the OTP source is foreground. In a browser, locate the existing target tab; if the challenge is no longer open, navigate to the stated target and repeat the login to restore it. Enter the retrieved OTP, verify the complete code is present, submit it, and resolve target-owned confirmation prompts. Report success only after a separate observation shows account-specific authenticated content or an explicit login-success confirmation. If the code is rejected, request one new code, return to the OTP source, refresh it, and use only a matching message newer than the resend request before returning to the target and submitting it.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The start capture shows KeepSolid's signed-out email-OTP challenge in Chrome, but the final capture and focus evidence show Gmail displaying the code; the log never returns to id.keepsolid.com, submits the OTP, or observes authenticated KeepSolid content."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 35425,
+    "input_tokens": 29937,
+    "output_tokens": 5488,
+    "cost_usd": 0.01846,
+    "wall_clock_seconds": 145
+  },
+  "source_run": "runs/factorforge_plus/overnight_20260825_234120_15/07_vpn_unlimited_info/attempt_002"
+}

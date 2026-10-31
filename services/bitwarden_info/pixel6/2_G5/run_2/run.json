@@ -1,0 +1,32 @@
+{
+  "service": "bitwarden_info",
+  "device": "pixel6",
+  "design": "G5",
+  "framework": "MobileRun",
+  "model": "gpt-5",
+  "run": 2,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to vault.bitwarden.com/#/login with username {user} and password {password}. You are authorized to perform 2FA if required. Don't stop until you successful login.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The run started on the Android launcher and followed a matching sequence to Bitwarden, but ended at vault.bitwarden.com/#/2fa with an empty email verification-code field; no OTP was submitted and no authenticated vault content was reached before the 35-step limit."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 305178,
+    "input_tokens": 299213,
+    "output_tokens": 5965,
+    "cost_usd": 0.433666,
+    "wall_clock_seconds": 192
+  },
+  "source_run": "runs/basic_20260902_160703/05_bitwarden_info/run_2"
+}

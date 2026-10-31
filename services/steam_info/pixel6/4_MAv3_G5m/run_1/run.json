@@ -1,0 +1,32 @@
+{
+  "service": "steam_info",
+  "device": "pixel6",
+  "design": "MAv3_G5m",
+  "framework": "Mobile-Agent-v3",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to store.steampowered.com/login/ with username {user} and password {password} if required. You are authorized to perform 2FA; do not stop until you have successfully logged in.",
+    "system_addendum": "You are authorized to operate the device for this task. The device PIN is {device_pin}."
+  },
+  "result": {
+    "verdict": "FAIL",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The screenshot and UI XML show Chrome’s new-tab/home page (NTP) with a 'Sign In' tile for store.steampowered.com — not a Steam account dashboard or a logged-in page for user '{user}'. No authenticated Steam account or post-MFA main page is visible."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 427671,
+    "input_tokens": 356209,
+    "output_tokens": 71462,
+    "cost_usd": 0.231976,
+    "wall_clock_seconds": 1112
+  },
+  "source_run": "runs/public_agent_mfa/public_agent_mfa_gpt5mini_basic_20261028/07_steam_info/run_1"
+}

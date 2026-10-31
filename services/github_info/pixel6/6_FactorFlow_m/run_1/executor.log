@@ -1,0 +1,858 @@
+
+=== FACTORFLOW CASE github_info: Default Browser and go to github.com/login ===
+[step_1] Running factorflow agent (auditor + up to 3 retries)...
+🚀 Running MobileAgent to achieve goal: Interaction safety: Never press Android 
+Back while Chrome is foregrounded. Do not use Android Recents or browser 
+history. Never reuse a UI index after the screen changes. After every launch, 
+dismissal, navigation, field entry, or submission, end the action batch and 
+re-observe before using another index. Open Default Browser and go to 
+github.com/login in Chrome, dismiss setup prompts one at a time, navigate 
+directly to the requested target, and verify the exact target domain. Wait and 
+re-observe if the page is blank or loading. Use only the target's native sign-in
+form; if an unrelated identity provider opens, enter the target URL directly in 
+the current omnibox, submit, and re-observe. Enter {user} 
+directly into its currently observed field, then re-observe. If the observation 
+exposes the intended value, advance. If the accessibility output omits the field
+value without showing it empty and the target shows no missing-field error, 
+treat that omission as inconclusive and use the newly observed target submit 
+control once; re-observe the target's validation before any retry. Enter 
+{password} only in its newly observed matching field when requested, then 
+re-observe and submit once with the newly observed control. Do not hide the 
+keyboard with Android Back. If a saved-password or touch-to-fill sheet blocks 
+the form, dismiss it with its visible control or swipe it downward, then 
+re-observe; if it clearly matches {user} and the exact target 
+and cannot be dismissed, use its visible sign-in control and re-observe. Recover
+an entry only when the target reports that field missing or empty: refocus the 
+newly observed field, enter it once, use a visible keyboard Next or Done control
+if available, and re-observe before submitting. If the target still reports it 
+missing or empty, report failure. Stop successfully only when the exact target 
+confirms a new OTP was sent or shows a target-owned OTP input field.
+🔄 Step 1/15
+FastAgent response:
+Plan: I'll open Chrome (the default browser) to load github.com/login, then 
+dismiss any setup prompts one at a time and navigate directly to the requested 
+URL. First I must verify Chrome is available on the device (precondition). I'll 
+launch Chrome now; after it opens I will re-observe the screen before any 
+further actions.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Chrome</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.android.chrome"}
+Starting app com.android.chrome
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.android.chrome with activity 
+com.google.android.apps.chrome.Main</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+I'll dismiss the Chrome setup prompt by tapping "Stay signed out", then 
+re-observe before navigating to github.com/login.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">11</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Stay signed out' | Class: Button | Type: unknown | 
+Coordinates: (540, 1681)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+There’s a Chrome notification permission dialog blocking the page. Per the 
+instructions to dismiss setup prompts one at a time, I’ll tap “No thanks” to 
+close it, then re-observe the screen before navigating to github.com/login.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No thanks' | Class: Button | Type: unknown | 
+Coordinates: (518, 1728)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+Chrome is open (precondition met) and the omnibox is visible. I'll tap the 
+omnibox to focus it, then re-observe before typing github.com/login as required.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Search Google or type URL' | Class: EditText | Type: 
+unknown | Coordinates: (482, 520)</output>
+</result>
+</function_results>
+🔄 Step 5/15
+FastAgent response:
+Reasoning:
+- Precondition met: Chrome is open and the omnibox is focused (index 7), 
+keyboard visible.
+- Next step per instructions: enter the exact target URL into the currently 
+observed omnibox, submit it, and then re-observe before any further actions.
+- I'll type "github.com/login" into the focused URL bar (index 7) clearing 
+existing text, then submit with the Enter system button. After that I'll stop 
+and re-observe the page.
+
+Now I'll type the URL and submit.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">7</parameter>
+<parameter name="text">github.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 6/15
+FastAgent response:
+Reasoning:
+- Precondition met: Chrome is open and github.com/login is in the omnibox.
+- The page content (webview) hasn't exposed any form fields in the accessibility
+tree yet. Per instructions, if the page is blank or still loading we must wait 
+and re-observe before interacting.
+- I will wait briefly to allow the page to load, then re-observe to locate the 
+GitHub native email field. I will not press Back or use Recents, and I will 
+avoid reusing earlier UI indices after the page changes.
+
+I'll wait 3 seconds and then re-observe the page state.
+
+<function_calls>
+<invoke name="wait">
+<parameter name="duration">3.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>wait</name>
+<output>Waited for 3.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/15
+FastAgent response:
+Reasoning:
+- Precondition satisfied: Chrome is open and the native GitHub sign-in page is 
+loaded (I can see the "Username or email address" EditText at index 15).
+- Per the safety instructions, I must use the page’s native sign-in form and 
+enter the exact email into the currently observed field, then re-observe before 
+any further action. I must not press Back or reuse indices after the screen 
+changes.
+- Next step: focus the GitHub email field (index 15) by tapping it, then stop 
+and re-observe the updated UI before typing.
+
+I'll tap the "Username or email address" field (index 15) now.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">15</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'login_field' | Class: EditText | Type: unknown | 
+Coordinates: (539, 713)</output>
+</result>
+</function_results>
+🔄 Step 8/15
+FastAgent response:
+The touch-to-fill sheet is blocking the form and shows the saved credential for 
+{user}. Per instructions I'll dismiss it by swiping the sheet 
+downward, then re-observe the page before any further actions.
+
+Now I'll swipe down on the bottom sheet to dismiss it.
+
+<function_calls>
+<invoke name="swipe">
+<parameter name="coordinate">[540,1800]</parameter>
+<parameter name="coordinate2">[540,2400]</parameter>
+<parameter name="duration">0.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>swipe</name>
+<output>Swiped from (540, 1800) to (540, 2400)</output>
+</result>
+</function_results>
+🔄 Step 9/15
+FastAgent response:
+Reasoning:
+- Verified target domain (omnibox shows github.com/login). Touch-to-fill was 
+dismissed and the native GitHub sign-in form is visible.
+- Keyboard is visible. Per the instructions, when the keyboard is open I should 
+call type without an index to enter the email into the currently 
+focused/available field.
+- I will enter the exact email "{user}" (clear the field 
+first), end the action batch, and re-observe the UI state.
+
+Typing the email now and waiting briefly to let the page update.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/15
+FastAgent response:
+Reasoning:
+- Chrome is on github.com/login and the native GitHub form is visible. I entered
+{user} and re-observed — preconditions met.
+- Next required step: focus the newly observed password field and re-observe 
+before typing the password. I will tap the password EditText (index 18) and then
+wait briefly to let the UI update so we can observe the focused field and any 
+password-related UI (touch-to-fill, keyboard Next/Done, or submit control).
+
+Tapping the password field (index 18) now and then waiting to re-observe.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">18</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'password' | Class: EditText | Type: unknown | 
+Coordinates: (539, 893)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/15
+FastAgent response:
+Reasoning:
+- Preconditions met: Chrome is on github.com/login, the native GitHub form is 
+visible, password field was focused and the keyboard is open.
+- A keyboard autofill chip for {user} is visible but not 
+blocking. Per instructions I should enter the specific password into the newly 
+observed matching password field (and not rely on autofill unless it blocks and 
+cannot be dismissed).
+- Next step: type the exact password {password} into the currently focused 
+password field (using type without an index because the keyboard is open), end 
+the action batch, then wait and re-observe the UI before attempting submit.
+
+Typing the password now and then waiting briefly to let the page update.
+
+<function_calls>
+<invoke name="type">
+<parameter name="text">{password}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/15
+FastAgent response:
+Reasoning:
+- Preconditions met: Chrome is on github.com/login, native GitHub form visible, 
+email and password were entered and re-observed.
+- Per the instructions I must submit once with the newly observed submit 
+control. The visible "Sign in" button is at index 21.
+- I will tap the "Sign in" button (index 21), then wait briefly and re-observe 
+the page to see whether GitHub shows an OTP prompt or confirms a new OTP was 
+sent. I will not press Back or use Recents or reuse any indices after the page 
+updates.
+
+Now I'll tap the Sign in button and wait to re-observe.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">21</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Sign in' | Class: Button | Type: unknown | 
+Coordinates: (539, 1018)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 13/15
+FastAgent response:
+Reasoning:
+- The page validation now shows "Please fill out this field." which indicates 
+the site reported the username/email field as missing or empty.
+- Per the rules, I must recover the entry: refocus the newly observed field, 
+enter the email once, use a keyboard Next/Done if available, then re-observe 
+before attempting another submit. I must not press Back or reuse indices after 
+the screen updates.
+- Next step: tap the observed login field (index 16) to refocus it, then type 
+{user} once (clear first), then wait and re-observe the UI 
+state.
+
+I'll tap the login field (index 16), wait briefly, type the email, and wait to 
+let the page update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">{user}</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'login_field' | Class: EditText | Type: unknown | 
+Coordinates: (539, 713)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 14/15
+FastAgent response:
+Reasoning:
+- The site previously reported the email field missing; I recovered it by 
+refocusing and retyping {user} (now confirmed in the focused 
+element).
+- Both fields now appear filled (password masked). The safety rules require I 
+use the newly observed submit control once — but I must not reuse a UI index 
+that I tapped earlier after the screen changed. The visible Sign in button is 
+index 21, which I clicked previously, so I should avoid reusing that index.
+- The keyboard is visible, so submitting via the Enter key is allowed and avoids
+reusing the Sign in index. I'll press Enter once to submit, then wait and 
+re-observe for either an OTP prompt or confirmation that a new OTP was sent (or 
+any validation errors). I will not press Back or use Recents.
+
+Now I'll press Enter and wait to re-observe the page.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/15
+FastAgent response:
+Reasoning:
+- Preconditions satisfied: Chrome is open and the page domain is github.com 
+(omnibox shows github.com/sessions/two-factor/app).
+- The page presents GitHub's native two-factor authentication UI and exposes an 
+OTP input field (EditText "app_totp" at index 16).  
+- The instructions say to stop successfully only when the exact target confirms 
+a new OTP was sent or shows a target-owned OTP input field. The OTP input field 
+is visible, so the goal is met.
+- Next step: stop and report success; do not press Back or take any further 
+actions.
+
+Now I will mark the task complete reporting success because the GitHub 
+two-factor OTP input is visible.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Success: GitHub two-factor authentication page is 
+displayed and the target-owned OTP input field (app_totp) is visible at 
+github.com/sessions/two-factor/app.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or 
+change anything on screen. Inspect the CURRENT screen state and decide whether 
+this task was actually completed successfully: Pass when the exact target in 
+{name} visibly confirms that a new OTP was requested or sent, or shows a 
+target-owned OTP input form. Judge the full current screen, not only enumerated 
+clickable elements; a browser overlay does not invalidate success when the 
+target-owned OTP form remains visibly identifiable behind it. An ordinary 
+credential form, a matching destination URL alone, browser chrome without 
+identifiable target-owned OTP content, a new-tab page, an unrelated page, or a 
+prompt that fully obscures the target state is incomplete and must not pass.. 
+The previous worker reported: executor success=True reason=Success: GitHub 
+two-factor authentication page is displayed and the target-owned OTP input field
+(app_totp) is visible at github.com/sessions/two-factor/app.. Treat this only as
+a hint; still verify against the actual screen. Do not rely on memory or on what
+an earlier agent claimed -- judge only from what is visible right now. If you 
+cannot clearly confirm success, treat it as not passed. Report your verdict as 
+structured output.
+🔄 Step 1/15
+FastAgent response:
+I'll inspect the visible Chrome page and decide if the target-owned OTP form or 
+a confirmation of a new OTP being requested is present. I will not interact with
+the screen.
+
+Reasoning: The browser URL bar shows "github.com/sessions/two-factor/app". The 
+page title text "Two-factor authentication" and the explanatory text are 
+visible. Critically, there is a visible input field with resource id/name 
+"app_totp" and label "Enter the verification code", plus a "Verify" button — 
+this is the target-owned OTP input form for GitHub's two-factor authentication. 
+That meets the audit pass criteria.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+reason: Chrome is on github.com/sessions/two-factor/app and the page visibly 
+shows a target-owned OTP input form: an input field with id/name "app_totp" 
+labeled "Enter the verification code" and a "Verify" button, confirming the OTP 
+entry form is present.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='Chrome is on github.com/sessions/two-factor/app and the page
+visibly shows a target-owned OTP input form: an input field with id/name 
+"app_totp" labeled "Enter the verification code" and a "Verify" button, 
+confirming the OTP entry form is present.'
+[step_1] audit passed.
+[step_2] Running factorflow agent (auditor + up to 3 retries)...
+🚀 Running MobileAgent to achieve goal: Interaction safety: Never press Android 
+Back while Chrome is foregrounded. Do not use Android Recents or browser 
+history. Never reuse a UI index after the screen changes; end the action batch 
+and re-observe before taking another indexed action. Leave Chrome by pressing 
+Home, then open Google Authenticator by app name. If there is a device PIN, 
+enter {device_pin}. Navigate to Google Authenticator's main OTP source: use the inbox or
+conversation list for mail or messaging, or the account-code list for an 
+authenticator. Do not rely on memory or a previously seen code. If a message 
+detail is open, use Google Authenticator's own visible navigation control to 
+return to its main list. For mail or messaging, refresh, wait three seconds, 
+re-observe, and open only the newest item belonging to Default Browser and go to
+github.com/login. For rotating codes, find the entry for Default Browser and go 
+to github.com/login; if it is about to expire, wait for it to rotate and 
+re-observe. As soon as the current matching OTP is visible, read it and report 
+that code as the final answer. Do not tap links, buttons, or other message 
+content after the code is visible, and do not leave Google Authenticator.
+🔄 Step 1/15
+FastAgent response:
+Plan: Leave Chrome by pressing Home (avoiding Back per instructions), then open 
+Google Authenticator by name. If the device lock appears, I will enter PIN {device_pin}.
+Once Authenticator is open I'll locate the account-code list and find the 
+Default Browser / github.com/login entry (waiting for rotation if needed) and 
+read the current OTP. I will not navigate back in Chrome or tap any links.
+
+Now I'll press Home, then open Google Authenticator.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">home</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Google Authenticator</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{
+    "package": "com.google.android.apps.authenticator2"
+}
+Starting app com.google.android.apps.authenticator2
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed HOME button</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.apps.authenticator2 with activity 
+.main.MainActivity</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+Reasoning:
+- Chrome was left via Home as instructed and Authenticator opened.
+- Authenticator is locked by device verification (biometric prompt). The 
+precondition “if there is a device PIN, enter {device_pin}” applies.
+- To enter the PIN we must first switch to PIN entry using the visible "Use PIN"
+control (index 8). I will tap that. I will not press Back or use 
+recents/history.
+
+Next step: Tap "Use PIN" to show the PIN entry screen so I can enter {device_pin}.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">8</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Use PIN' | Class: Button | Type: unknown | 
+Coordinates: (151, 2275)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+The Authenticator app showed a credential prompt. The precondition "if there is 
+a device PIN, enter {device_pin}" applies. I'll tap the PIN field and enter {device_pin}, then 
+submit (Enter). I will not use Back or Recents.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">5</parameter>
+<parameter name="text">1234</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+Reasoning:
+- I'm already in Google Authenticator's main list (precondition satisfied).
+- The GitHub entry ("GitHub: {user}-cmyk") is visible and shows the 
+current OTP.
+- Per instructions I will not tap anything or leave Authenticator; I'll read and
+report the visible code now.
+
+Now I'll finish and report the OTP.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">GitHub ({user}-cmyk) current OTP: 246 325. 
+otp_code: {otp_code}</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+otp_code='{otp_code}'
+[step_2] otp_code extracted: {otp_code}
+[step_3] Running factorflow agent (auditor + up to 3 retries)...
+🚀 Running MobileAgent to achieve goal: Never press Android Back while Chrome is
+foregrounded. Do not use Android Recents or browser history. Never reuse a UI 
+index after the screen changes; after every launch, navigation, field entry, or 
+submission, end the action batch and re-observe before using another index. In 
+Google Authenticator, read the currently displayed fresh code for Default 
+Browser and go to github.com/login; if it differs from {otp_code}, use the displayed
+code. Press Home and launch Chrome again by app name, then re-observe and verify
+the exact target. If credentials are requested, enter {user} 
+and {password} only in their matching fields, applying the same 
+entry-verification rule below and re-observing before each visible submission. 
+On the target-owned OTP form, clear the OTP field, enter the fresh code without 
+spaces, use a visible keyboard Next or Done control if available, and re-observe
+without submitting. A type-tool success message proves only that an input 
+command was sent. Confirm entry only when the new observation shows the code in 
+the field or the correct number of populated or masked OTP positions; a resource
+ID, label, hint, focus, or visible keyboard does not prove entry. Do not submit 
+while the OTP is empty or unconfirmed. If the first entry is unconfirmed, 
+refocus the newly observed OTP field, tap the visible on-screen keyboard digits 
+one at a time for the fresh code, and re-observe. Submit once with the newly 
+observed target control only after field population is confirmed, then 
+re-observe. If the field remains empty or unconfirmed after that recovery, 
+report failure. Obtain and submit a newly displayed OTP only if the exact target
+explicitly reports the prior code invalid or expired. Report success only after 
+an unobscured observation shows authenticated account-specific content or an 
+explicit login-success confirmation for Default Browser and go to 
+github.com/login.
+🔄 Step 1/15
+FastAgent response:
+I see Google Authenticator is foregrounded and the GitHub entry is visible. The 
+displayed OTP for "GitHub: {user}-cmyk" (index 11) reads "170 732" → 
+170732. The instruction says to use the currently displayed code if it differs 
+from {otp_code}; it does, so 170732 is the code to use later. I must save this value
+before leaving the screen.
+
+Next step: go Home and launch Chrome by app name so I can navigate to 
+github.com/login. I will not use Back, Recents, or browser history. After the 
+app switch I'll re-observe before doing any input.
+
+Saving the code now, then pressing Home and opening Chrome.
+
+<add_memory>GitHub ({user}-cmyk) current Authenticator OTP: 170732 
+(different from {otp_code}).</add_memory>
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">home</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Chrome</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.android.chrome"}
+Starting app com.android.chrome
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed HOME button</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.android.chrome with activity 
+com.google.android.apps.chrome.Main</output>
+</result>
+</function_results>
+🔄 Step 2/15
+FastAgent response:
+I will focus the GitHub two-factor OTP input so I can clear it and enter the 
+fresh code (170732) per your rules. I will not use Back or Recents. After this 
+tap I will re-observe before any typing or further actions.
+
+Tapping the OTP field at index 16 now.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">16</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'app_totp' | Class: EditText | Type: unknown | 
+Coordinates: (539, 768)</output>
+</result>
+</function_results>
+🔄 Step 3/15
+FastAgent response:
+Reasoning:
+- Preconditions met: I have the fresh GitHub OTP saved in memory (170732) and 
+the GitHub two-factor page with the OTP field (index 16) is visible in Chrome. 
+Keyboard is already visible.
+- Next required action per your rules: clear the OTP field and enter the fresh 
+code (no spaces), then end this action and re-observe to confirm the code 
+actually appears (or masked digits) before using any Next/Done or submitting.
+- If entry is not confirmed after re-observation, I'll refocus and tap the 
+digits on the on-screen keyboard one-by-one as the recovery step.
+
+Next step: clear the OTP field at index 16 and type 170732 (no submission). I 
+will re-observe after this (not in this call).
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">16</parameter>
+<parameter name="text">170732</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+</function_results>
+🔄 Step 4/15
+FastAgent response:
+Reasoning:
+- Preconditions met earlier: I saved the fresh Authenticator code (170732) to 
+memory and focused the GitHub OTP field.
+- Action taken: I cleared the OTP field and typed 170732 (clear=True), then 
+re-observed the screen as required.
+- Re-observation shows Chrome on github.com and the GitHub Dashboard UI (visible
+"Dashboard", "User avatar", "Create repository", account-specific feed). The OTP
+input is no longer visible and the page shows authenticated, account-specific 
+content.
+- Per your acceptance rule, an unobscured Dashboard and user avatar count as 
+explicit login success for github.com/login. Therefore the login is successful.
+
+Now I will mark the task complete.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Observed GitHub Dashboard and user avatar in Chrome 
+(github.com) after entering OTP 170732 — login/authentication 
+successful.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🚀 Running MobileAgent to achieve goal: AUDIT ONLY. Do not tap, type, swipe, or 
+change anything on screen. Inspect the CURRENT screen state and decide whether 
+this task was actually completed successfully: After OTP submission, {name} 
+visibly shows authenticated, account-specific content or an explicit 
+login-success confirmation. A login form, OTP form, error, browser chrome, 
+new-tab page, unrelated page, or authentication-app screen is incomplete and 
+must not pass.. The previous worker reported: executor success=True 
+reason=Observed GitHub Dashboard and user avatar in Chrome (github.com) after 
+entering OTP 170732 — login/authentication successful.. Treat this only as a 
+hint; still verify against the actual screen. Do not rely on memory or on what 
+an earlier agent claimed -- judge only from what is visible right now. If you 
+cannot clearly confirm success, treat it as not passed. Report your verdict as 
+structured output.
+🔄 Step 1/15
+FastAgent response:
+I'll inspect the current Chrome screen and decide whether the post-OTP state 
+shows an authenticated, account-specific GitHub view.
+
+Reasoning:
+- App is Chrome and URL bar shows "github.com".
+- Page content contains "Dashboard", "Home", "Top Repositories", "Create 
+repository", personalized feed and repo entries.
+- There is a visible user avatar at the top-right (index 22), which is typical 
+of a signed-in GitHub session.
+- No login form, OTP input, error message, or browser "new tab" page is visible.
+
+Conclusion: this clearly shows an authenticated GitHub dashboard.
+
+Now I'll report the audit result.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">passed: True
+reason: Current Chrome view shows github.com Dashboard with account-specific 
+content (Dashboard, Home, Top Repositories, personalized feed, Create 
+repository) and a visible user avatar in the top-right. No login/OTP form or 
+error is present, so login/authentication is confirmed from the 
+screen.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+🔍 StructuredOutput response:
+passed=True reason='Current Chrome view shows github.com Dashboard with 
+account-specific content (Dashboard, Home, Top Repositories, personalized feed, 
+Create repository) and a visible user avatar in the top-right. No login/OTP form
+or error is present, so login/authentication is confirmed from the screen.'
+[step_3] audit passed.
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 126783
+  Completion tokens      : 21573
+  Total tokens           : 148356
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 17088
+  Normal output tokens   : 4485
+  Total output tokens    : 21573
+=========================================
+Done.
+
+Result written to runs/factorflow_20260829_182152/generated/factorflow_20260829_182152_github_info_run_1/result.json

@@ -1,0 +1,44 @@
+{
+  "service": "magiclink_info",
+  "device": "pixel6",
+  "design": "FactorFlow_m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to https://magiclinklogin.com/?utm_source=chatgpt.com#demo. If it opens to an authenticated account or dashboard, sign out first and continue to the fresh sign-in flow; never treat an existing session as completion. Enter {user} in the email or username field. Enter No need only if a password is required and it is not marked as unnecessary. Choose the control that explicitly sends, requests, emails, or continues to a magic link. Stop and report success only when the target visibly confirms that a new magic link was requested or sent. If no magic-link option exists, report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link has been requested/sent OR confirmation message is visible on screen. The previous worker reported: executor success=True reason=Magic link requested successfully for {user} — page shows: \"The login link is on its way. Please check your inbox.\". Treat this only as a hint; still verify against the actual screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app, then go to the Gmail app. Navigate to the main inbox of Gmail. If it is the detailed page of a message, go back to the main inbox. Refresh the inbox (swipe down from the top), wait 3 seconds for it to load. Open the newest email matched to the Default Browser and go to https://magiclinklogin.com/?utm_source=chatgpt.com#demo at the top of the list. Find the magic link or login button inside the email and click it directly. Wait 2 seconds and confirm that login succeeded or the main page is visible.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: Magic link clicked and login confirmed successful, main page is visible. The previous worker reported: executor success=True reason=Magic link login confirmed — DuckDuckGo opened magiclinklogin.com and shows the My Account page with email {user} and a Log out option.. Treat this only as a hint; still verify against the actual screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Start evidence shows only the Android launcher, while the continuous log records navigation to the exact URL, a new magic-link request for {user}, opening the matching Gmail message, and clicking its login link; final controller evidence shows magiclinklogin.com on an authenticated My Account page for that email with a Log out control."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 140567,
+    "input_tokens": 121621,
+    "output_tokens": 18946,
+    "cost_usd": 0.068297,
+    "wall_clock_seconds": 329
+  },
+  "source_run": "runs/factorflow_20260820_233713/18_magiclink_info/run_2"
+}

@@ -1,0 +1,32 @@
+{
+  "service": "booking_info",
+  "device": "pixel6",
+  "design": "G5m",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "run": 1,
+  "in_fig7": true,
+  "in_table2": false,
+  "prompt": {
+    "style": "single",
+    "task": "Log in to Default Browser and go to account.booking.com/sign-in with username {user} and password {password} if required; use device PIN {device_pin} if prompted.\nGet the newest verification code from Gmail, enter it, and finish the login.",
+    "system_addendum": null
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": true,
+    "auto_verifier": {
+      "verdict": "FAIL",
+      "reason": "The launcher start and continuous Booking email-OTP flow ending in an oauth_callback support a fresh login attempt, but the saved final state is only a generic Booking.com search page behind a location dialog and shows no authenticated content identifying {user}; therefore the runner's success is not a genuine pass."
+    },
+    "note": "Human-confirmed PASS (human_verification.json): the automatic verifier gave a false negative because the final Booking page did not show account identity text."
+  },
+  "metrics": {
+    "total_tokens": 145519,
+    "input_tokens": 131324,
+    "output_tokens": 14195,
+    "cost_usd": 0.061221,
+    "wall_clock_seconds": 278
+  },
+  "source_run": "runs/basic_20260831/01_booking_info/run_1"
+}

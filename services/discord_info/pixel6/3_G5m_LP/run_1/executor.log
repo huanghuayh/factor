@@ -1,0 +1,638 @@
+
+=== BASELINE CASE discord_info: Default Browser and go to discord.com ===
+[step_1] Running single baseline agent (max_steps=35)...
+🚀 Running MobileAgent to achieve goal: Complete the entire login for Default Browser and go to discord.com in one continuous flow. First open Default Browser and go to discord.com. 
+Enter {user} as username. Enter {password} as password; if a password is not needed, just ignore it. If there is a button to request or send the OTP, press it; if no 
+such button exists, skip that. Try to login, and if the next page shows a request-OTP control, press it. Once an OTP has been requested/sent or an OTP input field is visible, leave 
+Default Browser and go to discord.com in the background and open the Google Authenticator app to retrieve the code. If there is a device PIN, enter {device_pin}. Navigate to the main page of 
+Google Authenticator where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with 
+their codes. Do not rely on memory or any previously seen OTP code — obtain a fresh one from the current screen. If a message detail page is open, go back to the main inbox. If the app
+shows a list of messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check Default Browser and go to discord.com, then open the newest item at 
+the top and read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to discord.com and read its currently 
+displayed code; if that code is about to expire, wait for it to rotate and read the new one. Then switch back to Default Browser and go to discord.com (it is already open in the 
+background). Read the UI and find where to put the OTP code. Clear the OTP field completely, then fill in the exact OTP code you just read, with no spaces. Then press the login button.
+After pressing Login, wait 1.5 seconds and check the current screen state. Do not report success unless the screen explicitly confirms a successful login or you can see the main page.
+🔄 Step 1/35
+FastAgent response:
+Plan: I don't see a "Default Browser" icon on the home screen (only Gmail, Photos, YouTube, Authenticator, etc.), so I'll try to launch the Default Browser by name. Once opened I'll 
+navigate to discord.com, enter the email and password you provided, attempt any "request/send OTP" action if present, then switch to the Authenticator app (I see "Authenticator" on the
+home screen) to fetch the current code and paste it back into the browser's OTP field and submit. If any step fails (app not installed, fields not present, or a device PIN prompt 
+blocks access), I'll report the failure.
+
+Next step: open Default Browser.
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+</function_results>
+🔄 Step 2/35
+FastAgent response:
+The DuckDuckGo welcome/onboarding screen is covering the browser UI (I don't see an address bar element). I'll tap the onboarding container to dismiss it, wait briefly for the main 
+browser UI to appear, then proceed to navigate to discord.com.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">3</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'com.duckduckgo.mobile.android:id/onboardingWelcomePageContainer' | Class: ViewGroup | Type: unknown | Coordinates: (540, 1200)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 3/35
+FastAgent response:
+Reasoning: The notification permission dialog is blocking the browser. Notifications aren’t needed for logging in or retrieving an OTP from Google Authenticator, so I'll deny the 
+request to continue to the browser UI. After denying I'll wait briefly for the DuckDuckGo address bar to appear, then proceed to navigate to discord.com.
+
+I will tap "Don't allow" now and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">5</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Don’t allow' | Class: Button | Type: unknown | Coordinates: (540, 1484)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 4/35
+FastAgent response:
+I'll dismiss the DuckDuckGo welcome by tapping "Let's get started!", then wait for the browser UI (address bar) to appear so I can navigate to discord.com and continue the login flow.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Let's get started!' | Class: Button | Type: unknown | Coordinates: (540, 1084)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 5/35
+FastAgent response:
+I'll finish DuckDuckGo's onboarding, reveal the address bar, and then navigate to discord.com. First I'll tap "Choose Your Browser" (index 12), then wait a moment for the main browser 
+UI to load so I can enter the URL.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Choose Your Browser' | Class: Button | Type: unknown | Coordinates: (540, 1458)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 6/35
+FastAgent response:
+Reasoning: DuckDuckGo onboarding is still up; I need the main browser UI (address bar) to go to discord.com. Precondition check: Default Browser is open (DuckDuckGo) — satisfied. Next 
+I'll tap "Next" to finish onboarding, wait for the browser UI, then navigate to the URL.
+
+Tapping "Next" now and waiting 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">19</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1166)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 7/35
+FastAgent response:
+Reasoning: Default Browser (DuckDuckGo) is open and still in onboarding, so I can't reach the address bar yet. Precondition (Default Browser running) is met. Next step is to finish 
+onboarding by tapping "Next" to reveal the main browser UI, then wait briefly for the address bar to appear so I can navigate to discord.com.
+
+I'll tap "Next" (index 12) and wait 1 second.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">12</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Next' | Class: Button | Type: unknown | Coordinates: (540, 1262)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 8/35
+FastAgent response:
+Reasoning: DuckDuckGo is open and the address bar (EditText at index 12, "Search privately") is focused — precondition satisfied. Next I should navigate to discord.com by replacing the
+address-bar text with the URL and submitting it.
+
+I'll enter "discord.com" into the address bar and press Enter to load the site, then wait for the page to start loading.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">12</parameter>
+<parameter name="text">discord.com</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 9/35
+FastAgent response:
+Reasoning: The DuckDuckGo browser is open and the omnibar shows "https://discord.com/". To reliably reach Discord's login form (so I can enter the email/password and handle OTP), it's 
+better to go directly to the explicit login URL (discord.com/login). Preconditions: Default Browser is open and an omnibar EditText (index 5) is available — satisfied. Next step: 
+replace the omnibar URL with "https://discord.com/login", press Enter, and wait for the login page to load.
+
+I'll enter the login URL and submit it now, then wait 2 seconds for the page to load.
+
+<function_calls>
+<invoke name="type">
+<parameter name="index">5</parameter>
+<parameter name="text">https://discord.com/login</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">2.0</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 2.0 seconds</output>
+</result>
+</function_results>
+🔄 Step 10/35
+get_state attempt 1 failed: Portal returned error: {'status': 'error', 'error': 'No active window or root filtered out'} (retrying in 1s)
+FastAgent response:
+Reasoning: The browser is showing an autofill prompt offering the saved Discord credentials for {user}. Using it will populate the login form faster and matches the 
+provided credentials. Precondition (Discord login page visible and autofill dialog present) is met.
+
+Next step: accept the saved password by tapping "Continue" and wait briefly for the form to be filled.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">9</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Continue' | Class: Button | Type: unknown | Coordinates: (875, 2226)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 11/35
+FastAgent response:
+Reasoning: The system autofill prompt offers the saved Discord credentials for {user} — using it matches the credentials you provided and will populate the login form 
+reliably. Precondition (login page visible and saved credentials offered) is met.
+
+I'll accept the saved password by tapping "Use", then wait 1.5 seconds for the form to be filled and the page to update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">6</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Use' | Class: Button | Type: unknown | Coordinates: (876, 1396)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 12/35
+FastAgent response:
+Reasoning: The Discord login form is visible and both the email (uid_10) and password (uid_12) fields are populated — preconditions for attempting sign-in are met. Next step is to 
+press the "Log In" button to submit the credentials. After submitting I'll wait 1.5 seconds to let the page update so we can detect whether an OTP is requested or the login succeeded.
+
+I'll tap "Log In" (index 30) and wait 1.5 seconds.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">30</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Log In' | Class: Button | Type: unknown | Coordinates: (540, 1223)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 13/35
+FastAgent response:
+Reasoning: The DuckDuckGo "Save your password?" sheet is blocking the page. It's not an OTP prompt and prevents checking the post-login state, so I need to dismiss it first. 
+Preconditions: Default Browser is open (satisfied); login was submitted (done). Next step is to dismiss the save-password dialog so I can inspect the page for an OTP request or a 
+successful login.
+
+I'll tap "No Thanks" to close the dialog and wait 1.5 seconds for the page to update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">15</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'No Thanks' | Class: Button | Type: unknown | Coordinates: (540, 2179)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 14/35
+FastAgent response:
+Reasoning: Discord reached the Multi-Factor Authentication screen. I need an OTP (or the option to enter one). The page shows "Verify with something else" which should reveal alternate
+methods (including code entry or authenticator). I'll tap "Verify with something else" to expose the OTP input or the authenticator option, then wait for the UI to update. If an OTP 
+field or a "request/send OTP" control appears, I'll proceed to open Google Authenticator next to retrieve the fresh code.
+
+Tapping "Verify with something else" (index 27) and waiting 1.5s for the page to update.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">27</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Verify with something else' | Class: Button | Type: unknown | Coordinates: (540, 625)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 15/35
+FastAgent response:
+I will select "Use your authenticator app" to reveal the OTP entry (or trigger the prompt), then switch to the Google Authenticator app to fetch a fresh code. If the Authenticator app 
+asks for the device PIN, I'll enter {device_pin}. I'll wait briefly after each step for the UI to update.
+
+Now I'll tap "Use your authenticator app", wait, and then open Authenticator.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">29</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Authenticator</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.google.android.apps.authenticator2"}
+Starting app com.google.android.apps.authenticator2
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Use your authenticator app' | Class: Button | Type: unknown | Coordinates: (540, 945)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.google.android.apps.authenticator2 with activity .main.MainActivity</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 16/35
+FastAgent response:
+Reasoning: Authenticator opened but is gated by device credential verification. I must unlock it with the device PIN (per your instruction 1234) to reach the main Authenticator list of
+rotating codes. Once unlocked I'll locate the Discord/Default Browser entry and read its current OTP. I'll try PIN entry now.
+
+I'll tap "Use PIN", wait for the PIN field to appear, enter {device_pin}, submit, and wait for the Authenticator main screen to load.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">8</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.0</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="text">1234</parameter>
+</invoke>
+<invoke name="system_button">
+<parameter name="button">enter</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Use PIN' | Class: Button | Type: unknown | Coordinates: (178, 2253)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.0 seconds</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=False)</output>
+</result>
+<result>
+<name>system_button</name>
+<output>Pressed ENTER button</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 17/35
+FastAgent response:
+I can see the Authenticator list and the Discord entry showing code "947 332" (so the OTP is 947332). I can't reliably tell if it's about to expire from the accessibility info, so I'll
+treat this as a fresh code. Before switching away (so I don't lose the value), I'll save the code, then return to the Default Browser to find the OTP input and paste/type it in.
+
+<add_memory>Authenticator — Discord current OTP: 947332</add_memory>
+
+<function_calls>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 18/35
+FastAgent response:
+Reasoning: The autofill picker is showing (it popped up while returning to the browser). That overlay blocks interaction with the underlying Discord page and must be dismissed before I
+can find the OTP input. I already retrieved the fresh Authenticator code (saved to memory as 947332). Preconditions are met: Default Browser is open and Discord's MFA flow is active, 
+and I have a fresh OTP to enter.
+
+Next step: dismiss the autofill picker and bring Default Browser to the foreground so I can locate the OTP field and paste/type the code.
+
+I'll press Back to close the autofill sheet, then reopen Default Browser and wait for the page to stabilize.
+
+<function_calls>
+<invoke name="system_button">
+<parameter name="button">back</parameter>
+</invoke>
+<invoke name="open_app">
+<parameter name="text">Default Browser</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+📱 AppOpener response:
+{"package":"com.duckduckgo.mobile.android"}
+Starting app com.duckduckgo.mobile.android
+💡 Tool results:
+<function_results>
+<result>
+<name>system_button</name>
+<output>Pressed BACK button</output>
+</result>
+<result>
+<name>open_app</name>
+<output>App started: com.duckduckgo.mobile.android with activity com.duckduckgo.app.launch.Launcher</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 19/35
+FastAgent response:
+I can see the MFA screen and the OTP input field (EditText at index 30) so the precondition (an OTP input is visible) is satisfied. I will focus the OTP field, clear it completely, 
+type the fresh code I retrieved (947332) with no spaces, press "Confirm" (index 32), then wait 1.5 seconds for the page to update so we can inspect the result.
+
+<function_calls>
+<invoke name="click">
+<parameter name="index">30</parameter>
+</invoke>
+<invoke name="type">
+<parameter name="index">30</parameter>
+<parameter name="text">947332</parameter>
+<parameter name="clear">true</parameter>
+</invoke>
+<invoke name="click">
+<parameter name="index">32</parameter>
+</invoke>
+<invoke name="wait">
+<parameter name="duration">1.5</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+💡 Tool results:
+<function_results>
+<result>
+<name>click</name>
+<output>Clicked on Text: '_r_e_' | Class: EditText | Type: unknown | Coordinates: (539, 762)</output>
+</result>
+<result>
+<name>type</name>
+<output>Text typed successfully (clear=True)</output>
+</result>
+<result>
+<name>click</name>
+<output>Clicked on Text: 'Confirm' | Class: Button | Type: unknown | Coordinates: (540, 1055)</output>
+</result>
+<result>
+<name>wait</name>
+<output>Waited for 1.5 seconds</output>
+</result>
+</function_results>
+🔄 Step 20/35
+FastAgent response:
+Reasoning: I followed the requested flow: opened Default Browser (DuckDuckGo), navigated to discord.com/login, used the saved credentials to fill email/password, submitted, chose "Use 
+your authenticator app", opened Google Authenticator, unlocked with PIN {device_pin}, read a fresh code (947332), returned to the browser, entered the OTP into the visible OTP field and 
+pressed Confirm. After waiting 1.5s, the browser shows the Discord main view — the omnibar reads "https://discord.com/channels/@me" and the UI shows the friends/add-friend elements 
+(evidence of the logged-in main page).
+
+Next step: mark the task complete because the screen explicitly shows the Discord main page indicating a successful login.
+
+<function_calls>
+<invoke name="complete">
+<parameter name="success">true</parameter>
+<parameter name="message">Login successful: Discord main page is visible (URL: /channels/@me and friends/add-friend UI present). Completed full flow: opened browser, navigated, 
+submitted credentials, retrieved OTP from Authenticator (947332), entered it, and verified landing on main page.</parameter>
+</invoke>
+</function_calls>
+Could not get usage: Unsupported provider: openai_llm
+
+========== Token Usage Summary ==========
+  Prompt tokens          : 118622
+  Completion tokens      : 13285
+  Total tokens           : 131907
+  --- Reasoning breakdown (from raw API usage) ---
+  Reasoning tokens (CoT) : 9920
+  Normal output tokens   : 3365
+  Total output tokens    : 13285
+=========================================
+Login successful: Discord main page is visible (URL: /channels/@me and friends/add-friend UI present). Completed full flow: opened browser, navigated, submitted credentials, retrieved OTP from Authenticator (947332), entered it, and verified landing on main page.
+
+Result written to runs/baseline_20260817_224439/generated/baseline_20260817_224439_discord_info_run_1/result.json

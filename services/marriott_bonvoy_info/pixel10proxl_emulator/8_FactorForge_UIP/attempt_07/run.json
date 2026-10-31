@@ -1,0 +1,56 @@
+{
+  "service": "marriott_bonvoy_info",
+  "device": "pixel10proxl_emulator",
+  "design": "FactorForge_UIP",
+  "framework": "MobileRun",
+  "model": "gpt-5-mini",
+  "attempt": 7,
+  "phase": "testing",
+  "in_fig7": false,
+  "in_table2": true,
+  "prompt": {
+    "style": "multi_step",
+    "steps": [
+      {
+        "step": "step_1",
+        "executor_prompt": "Open Default Browser and go to marriott.com and verify that the visible page belongs to the exact target. Use only controller-visible account, sign-in, or login controls; after each action, re-observe and confirm that the UI advanced. If a control produces no state change, try a different visible account or sign-in control instead of repeating the same tap, and never invent or guess a destination path. Enter {user}, and enter {password} only if required. Before requesting verification, choose a one-time-code method whose code can be read in Gmail; if the default challenge is approval-only, push, password, or another non-code method, use the visible alternative-sign-in control to select the matching code method. Request the code exactly once, wait for the exact target to show the corresponding OTP input, leave that challenge open, and report success.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: OTP has been requested/sent OR an OTP input field is visible on screen. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      },
+      {
+        "step": "step_2",
+        "executor_prompt": "Minimize this app, then go to the Gmail app. Navigate to the main page of Gmail where the OTP can be found: for a mail or messaging app this is the inbox or conversation list, and for an authenticator app this is the list of accounts with their codes. Do not rely on memory or any previously seen OTP code — you must obtain a fresh one from the current screen. If it is the detailed page of a message, go back to the main inbox. If the app shows a list of messages or emails, refresh it (e.g. swipe down from the top), wait 3 seconds for it to load, check the Default Browser and go to marriott.com, then open the newest item at the top and read the OTP code inside it. If the app directly displays rotating codes, find the entry corresponding to Default Browser and go to marriott.com and read its currently displayed code; if that code is about to expire, wait for it to rotate and read the new one. Report that OTP code as your final answer.",
+        "auditor_prompt": null,
+        "output": "otp_code"
+      },
+      {
+        "step": "step_3",
+        "executor_prompt": "Return to Default Browser and go to marriott.com and verify that the visible page belongs to the exact target, the intended account is {user}, and the pending challenge is the one that produced {otp_code}. If needed to restore that flow, enter {password} only when required. Clear the OTP field, enter {otp_code} without spaces, submit once, wait, and re-observe. Report success only when the exact target visibly shows an account name or avatar, account-specific controls or dashboard, a sign-out control, or an explicit login-success confirmation; a public landing page, sign-in control, or authenticated state in Gmail is not success. Request one replacement only if the exact target explicitly says the code is incorrect or expired while still signed out. If requested, open Gmail, confirm the switch, refresh if applicable, and read only a demonstrably new code for the exact target and intended account. Return to Default Browser and go to marriott.com, confirm the same challenge, submit the new code once, and verify target authentication. If no new code arrives or authentication is not proven, return to Default Browser and go to marriott.com, leave the exact target visible, and report failure.",
+        "auditor_prompt": "AUDIT ONLY. Do not tap, type, swipe, or change anything on screen. Inspect the CURRENT screen state and decide whether this task was actually completed successfully: UI shows Login success. Or Login confirmed successful, main page is visible. Do not rely on memory or on what an earlier agent claimed -- judge only from what is visible right now. If you cannot clearly confirm success, treat it as not passed. Report your verdict as structured output.",
+        "output": null
+      }
+    ]
+  },
+  "result": {
+    "verdict": "PASS",
+    "agent_reported_success": false,
+    "auto_verifier": {
+      "verdict": "PASS",
+      "reason": "Launcher start rules out a stale target session; the continuous log shows Marriott credentials, email OTP retrieval, and OTP submission, while final Chrome evidence is at marriott.com and the controller XML exposes the named account control '{account_name}', proving fresh authenticated target state despite the runner/auditor false-negative claim."
+    },
+    "note": null
+  },
+  "metrics": {
+    "total_tokens": 113206,
+    "input_tokens": 102210,
+    "output_tokens": 10996,
+    "cost_usd": 0.047545,
+    "wall_clock_seconds": 246
+  },
+  "factorforge_training": {
+    "attempts": 7,
+    "training_tokens": 1048645,
+    "training_seconds": 1954
+  },
+  "source_run": "runs/factorforge_emulator_20261029/03_marriott_bonvoy_info/attempt_007"
+}
